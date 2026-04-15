@@ -3,7 +3,12 @@
 import { useMemo, useState } from "react";
 import type { PickingInfo } from "@deck.gl/core";
 import DeckGL from "@deck.gl/react";
-import { GeoJsonLayer, ScatterplotLayer, TextLayer } from "@deck.gl/layers";
+import {
+  GeoJsonLayer,
+  IconLayer,
+  ScatterplotLayer,
+  TextLayer,
+} from "@deck.gl/layers";
 import Map from "react-map-gl/maplibre";
 import { caboverde } from "@/lib/caboverde";
 
@@ -14,6 +19,46 @@ type MunicipalityFeature = (typeof caboverde.features)[number];
 type MarkerPoint = {
   name: string;
   position: Position;
+};
+
+type IconPoint = {
+  name: string;
+  position: Position;
+  icon: {
+    id: string;
+    url: string;
+    width: number;
+    height: number;
+    anchorY: number;
+  };
+};
+
+type ClusterIconPoint = {
+  name: string;
+  position: Position;
+  count: number;
+  label: string;
+  icon: {
+    id: string;
+    url: string;
+    width: number;
+    height: number;
+    anchorY: number;
+  };
+};
+
+type ExpandedIconPoint = {
+  name: string;
+  municipality: string;
+  center: Position;
+  offset: Position;
+  icon: {
+    id: string;
+    url: string;
+    width: number;
+    height: number;
+    anchorY: number;
+  };
 };
 
 type ScatterPoint = {
@@ -114,11 +159,83 @@ function hexToRgb(hex: string): [number, number, number] {
   return [(int >> 16) & 255, (int >> 8) & 255, int & 255];
 }
 
+function createPinIconDataUrl(color: string) {
+  const svg = `
+  <svg width="80" height="80" viewBox="0 0 80 80" xmlns="http://www.w3.org/2000/svg">
+    <g fill="none" fill-rule="evenodd">
+      <path d="M40 6C26.2 6 15 17.2 15 31c0 17.8 22.4 40.2 24.4 42.2.4.4 1 .8 1.6.8s1.2-.4 1.6-.8C44.6 71.2 67 48.8 67 31 67 17.2 55.8 6 42 6h-2z" fill="${color}" stroke="#ffffff" stroke-width="4"/>
+      <circle cx="40" cy="31" r="9" fill="#ffffff"/>
+    </g>
+  </svg>`;
+
+  return `data:image/svg+xml;charset=utf-8,${encodeURIComponent(svg)}`;
+}
+
+function createCountPinIconDataUrl(color: string, label: string) {
+  const safeLabel = label.replace(/</g, "&lt;").replace(/>/g, "&gt;");
+  const svg = `
+  <svg width="110" height="110" viewBox="0 0 110 110" xmlns="http://www.w3.org/2000/svg">
+    <g fill="none" fill-rule="evenodd">
+      <path d="M55 8C36 8 20.5 23.5 20.5 42.5c0 24.5 30.8 55.3 33.6 58.1.6.6 1.4 1.1 2.2 1.1s1.6-.5 2.2-1.1C61.2 97.8 92 67 92 42.5 92 23.5 76.5 8 57.5 8H55z" fill="${color}" stroke="#ffffff" stroke-width="5"/>
+      <text x="55" y="45" text-anchor="middle" dominant-baseline="middle" fill="#111827" font-family="Arial, sans-serif" font-size="24" font-weight="700">${safeLabel}</text>
+    </g>
+  </svg>`;
+
+  return `data:image/svg+xml;charset=utf-8,${encodeURIComponent(svg)}`;
+}
+
+function countToLabel(count: number) {
+  if (count >= 100) return "100+";
+  if (count >= 50) return "50+";
+  if (count >= 10) return "10+";
+  return `${count}`;
+}
+
+function clamp(value: number, min: number, max: number) {
+  return Math.min(max, Math.max(min, value));
+}
+
+function generateExpandedIconPoints(
+  centers: MarkerPoint[],
+  pointsPerMunicipality: number,
+  icon: string
+): ExpandedIconPoint[] {
+  const points: ExpandedIconPoint[] = [];
+
+  for (const center of centers) {
+    for (let i = 0; i < pointsPerMunicipality; i += 1) {
+      const seed = `${center.name}-icon-${i}`;
+      const angle = hashToUnit(`${seed}-a`) * Math.PI * 2;
+      const radius = 0.008 + hashToUnit(`${seed}-r`) * 0.02;
+      const lngOffset = Math.cos(angle) * radius;
+      const latOffset = Math.sin(angle) * radius * 0.8;
+
+      points.push({
+        name: `${center.name} #${i + 1}`,
+        municipality: center.name,
+        center: center.position,
+        offset: [lngOffset, latOffset],
+        icon: {
+          id: "pin-single",
+          url: icon,
+          width: 80,
+          height: 80,
+          anchorY: 80,
+        },
+      });
+    }
+  }
+
+  return points;
+}
+
 export default function HomePage() {
+  const [viewState, setViewState] = useState(INITIAL_VIEW_STATE);
   const [mapStyle, setMapStyle] = useState<keyof typeof MAP_STYLES>("Escuro");
   const [showMunicipalities, setShowMunicipalities] = useState(true);
   const [showScatter, setShowScatter] = useState(true);
   const [showMarkers, setShowMarkers] = useState(true);
+  const [showIconLayer, setShowIconLayer] = useState(true);
   const [showLabels, setShowLabels] = useState(true);
 
   const [municipalityOpacity, setMunicipalityOpacity] = useState(45);
@@ -132,6 +249,10 @@ export default function HomePage() {
 
   const [markerRadius, setMarkerRadius] = useState(2600);
   const [markerColor, setMarkerColor] = useState("#f97316");
+  const [iconSize, setIconSize] = useState(40);
+  const [iconColor, setIconColor] = useState("#38bdf8");
+  const [iconPointsPerMunicipality, setIconPointsPerMunicipality] = useState(12);
+  const [iconClusterZoom, setIconClusterZoom] = useState(8.3);
 
   const markerPoints = useMemo<MarkerPoint[]>(() => {
     return caboverde.features.map((feature) => ({
@@ -139,6 +260,36 @@ export default function HomePage() {
       position: municipalityCenter(feature),
     }));
   }, []);
+
+  const clusterIconPoints = useMemo<ClusterIconPoint[]>(() => {
+    return markerPoints.map((point) => {
+      const intensity = 0.5 + hashToUnit(`cluster-${point.name}`) * 1.8;
+      const count = Math.max(1, Math.round(iconPointsPerMunicipality * intensity));
+      const label = countToLabel(count);
+      return {
+        name: point.name,
+        position: point.position,
+        count,
+        label,
+        icon: {
+          id: `pin-cluster-${label}-${iconColor}`,
+          url: createCountPinIconDataUrl(iconColor, label),
+          width: 110,
+          height: 110,
+          anchorY: 100,
+        },
+      };
+    });
+  }, [iconColor, iconPointsPerMunicipality, markerPoints]);
+
+  const expandedIconPoints = useMemo<ExpandedIconPoint[]>(() => {
+    const icon = createPinIconDataUrl(iconColor);
+    return generateExpandedIconPoints(
+      markerPoints,
+      iconPointsPerMunicipality,
+      icon
+    );
+  }, [iconColor, iconPointsPerMunicipality, markerPoints]);
 
   const scatterPoints = useMemo<ScatterPoint[]>(() => {
     return generateScatterPoints(caboverde.features, scatterCount);
@@ -149,6 +300,9 @@ export default function HomePage() {
     const scatterRgb = hexToRgb(scatterColor);
     const markerRgb = hexToRgb(markerColor);
     const computedLayers = [];
+    const zoom = viewState.zoom ?? INITIAL_VIEW_STATE.zoom;
+    const isClusterMode = zoom < iconClusterZoom;
+    const spreadFactor = clamp((zoom - (iconClusterZoom - 0.8)) / 2.2, 0, 1);
 
     if (showMunicipalities) {
       computedLayers.push(
@@ -214,6 +368,41 @@ export default function HomePage() {
       );
     }
 
+    if (showIconLayer) {
+      if (isClusterMode) {
+        computedLayers.push(
+          new IconLayer({
+            id: "icon-layer-cluster",
+            data: clusterIconPoints,
+            pickable: true,
+            getPosition: (d: ClusterIconPoint) => d.position,
+            getIcon: (d: ClusterIconPoint) => d.icon,
+            sizeScale: 1,
+            sizeUnits: "pixels",
+            billboard: true,
+            getSize: iconSize + 14,
+          })
+        );
+      } else {
+        computedLayers.push(
+          new IconLayer({
+            id: "icon-layer-expanded",
+            data: expandedIconPoints,
+            pickable: true,
+            getPosition: (d: ExpandedIconPoint) => [
+              d.center[0] + d.offset[0] * spreadFactor,
+              d.center[1] + d.offset[1] * spreadFactor,
+            ],
+            getIcon: (d: ExpandedIconPoint) => d.icon,
+            sizeScale: 1,
+            sizeUnits: "pixels",
+            billboard: true,
+            getSize: Math.max(16, iconSize - 14 + spreadFactor * 18),
+          })
+        );
+      }
+    }
+
     if (showLabels) {
       computedLayers.push(
         new TextLayer({
@@ -233,6 +422,11 @@ export default function HomePage() {
 
     return computedLayers;
   }, [
+    clusterIconPoints,
+    expandedIconPoints,
+    iconClusterZoom,
+    iconPointsPerMunicipality,
+    iconSize,
     markerColor,
     markerPoints,
     markerRadius,
@@ -244,17 +438,29 @@ export default function HomePage() {
     scatterPoints,
     scatterRadius,
     showLabels,
+    showIconLayer,
     showMarkers,
     showMunicipalities,
     showScatter,
+    viewState.zoom,
   ]);
 
-  const getTooltip = (info: PickingInfo<ScatterPoint | MarkerPoint>) => {
+  const getTooltip = (
+    info: PickingInfo<ScatterPoint | MarkerPoint | ClusterIconPoint | ExpandedIconPoint>
+  ) => {
     const object = info.object;
     if (!object) return null;
 
     if ("municipality" in object) {
       return `Scatter\nMunicipio: ${object.municipality}\nValor: ${object.value}`;
+    }
+
+    if ("count" in object) {
+      return `Cluster\nMunicipio: ${object.name}\nTotal: ${object.count}`;
+    }
+
+    if ("municipality" in object) {
+      return `Icon\nMunicipio: ${object.municipality}`;
     }
 
     if ("name" in object) {
@@ -270,7 +476,7 @@ export default function HomePage() {
         <aside className="z-10 overflow-y-auto border-r border-border bg-card p-4">
           <h1 className="text-xl font-semibold">CV Map Studio</h1>
           <p className="mt-1 text-sm text-muted-foreground">
-            Deck.gl com municipios, scatterplot e marker points configuraveis.
+            Deck.gl com municipios, scatterplot, markers e IconLayer configuraveis.
           </p>
 
           <section className="mt-4 space-y-2 rounded-md border border-border p-3">
@@ -324,6 +530,14 @@ export default function HomePage() {
                 onChange={(event) => setShowLabels(event.target.checked)}
               />
               Labels de municipios
+            </label>
+            <label className="flex items-center gap-2 text-sm">
+              <input
+                type="checkbox"
+                checked={showIconLayer}
+                onChange={(event) => setShowIconLayer(event.target.checked)}
+              />
+              IconLayer
             </label>
           </section>
 
@@ -420,11 +634,59 @@ export default function HomePage() {
               onChange={(event) => setMarkerColor(event.target.value)}
             />
           </section>
+
+          <section className="mt-4 space-y-3 rounded-md border border-border p-3">
+            <h2 className="font-medium">IconLayer</h2>
+            <label className="block text-sm">
+              Pontos por municipio (cluster): {iconPointsPerMunicipality}
+            </label>
+            <input
+              className="w-full"
+              type="range"
+              min={5}
+              max={120}
+              step={5}
+              value={iconPointsPerMunicipality}
+              onChange={(event) =>
+                setIconPointsPerMunicipality(Number(event.target.value))
+              }
+            />
+            <label className="block text-sm">
+              Zoom para abrir cluster: {iconClusterZoom.toFixed(1)}
+            </label>
+            <input
+              className="w-full"
+              type="range"
+              min={6}
+              max={10.5}
+              step={0.1}
+              value={iconClusterZoom}
+              onChange={(event) => setIconClusterZoom(Number(event.target.value))}
+            />
+            <label className="block text-sm">Tamanho do icone: {iconSize}</label>
+            <input
+              className="w-full"
+              type="range"
+              min={20}
+              max={80}
+              value={iconSize}
+              onChange={(event) => setIconSize(Number(event.target.value))}
+            />
+            <label className="block text-sm">Cor do icone</label>
+            <input
+              type="color"
+              value={iconColor}
+              onChange={(event) => setIconColor(event.target.value)}
+            />
+          </section>
         </aside>
 
         <section className="relative h-full w-full">
           <DeckGL
-            initialViewState={INITIAL_VIEW_STATE}
+            viewState={viewState}
+            onViewStateChange={({ viewState: nextViewState }) => {
+              setViewState(nextViewState as typeof INITIAL_VIEW_STATE);
+            }}
             controller
             layers={layers}
             getTooltip={getTooltip}
