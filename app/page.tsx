@@ -3,6 +3,7 @@
 import { useMemo, useState } from "react";
 import type { PickingInfo } from "@deck.gl/core";
 import DeckGL from "@deck.gl/react";
+import { HexagonLayer } from "@deck.gl/aggregation-layers";
 import {
   GeoJsonLayer,
   IconLayer,
@@ -73,6 +74,16 @@ const MAP_STYLES = {
   Voyager: "https://basemaps.cartocdn.com/gl/voyager-gl-style/style.json",
 };
 
+const HEXAGON_COLOR_RANGE: [number, number, number][] = [
+  [20, 184, 166],
+  [34, 197, 94],
+  [132, 204, 22],
+  [250, 204, 21],
+  [251, 146, 60],
+  [249, 115, 22],
+  [239, 68, 68],
+];
+
 const INITIAL_VIEW_STATE = {
   longitude: -23.6,
   latitude: 15.95,
@@ -97,6 +108,67 @@ function flattenCoordinates(value: unknown): number[][] {
   }
 
   return value.flatMap((child) => flattenCoordinates(child));
+}
+
+function pointInRing(point: Position, ring: number[][]): boolean {
+  const [x, y] = point;
+  let inside = false;
+
+  for (let i = 0, j = ring.length - 1; i < ring.length; j = i++) {
+    const xi = ring[i][0];
+    const yi = ring[i][1];
+    const xj = ring[j][0];
+    const yj = ring[j][1];
+
+    const intersects =
+      yi > y !== yj > y &&
+      x < ((xj - xi) * (y - yi)) / ((yj - yi) || Number.EPSILON) + xi;
+    if (intersects) inside = !inside;
+  }
+
+  return inside;
+}
+
+function pointInPolygon(point: Position, polygon: number[][][]): boolean {
+  if (polygon.length === 0) return false;
+  if (!pointInRing(point, polygon[0])) return false;
+
+  for (let i = 1; i < polygon.length; i += 1) {
+    if (pointInRing(point, polygon[i])) return false;
+  }
+  return true;
+}
+
+function pointInFeature(point: Position, feature: MunicipalityFeature): boolean {
+  const geometry = feature.geometry;
+
+  if (geometry.type === "Polygon") {
+    return pointInPolygon(point, geometry.coordinates as number[][][]);
+  }
+
+  if (geometry.type === "MultiPolygon") {
+    const multi = geometry.coordinates as number[][][][];
+    return multi.some((polygon) => pointInPolygon(point, polygon));
+  }
+
+  return false;
+}
+
+function geometryBoundingBox(feature: MunicipalityFeature) {
+  const coords = flattenCoordinates(feature.geometry.coordinates);
+  let minLng = Number.POSITIVE_INFINITY;
+  let minLat = Number.POSITIVE_INFINITY;
+  let maxLng = Number.NEGATIVE_INFINITY;
+  let maxLat = Number.NEGATIVE_INFINITY;
+
+  for (const coord of coords) {
+    minLng = Math.min(minLng, coord[0]);
+    minLat = Math.min(minLat, coord[1]);
+    maxLng = Math.max(maxLng, coord[0]);
+    maxLat = Math.max(maxLat, coord[1]);
+  }
+
+  return { minLng, minLat, maxLng, maxLat };
 }
 
 function municipalityCenter(feature: MunicipalityFeature): Position {
@@ -130,17 +202,36 @@ function generateScatterPoints(
   for (const feature of features) {
     const center = municipalityCenter(feature);
     const name = feature.properties.NAME_1;
+    const bbox = geometryBoundingBox(feature);
 
     for (let i = 0; i < pointsPerMunicipality; i += 1) {
       const seed = `${name}-${i}`;
-      const lngOffset = (hashToUnit(`${seed}-lng`) - 0.5) * 0.35;
-      const latOffset = (hashToUnit(`${seed}-lat`) - 0.5) * 0.24;
       const value = 20 + Math.round(hashToUnit(`${seed}-val`) * 80);
+      let candidate: Position = center;
+      let found = false;
+
+      for (let attempt = 0; attempt < 18; attempt += 1) {
+        const lngUnit = hashToUnit(`${seed}-lng-${attempt}`);
+        const latUnit = hashToUnit(`${seed}-lat-${attempt}`);
+        candidate = [
+          bbox.minLng + lngUnit * (bbox.maxLng - bbox.minLng),
+          bbox.minLat + latUnit * (bbox.maxLat - bbox.minLat),
+        ];
+
+        if (pointInFeature(candidate, feature)) {
+          found = true;
+          break;
+        }
+      }
+
+      if (!found) {
+        candidate = center;
+      }
 
       points.push({
         municipality: name,
         value,
-        position: [center[0] + lngOffset, center[1] + latOffset],
+        position: candidate,
       });
     }
   }
@@ -236,6 +327,7 @@ export default function HomePage() {
   const [showScatter, setShowScatter] = useState(true);
   const [showMarkers, setShowMarkers] = useState(true);
   const [showIconLayer, setShowIconLayer] = useState(true);
+  const [showHexagon, setShowHexagon] = useState(true);
   const [showLabels, setShowLabels] = useState(true);
 
   const [municipalityOpacity, setMunicipalityOpacity] = useState(45);
@@ -246,6 +338,11 @@ export default function HomePage() {
   const [scatterRadius, setScatterRadius] = useState(1200);
   const [scatterOpacity, setScatterOpacity] = useState(65);
   const [scatterColor, setScatterColor] = useState("#84cc16");
+  const [hexagonRadius, setHexagonRadius] = useState(2500);
+  const [hexagonCoverage, setHexagonCoverage] = useState(0.75);
+  const [hexagonUpperPercentile, setHexagonUpperPercentile] = useState(100);
+  const [hexagonElevationScale, setHexagonElevationScale] = useState(70);
+  const [hexagonExtruded, setHexagonExtruded] = useState(true);
 
   const [markerRadius, setMarkerRadius] = useState(2600);
   const [markerColor, setMarkerColor] = useState("#f97316");
@@ -348,6 +445,23 @@ export default function HomePage() {
       );
     }
 
+    if (showHexagon) {
+      computedLayers.push(
+        new HexagonLayer<ScatterPoint>({
+          id: "hexagon-layer",
+          data: scatterPoints,
+          pickable: true,
+          extruded: hexagonExtruded,
+          radius: hexagonRadius,
+          coverage: hexagonCoverage,
+          upperPercentile: hexagonUpperPercentile,
+          elevationScale: hexagonElevationScale,
+          colorRange: HEXAGON_COLOR_RANGE,
+          getPosition: (d: ScatterPoint) => d.position,
+        })
+      );
+    }
+
     if (showMarkers) {
       computedLayers.push(
         new ScatterplotLayer({
@@ -437,6 +551,12 @@ export default function HomePage() {
     scatterOpacity,
     scatterPoints,
     scatterRadius,
+    showHexagon,
+    hexagonCoverage,
+    hexagonElevationScale,
+    hexagonExtruded,
+    hexagonRadius,
+    hexagonUpperPercentile,
     showLabels,
     showIconLayer,
     showMarkers,
@@ -445,11 +565,13 @@ export default function HomePage() {
     viewState.zoom,
   ]);
 
-  const getTooltip = (
-    info: PickingInfo<ScatterPoint | MarkerPoint | ClusterIconPoint | ExpandedIconPoint>
-  ) => {
+  const getTooltip = (info: PickingInfo<any>) => {
     const object = info.object;
     if (!object) return null;
+
+    if (Array.isArray(object.points)) {
+      return `Hexagono\nPontos agregados: ${object.points.length}`;
+    }
 
     if ("municipality" in object) {
       return `Scatter\nMunicipio: ${object.municipality}\nValor: ${object.value}`;
@@ -534,6 +656,14 @@ export default function HomePage() {
             <label className="flex items-center gap-2 text-sm">
               <input
                 type="checkbox"
+                checked={showHexagon}
+                onChange={(event) => setShowHexagon(event.target.checked)}
+              />
+              HexagonLayer
+            </label>
+            <label className="flex items-center gap-2 text-sm">
+              <input
+                type="checkbox"
                 checked={showIconLayer}
                 onChange={(event) => setShowIconLayer(event.target.checked)}
               />
@@ -612,6 +742,68 @@ export default function HomePage() {
               type="color"
               value={scatterColor}
               onChange={(event) => setScatterColor(event.target.value)}
+            />
+          </section>
+
+          <section className="mt-4 space-y-3 rounded-md border border-border p-3">
+            <h2 className="font-medium">HexagonLayer</h2>
+            <label className="flex items-center gap-2 text-sm">
+              <input
+                type="checkbox"
+                checked={hexagonExtruded}
+                onChange={(event) => setHexagonExtruded(event.target.checked)}
+              />
+              Extrudado 3D
+            </label>
+            <label className="block text-sm">Radius: {hexagonRadius}</label>
+            <input
+              className="w-full"
+              type="range"
+              min={500}
+              max={8000}
+              step={100}
+              value={hexagonRadius}
+              onChange={(event) => setHexagonRadius(Number(event.target.value))}
+            />
+            <label className="block text-sm">
+              Coverage: {hexagonCoverage.toFixed(2)}
+            </label>
+            <input
+              className="w-full"
+              type="range"
+              min={0.1}
+              max={1}
+              step={0.05}
+              value={hexagonCoverage}
+              onChange={(event) => setHexagonCoverage(Number(event.target.value))}
+            />
+            <label className="block text-sm">
+              Upper Percentile: {hexagonUpperPercentile.toFixed(1)}
+            </label>
+            <input
+              className="w-full"
+              type="range"
+              min={80}
+              max={100}
+              step={0.1}
+              value={hexagonUpperPercentile}
+              onChange={(event) =>
+                setHexagonUpperPercentile(Number(event.target.value))
+              }
+            />
+            <label className="block text-sm">
+              Elevation Scale: {hexagonElevationScale}
+            </label>
+            <input
+              className="w-full"
+              type="range"
+              min={5}
+              max={200}
+              step={5}
+              value={hexagonElevationScale}
+              onChange={(event) =>
+                setHexagonElevationScale(Number(event.target.value))
+              }
             />
           </section>
 

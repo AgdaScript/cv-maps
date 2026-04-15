@@ -9,6 +9,7 @@
     "lint": "eslint ."
   },
   "dependencies": {
+    "@deck.gl/aggregation-layers": "^9.3.0",
     "@deck.gl/core": "^9.3.0",
     "@deck.gl/geo-layers": "^9.3.0",
     "@deck.gl/layers": "^9.3.0",
