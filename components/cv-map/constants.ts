@@ -19,9 +19,9 @@ export const HEXAGON_COLOR_RANGE: [number, number, number][] = [
 ];
 
 export const INITIAL_VIEW_STATE = {
-  longitude: -23.6,
+  longitude: -24,
   latitude: 15.95,
-  zoom: 6.3,
+  zoom: 7.5,
   minZoom: 5.3,
   maxZoom: 13,
   pitch: 15,

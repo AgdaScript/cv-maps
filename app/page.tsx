@@ -102,10 +102,7 @@ export default function HomePage() {
     <main className="h-screen w-screen overflow-hidden bg-background text-foreground">
       <div className="grid h-full w-full grid-cols-1 md:grid-cols-[360px_1fr]">
         <aside className="z-10 overflow-y-auto border-r border-border bg-card p-4">
-          <h1 className="text-xl font-semibold">CV Map Studio</h1>
-          <p className="mt-1 text-sm text-muted-foreground">
-            Arquitetura modular com deck.gl, seguindo SOLID e clean code.
-          </p>
+          <h1 className="text-xl font-semibold">CV Map Sandbox</h1>
 
           <MapStyleSelector mapStyle={mapStyle} setMapStyle={setMapStyle} />
           <LayerControls
