@@ -10,6 +10,17 @@ import {
   ScatterplotLayer,
   TextLayer,
 } from "@deck.gl/layers";
+import { Button } from "@/components/ui/button";
+import {
+  DropdownMenu,
+  DropdownMenuContent,
+  DropdownMenuLabel,
+  DropdownMenuRadioGroup,
+  DropdownMenuRadioItem,
+  DropdownMenuSeparator,
+  DropdownMenuTrigger,
+} from "@/components/ui/dropdown-menu";
+import { ChevronDown } from "lucide-react";
 import Map from "react-map-gl/maplibre";
 import { caboverde } from "@/lib/caboverde";
 
@@ -67,6 +78,14 @@ type ScatterPoint = {
   value: number;
   position: Position;
 };
+
+type LayerOption =
+  | "Municipios"
+  | "Scatterplot"
+  | "Marker points"
+  | "Labels de municipios"
+  | "HexagonLayer"
+  | "IconLayer";
 
 const MAP_STYLES = {
   Escuro: "https://basemaps.cartocdn.com/gl/dark-matter-gl-style/style.json",
@@ -323,12 +342,8 @@ function generateExpandedIconPoints(
 export default function HomePage() {
   const [viewState, setViewState] = useState(INITIAL_VIEW_STATE);
   const [mapStyle, setMapStyle] = useState<keyof typeof MAP_STYLES>("Escuro");
-  const [showMunicipalities, setShowMunicipalities] = useState(true);
-  const [showScatter, setShowScatter] = useState(true);
-  const [showMarkers, setShowMarkers] = useState(true);
-  const [showIconLayer, setShowIconLayer] = useState(true);
-  const [showHexagon, setShowHexagon] = useState(true);
-  const [showLabels, setShowLabels] = useState(true);
+  const [selectedLayer, setSelectedLayer] =
+    useState<LayerOption>("HexagonLayer");
 
   const [municipalityOpacity, setMunicipalityOpacity] = useState(45);
   const [municipalityLineWidth, setMunicipalityLineWidth] = useState(2);
@@ -350,6 +365,12 @@ export default function HomePage() {
   const [iconColor, setIconColor] = useState("#38bdf8");
   const [iconPointsPerMunicipality, setIconPointsPerMunicipality] = useState(12);
   const [iconClusterZoom, setIconClusterZoom] = useState(8.3);
+  const showMunicipalities = selectedLayer === "Municipios";
+  const showScatter = selectedLayer === "Scatterplot";
+  const showMarkers = selectedLayer === "Marker points";
+  const showLabels = selectedLayer === "Labels de municipios";
+  const showHexagon = selectedLayer === "HexagonLayer";
+  const showIconLayer = selectedLayer === "IconLayer";
 
   const markerPoints = useMemo<MarkerPoint[]>(() => {
     return caboverde.features.map((feature) => ({
@@ -573,7 +594,7 @@ export default function HomePage() {
       return `Hexagono\nPontos agregados: ${object.points.length}`;
     }
 
-    if ("municipality" in object) {
+    if ("municipality" in object && "value" in object) {
       return `Scatter\nMunicipio: ${object.municipality}\nValor: ${object.value}`;
     }
 
@@ -603,72 +624,70 @@ export default function HomePage() {
 
           <section className="mt-4 space-y-2 rounded-md border border-border p-3">
             <h2 className="font-medium">Mapa Base</h2>
-            <label className="text-sm">Estilo</label>
-            <select
-              className="w-full rounded-md border border-input bg-background px-2 py-2 text-sm"
-              value={mapStyle}
-              onChange={(event) =>
-                setMapStyle(event.target.value as keyof typeof MAP_STYLES)
-              }
-            >
-              {Object.keys(MAP_STYLES).map((style) => (
-                <option key={style} value={style}>
-                  {style}
-                </option>
-              ))}
-            </select>
+            <label className="text-sm">Estilo (dropdown)</label>
+            <DropdownMenu>
+              <DropdownMenuTrigger asChild>
+                <Button variant="outline" className="w-full justify-between">
+                  {mapStyle}
+                  <span className="text-xs text-muted-foreground">trocar</span>
+                </Button>
+              </DropdownMenuTrigger>
+              <DropdownMenuContent className="w-56">
+                <DropdownMenuLabel>Estilo do mapa</DropdownMenuLabel>
+                <DropdownMenuSeparator />
+                <DropdownMenuRadioGroup
+                  value={mapStyle}
+                  onValueChange={(value) =>
+                    setMapStyle(value as keyof typeof MAP_STYLES)
+                  }
+                >
+                  {Object.keys(MAP_STYLES).map((style) => (
+                    <DropdownMenuRadioItem key={style} value={style}>
+                      {style}
+                    </DropdownMenuRadioItem>
+                  ))}
+                </DropdownMenuRadioGroup>
+              </DropdownMenuContent>
+            </DropdownMenu>
           </section>
 
           <section className="mt-4 space-y-3 rounded-md border border-border p-3">
             <h2 className="font-medium">Camadas</h2>
-            <label className="flex items-center gap-2 text-sm">
-              <input
-                type="checkbox"
-                checked={showMunicipalities}
-                onChange={(event) => setShowMunicipalities(event.target.checked)}
-              />
-              Municipios
-            </label>
-            <label className="flex items-center gap-2 text-sm">
-              <input
-                type="checkbox"
-                checked={showScatter}
-                onChange={(event) => setShowScatter(event.target.checked)}
-              />
-              Scatterplot
-            </label>
-            <label className="flex items-center gap-2 text-sm">
-              <input
-                type="checkbox"
-                checked={showMarkers}
-                onChange={(event) => setShowMarkers(event.target.checked)}
-              />
-              Marker points
-            </label>
-            <label className="flex items-center gap-2 text-sm">
-              <input
-                type="checkbox"
-                checked={showLabels}
-                onChange={(event) => setShowLabels(event.target.checked)}
-              />
-              Labels de municipios
-            </label>
-            <label className="flex items-center gap-2 text-sm">
-              <input
-                type="checkbox"
-                checked={showHexagon}
-                onChange={(event) => setShowHexagon(event.target.checked)}
-              />
-              HexagonLayer
-            </label>
-            <label className="flex items-center gap-2 text-sm">
-              <input
-                type="checkbox"
-                checked={showIconLayer}
-                onChange={(event) => setShowIconLayer(event.target.checked)}
-              />
-              IconLayer
-            </label>
+            <DropdownMenu>
+              <DropdownMenuTrigger asChild>
+                <Button variant="outline" className="w-full justify-between">
+                  {selectedLayer}
+                  <ChevronDown className="size-4 text-muted-foreground" />
+                </Button>
+              </DropdownMenuTrigger>
+              <DropdownMenuContent className="w-64">
+                <DropdownMenuLabel>Selecionar camada ativa</DropdownMenuLabel>
+                <DropdownMenuSeparator />
+                <DropdownMenuRadioGroup
+                  value={selectedLayer}
+                  onValueChange={(value) => setSelectedLayer(value as LayerOption)}
+                >
+                  <DropdownMenuRadioItem value="Municipios">
+                    Municipios
+                  </DropdownMenuRadioItem>
+                  <DropdownMenuRadioItem value="Scatterplot">
+                    Scatterplot
+                  </DropdownMenuRadioItem>
+                  <DropdownMenuRadioItem value="Marker points">
+                    Marker points
+                  </DropdownMenuRadioItem>
+                  <DropdownMenuRadioItem value="Labels de municipios">
+                    Labels de municipios
+                  </DropdownMenuRadioItem>
+                  <DropdownMenuRadioItem value="HexagonLayer">
+                    HexagonLayer
+                  </DropdownMenuRadioItem>
+                  <DropdownMenuRadioItem value="IconLayer">
+                    IconLayer
+                  </DropdownMenuRadioItem>
+                </DropdownMenuRadioGroup>
+              </DropdownMenuContent>
+            </DropdownMenu>
           </section>
 
           <section className="mt-4 space-y-3 rounded-md border border-border p-3">
