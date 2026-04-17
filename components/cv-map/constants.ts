@@ -22,7 +22,7 @@ export const INITIAL_VIEW_STATE = {
   longitude: -24,
   latitude: 15.95,
   zoom: 7.5,
-  minZoom: 5.3,
+  minZoom: 7.5,
   maxZoom: 13,
   pitch: 15,
   bearing: 0,
