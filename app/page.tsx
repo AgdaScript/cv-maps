@@ -361,6 +361,9 @@ export default function HomePage() {
 
   const [markerRadius, setMarkerRadius] = useState(2600);
   const [markerColor, setMarkerColor] = useState("#f97316");
+  const [labelSize, setLabelSize] = useState(12);
+  const [labelColor, setLabelColor] = useState("#ffffff");
+  const [labelOffset, setLabelOffset] = useState(8);
   const [iconSize, setIconSize] = useState(40);
   const [iconColor, setIconColor] = useState("#38bdf8");
   const [iconPointsPerMunicipality, setIconPointsPerMunicipality] = useState(12);
@@ -417,6 +420,7 @@ export default function HomePage() {
     const municipalityRgb = hexToRgb(municipalityColor);
     const scatterRgb = hexToRgb(scatterColor);
     const markerRgb = hexToRgb(markerColor);
+    const labelsRgb = hexToRgb(labelColor);
     const computedLayers = [];
     const zoom = viewState.zoom ?? INITIAL_VIEW_STATE.zoom;
     const isClusterMode = zoom < iconClusterZoom;
@@ -546,11 +550,11 @@ export default function HomePage() {
           pickable: false,
           getPosition: (d: MarkerPoint) => d.position,
           getText: (d: MarkerPoint) => d.name,
-          getColor: [255, 255, 255, 255],
-          getSize: 12,
+          getColor: [labelsRgb[0], labelsRgb[1], labelsRgb[2], 255],
+          getSize: labelSize,
           getTextAnchor: "middle",
           getAlignmentBaseline: "bottom",
-          getPixelOffset: [0, -8],
+          getPixelOffset: [0, -labelOffset],
         })
       );
     }
@@ -562,6 +566,9 @@ export default function HomePage() {
     iconClusterZoom,
     iconPointsPerMunicipality,
     iconSize,
+    labelColor,
+    labelOffset,
+    labelSize,
     markerColor,
     markerPoints,
     markerRadius,
@@ -690,206 +697,252 @@ export default function HomePage() {
             </DropdownMenu>
           </section>
 
-          <section className="mt-4 space-y-3 rounded-md border border-border p-3">
-            <h2 className="font-medium">Municipios</h2>
-            <label className="block text-sm">
-              Opacidade: {municipalityOpacity}%
-            </label>
-            <input
-              className="w-full"
-              type="range"
-              min={0}
-              max={100}
-              value={municipalityOpacity}
-              onChange={(event) =>
-                setMunicipalityOpacity(Number(event.target.value))
-              }
-            />
-            <label className="block text-sm">
-              Espessura da borda: {municipalityLineWidth}
-            </label>
-            <input
-              className="w-full"
-              type="range"
-              min={1}
-              max={6}
-              value={municipalityLineWidth}
-              onChange={(event) =>
-                setMunicipalityLineWidth(Number(event.target.value))
-              }
-            />
-            <label className="block text-sm">Cor</label>
-            <input
-              type="color"
-              value={municipalityColor}
-              onChange={(event) => setMunicipalityColor(event.target.value)}
-            />
-          </section>
-
-          <section className="mt-4 space-y-3 rounded-md border border-border p-3">
-            <h2 className="font-medium">Scatterplot</h2>
-            <label className="block text-sm">Pontos por municipio: {scatterCount}</label>
-            <input
-              className="w-full"
-              type="range"
-              min={1}
-              max={20}
-              value={scatterCount}
-              onChange={(event) => setScatterCount(Number(event.target.value))}
-            />
-            <label className="block text-sm">Raio base: {scatterRadius}</label>
-            <input
-              className="w-full"
-              type="range"
-              min={300}
-              max={3000}
-              step={100}
-              value={scatterRadius}
-              onChange={(event) => setScatterRadius(Number(event.target.value))}
-            />
-            <label className="block text-sm">Opacidade: {scatterOpacity}%</label>
-            <input
-              className="w-full"
-              type="range"
-              min={0}
-              max={100}
-              value={scatterOpacity}
-              onChange={(event) => setScatterOpacity(Number(event.target.value))}
-            />
-            <label className="block text-sm">Cor</label>
-            <input
-              type="color"
-              value={scatterColor}
-              onChange={(event) => setScatterColor(event.target.value)}
-            />
-          </section>
-
-          <section className="mt-4 space-y-3 rounded-md border border-border p-3">
-            <h2 className="font-medium">HexagonLayer</h2>
-            <label className="flex items-center gap-2 text-sm">
+          {selectedLayer === "Municipios" && (
+            <section className="mt-4 space-y-3 rounded-md border border-border p-3">
+              <h2 className="font-medium">Municipios</h2>
+              <label className="block text-sm">
+                Opacidade: {municipalityOpacity}%
+              </label>
               <input
-                type="checkbox"
-                checked={hexagonExtruded}
-                onChange={(event) => setHexagonExtruded(event.target.checked)}
+                className="w-full"
+                type="range"
+                min={0}
+                max={100}
+                value={municipalityOpacity}
+                onChange={(event) =>
+                  setMunicipalityOpacity(Number(event.target.value))
+                }
               />
-              Extrudado 3D
-            </label>
-            <label className="block text-sm">Radius: {hexagonRadius}</label>
-            <input
-              className="w-full"
-              type="range"
-              min={500}
-              max={8000}
-              step={100}
-              value={hexagonRadius}
-              onChange={(event) => setHexagonRadius(Number(event.target.value))}
-            />
-            <label className="block text-sm">
-              Coverage: {hexagonCoverage.toFixed(2)}
-            </label>
-            <input
-              className="w-full"
-              type="range"
-              min={0.1}
-              max={1}
-              step={0.05}
-              value={hexagonCoverage}
-              onChange={(event) => setHexagonCoverage(Number(event.target.value))}
-            />
-            <label className="block text-sm">
-              Upper Percentile: {hexagonUpperPercentile.toFixed(1)}
-            </label>
-            <input
-              className="w-full"
-              type="range"
-              min={80}
-              max={100}
-              step={0.1}
-              value={hexagonUpperPercentile}
-              onChange={(event) =>
-                setHexagonUpperPercentile(Number(event.target.value))
-              }
-            />
-            <label className="block text-sm">
-              Elevation Scale: {hexagonElevationScale}
-            </label>
-            <input
-              className="w-full"
-              type="range"
-              min={5}
-              max={200}
-              step={5}
-              value={hexagonElevationScale}
-              onChange={(event) =>
-                setHexagonElevationScale(Number(event.target.value))
-              }
-            />
-          </section>
+              <label className="block text-sm">
+                Espessura da borda: {municipalityLineWidth}
+              </label>
+              <input
+                className="w-full"
+                type="range"
+                min={1}
+                max={6}
+                value={municipalityLineWidth}
+                onChange={(event) =>
+                  setMunicipalityLineWidth(Number(event.target.value))
+                }
+              />
+              <label className="block text-sm">Cor</label>
+              <input
+                type="color"
+                value={municipalityColor}
+                onChange={(event) => setMunicipalityColor(event.target.value)}
+              />
+            </section>
+          )}
 
-          <section className="mt-4 space-y-3 rounded-md border border-border p-3">
-            <h2 className="font-medium">Marker Points</h2>
-            <label className="block text-sm">Raio: {markerRadius}</label>
-            <input
-              className="w-full"
-              type="range"
-              min={600}
-              max={5000}
-              step={100}
-              value={markerRadius}
-              onChange={(event) => setMarkerRadius(Number(event.target.value))}
-            />
-            <label className="block text-sm">Cor</label>
-            <input
-              type="color"
-              value={markerColor}
-              onChange={(event) => setMarkerColor(event.target.value)}
-            />
-          </section>
+          {selectedLayer === "Scatterplot" && (
+            <section className="mt-4 space-y-3 rounded-md border border-border p-3">
+              <h2 className="font-medium">Scatterplot</h2>
+              <label className="block text-sm">
+                Pontos por municipio: {scatterCount}
+              </label>
+              <input
+                className="w-full"
+                type="range"
+                min={1}
+                max={20}
+                value={scatterCount}
+                onChange={(event) => setScatterCount(Number(event.target.value))}
+              />
+              <label className="block text-sm">Raio base: {scatterRadius}</label>
+              <input
+                className="w-full"
+                type="range"
+                min={300}
+                max={3000}
+                step={100}
+                value={scatterRadius}
+                onChange={(event) => setScatterRadius(Number(event.target.value))}
+              />
+              <label className="block text-sm">Opacidade: {scatterOpacity}%</label>
+              <input
+                className="w-full"
+                type="range"
+                min={0}
+                max={100}
+                value={scatterOpacity}
+                onChange={(event) => setScatterOpacity(Number(event.target.value))}
+              />
+              <label className="block text-sm">Cor</label>
+              <input
+                type="color"
+                value={scatterColor}
+                onChange={(event) => setScatterColor(event.target.value)}
+              />
+            </section>
+          )}
 
-          <section className="mt-4 space-y-3 rounded-md border border-border p-3">
-            <h2 className="font-medium">IconLayer</h2>
-            <label className="block text-sm">
-              Pontos por municipio (cluster): {iconPointsPerMunicipality}
-            </label>
-            <input
-              className="w-full"
-              type="range"
-              min={5}
-              max={120}
-              step={5}
-              value={iconPointsPerMunicipality}
-              onChange={(event) =>
-                setIconPointsPerMunicipality(Number(event.target.value))
-              }
-            />
-            <label className="block text-sm">
-              Zoom para abrir cluster: {iconClusterZoom.toFixed(1)}
-            </label>
-            <input
-              className="w-full"
-              type="range"
-              min={6}
-              max={10.5}
-              step={0.1}
-              value={iconClusterZoom}
-              onChange={(event) => setIconClusterZoom(Number(event.target.value))}
-            />
-            <label className="block text-sm">Tamanho do icone: {iconSize}</label>
-            <input
-              className="w-full"
-              type="range"
-              min={20}
-              max={80}
-              value={iconSize}
-              onChange={(event) => setIconSize(Number(event.target.value))}
-            />
-            <label className="block text-sm">Cor do icone</label>
-            <input
-              type="color"
-              value={iconColor}
-              onChange={(event) => setIconColor(event.target.value)}
-            />
-          </section>
+          {selectedLayer === "HexagonLayer" && (
+            <section className="mt-4 space-y-3 rounded-md border border-border p-3">
+              <h2 className="font-medium">HexagonLayer</h2>
+              <label className="flex items-center gap-2 text-sm">
+                <input
+                  type="checkbox"
+                  checked={hexagonExtruded}
+                  onChange={(event) => setHexagonExtruded(event.target.checked)}
+                />
+                Extrudado 3D
+              </label>
+              <label className="block text-sm">Radius: {hexagonRadius}</label>
+              <input
+                className="w-full"
+                type="range"
+                min={500}
+                max={8000}
+                step={100}
+                value={hexagonRadius}
+                onChange={(event) => setHexagonRadius(Number(event.target.value))}
+              />
+              <label className="block text-sm">
+                Coverage: {hexagonCoverage.toFixed(2)}
+              </label>
+              <input
+                className="w-full"
+                type="range"
+                min={0.1}
+                max={1}
+                step={0.05}
+                value={hexagonCoverage}
+                onChange={(event) => setHexagonCoverage(Number(event.target.value))}
+              />
+              <label className="block text-sm">
+                Upper Percentile: {hexagonUpperPercentile.toFixed(1)}
+              </label>
+              <input
+                className="w-full"
+                type="range"
+                min={80}
+                max={100}
+                step={0.1}
+                value={hexagonUpperPercentile}
+                onChange={(event) =>
+                  setHexagonUpperPercentile(Number(event.target.value))
+                }
+              />
+              <label className="block text-sm">
+                Elevation Scale: {hexagonElevationScale}
+              </label>
+              <input
+                className="w-full"
+                type="range"
+                min={5}
+                max={200}
+                step={5}
+                value={hexagonElevationScale}
+                onChange={(event) =>
+                  setHexagonElevationScale(Number(event.target.value))
+                }
+              />
+            </section>
+          )}
+
+          {selectedLayer === "Marker points" && (
+            <section className="mt-4 space-y-3 rounded-md border border-border p-3">
+              <h2 className="font-medium">Marker Points</h2>
+              <label className="block text-sm">Raio: {markerRadius}</label>
+              <input
+                className="w-full"
+                type="range"
+                min={600}
+                max={5000}
+                step={100}
+                value={markerRadius}
+                onChange={(event) => setMarkerRadius(Number(event.target.value))}
+              />
+              <label className="block text-sm">Cor</label>
+              <input
+                type="color"
+                value={markerColor}
+                onChange={(event) => setMarkerColor(event.target.value)}
+              />
+            </section>
+          )}
+
+          {selectedLayer === "Labels de municipios" && (
+            <section className="mt-4 space-y-3 rounded-md border border-border p-3">
+              <h2 className="font-medium">Labels de municipios</h2>
+              <label className="block text-sm">Tamanho: {labelSize}</label>
+              <input
+                className="w-full"
+                type="range"
+                min={8}
+                max={24}
+                step={1}
+                value={labelSize}
+                onChange={(event) => setLabelSize(Number(event.target.value))}
+              />
+              <label className="block text-sm">
+                Deslocamento vertical: {labelOffset}
+              </label>
+              <input
+                className="w-full"
+                type="range"
+                min={0}
+                max={24}
+                step={1}
+                value={labelOffset}
+                onChange={(event) => setLabelOffset(Number(event.target.value))}
+              />
+              <label className="block text-sm">Cor</label>
+              <input
+                type="color"
+                value={labelColor}
+                onChange={(event) => setLabelColor(event.target.value)}
+              />
+            </section>
+          )}
+
+          {selectedLayer === "IconLayer" && (
+            <section className="mt-4 space-y-3 rounded-md border border-border p-3">
+              <h2 className="font-medium">IconLayer</h2>
+              <label className="block text-sm">
+                Pontos por municipio (cluster): {iconPointsPerMunicipality}
+              </label>
+              <input
+                className="w-full"
+                type="range"
+                min={5}
+                max={120}
+                step={5}
+                value={iconPointsPerMunicipality}
+                onChange={(event) =>
+                  setIconPointsPerMunicipality(Number(event.target.value))
+                }
+              />
+              <label className="block text-sm">
+                Zoom para abrir cluster: {iconClusterZoom.toFixed(1)}
+              </label>
+              <input
+                className="w-full"
+                type="range"
+                min={6}
+                max={10.5}
+                step={0.1}
+                value={iconClusterZoom}
+                onChange={(event) => setIconClusterZoom(Number(event.target.value))}
+              />
+              <label className="block text-sm">Tamanho do icone: {iconSize}</label>
+              <input
+                className="w-full"
+                type="range"
+                min={20}
+                max={80}
+                value={iconSize}
+                onChange={(event) => setIconSize(Number(event.target.value))}
+              />
+              <label className="block text-sm">Cor do icone</label>
+              <input
+                type="color"
+                value={iconColor}
+                onChange={(event) => setIconColor(event.target.value)}
+              />
+            </section>
+          )}
         </aside>
 
         <section className="relative h-full w-full">
