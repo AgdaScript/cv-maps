@@ -1,0 +1,313 @@
+{
+    "type": "FeatureCollection",
+    "features": [
+      {
+        "type": "Feature",
+        "properties": {
+          "comissao": "Boavista",
+          "inscritos_nacionais": 8585,
+          "inscritos_estrangeiros": 949,
+          "total_eleitores": 9534,
+          "eliminados": 74
+        },
+        "geometry": {
+          "type": "Polygon",
+          "coordinates": [[[-22.88, 16.05], [-22.85, 16.05], [-22.85, 16.12], [-22.88, 16.12], [-22.88, 16.05]]]
+        }
+      },
+      {
+        "type": "Feature",
+        "properties": {
+          "comissao": "Brava",
+          "inscritos_nacionais": 4545,
+          "inscritos_estrangeiros": 35,
+          "total_eleitores": 4588,
+          "eliminados": 30
+        },
+        "geometry": {
+          "type": "Polygon",
+          "coordinates": [[[-24.70, 14.82], [-24.68, 14.82], [-24.68, 14.88], [-24.70, 14.88], [-24.70, 14.82]]]
+        }
+      },
+      {
+        "type": "Feature",
+        "properties": {
+          "comissao": "Maio",
+          "inscritos_nacionais": 4945,
+          "inscritos_estrangeiros": 25,
+          "total_eleitores": 4970,
+          "eliminados": 48
+        },
+        "geometry": {
+          "type": "Polygon",
+          "coordinates": [[[-23.20, 15.15], [-23.10, 15.15], [-23.10, 15.25], [-23.20, 15.25], [-23.20, 15.15]]]
+        }
+      },
+      {
+        "type": "Feature",
+        "properties": {
+          "comissao": "Mosteiros",
+          "inscritos_nacionais": 6629,
+          "inscritos_estrangeiros": 10,
+          "total_eleitores": 6639,
+          "eliminados": 19
+        },
+        "geometry": {
+          "type": "Polygon",
+          "coordinates": [[[-24.38, 14.87], [-24.34, 14.87], [-24.34, 14.92], [-24.38, 14.92], [-24.38, 14.87]]]
+        }
+      },
+      {
+        "type": "Feature",
+        "properties": {
+          "comissao": "Paul",
+          "inscritos_nacionais": 5249,
+          "inscritos_estrangeiros": 0,
+          "total_eleitores": 5249,
+          "eliminados": 58
+        },
+        "geometry": {
+          "type": "Polygon",
+          "coordinates": [[[-25.03, 17.10], [-25.00, 17.10], [-25.00, 17.15], [-25.03, 17.15], [-25.03, 17.10]]]
+        }
+      },
+      {
+        "type": "Feature",
+        "properties": {
+          "comissao": "Porto Novo",
+          "inscritos_nacionais": 13659,
+          "inscritos_estrangeiros": 65,
+          "total_eleitores": 13724,
+          "eliminados": 113
+        },
+        "geometry": {
+          "type": "Polygon",
+          "coordinates": [[[-25.12, 17.00], [-25.05, 17.00], [-25.05, 17.10], [-25.12, 17.10], [-25.12, 17.00]]]
+        }
+      },
+      {
+        "type": "Feature",
+        "properties": {
+          "comissao": "Praia",
+          "inscritos_nacionais": 90474,
+          "inscritos_estrangeiros": 819,
+          "total_eleitores": 91335,
+          "eliminados": 572
+        },
+        "geometry": {
+          "type": "Polygon",
+          "coordinates": [[[-23.55, 14.88], [-23.48, 14.88], [-23.48, 14.96], [-23.55, 14.96], [-23.55, 14.88]]]
+        }
+      },
+      {
+        "type": "Feature",
+        "properties": {
+          "comissao": "Ribeira Brava",
+          "inscritos_nacionais": 5502,
+          "inscritos_estrangeiros": 45,
+          "total_eleitores": 5506,
+          "eliminados": 44
+        },
+        "geometry": {
+          "type": "Polygon",
+          "coordinates": [[[-24.32, 16.58], [-24.28, 16.58], [-24.28, 16.65], [-24.32, 16.65], [-24.32, 16.58]]]
+        }
+      },
+      {
+        "type": "Feature",
+        "properties": {
+          "comissao": "Ribeira Grande",
+          "inscritos_nacionais": 12908,
+          "inscritos_estrangeiros": 10,
+          "total_eleitores": 12918,
+          "eliminados": 114
+        },
+        "geometry": {
+          "type": "Polygon",
+          "coordinates": [[[-25.10, 17.12], [-25.05, 17.12], [-25.05, 17.20], [-25.10, 17.20], [-25.10, 17.12]]]
+        }
+      },
+      {
+        "type": "Feature",
+        "properties": {
+          "comissao": "Ribeira Grande Santiago",
+          "inscritos_nacionais": 6673,
+          "inscritos_estrangeiros": 27,
+          "total_eleitores": 6700,
+          "eliminados": 86
+        },
+        "geometry": {
+          "type": "Polygon",
+          "coordinates": [[[-23.50, 14.94], [-23.45, 14.94], [-23.45, 14.98], [-23.50, 14.98], [-23.50, 14.94]]]
+        }
+      },
+      {
+        "type": "Feature",
+        "properties": {
+          "comissao": "Sal",
+          "inscritos_nacionais": 20315,
+          "inscritos_estrangeiros": 84,
+          "total_eleitores": 21162,
+          "eliminados": 133
+        },
+        "geometry": {
+          "type": "Polygon",
+          "coordinates": [[[-22.96, 16.70], [-22.90, 16.70], [-22.90, 16.80], [-22.96, 16.80], [-22.96, 16.70]]]
+        }
+      },
+      {
+        "type": "Feature",
+        "properties": {
+          "comissao": "Santa Catarina",
+          "inscritos_nacionais": 26237,
+          "inscritos_estrangeiros": 161,
+          "total_eleitores": 26398,
+          "eliminados": 416
+        },
+        "geometry": {
+          "type": "Polygon",
+          "coordinates": [[[-23.62, 14.98], [-23.55, 14.98], [-23.55, 15.10], [-23.62, 15.10], [-23.62, 14.98]]]
+        }
+      },
+      {
+        "type": "Feature",
+        "properties": {
+          "comissao": "Santa Catarina do Fogo",
+          "inscritos_nacionais": 4272,
+          "inscritos_estrangeiros": 14,
+          "total_eleitores": 4273,
+          "eliminados": 18
+        },
+        "geometry": {
+          "type": "Polygon",
+          "coordinates": [[[-24.38, 14.88], [-24.34, 14.88], [-24.34, 14.92], [-24.38, 14.92], [-24.38, 14.88]]]
+        }
+      },
+      {
+        "type": "Feature",
+        "properties": {
+          "comissao": "Santa Cruz",
+          "inscritos_nacionais": 17469,
+          "inscritos_estrangeiros": 89,
+          "total_eleitores": 17558,
+          "eliminados": 201
+        },
+        "geometry": {
+          "type": "Polygon",
+          "coordinates": [[[-23.58, 15.08], [-23.52, 15.08], [-23.52, 15.15], [-23.58, 15.15], [-23.58, 15.08]]]
+        }
+      },
+      {
+        "type": "Feature",
+        "properties": {
+          "comissao": "São Domingos",
+          "inscritos_nacionais": 9845,
+          "inscritos_estrangeiros": 59,
+          "total_eleitores": 9850,
+          "eliminados": 110
+        },
+        "geometry": {
+          "type": "Polygon",
+          "coordinates": [[[-23.56, 14.98], [-23.52, 14.98], [-23.52, 15.05], [-23.56, 15.05], [-23.56, 14.98]]]
+        }
+      },
+      {
+        "type": "Feature",
+        "properties": {
+          "comissao": "São Filipe",
+          "inscritos_nacionais": 15791,
+          "inscritos_estrangeiros": 18,
+          "total_eleitores": 15809,
+          "eliminados": 117
+        },
+        "geometry": {
+          "type": "Polygon",
+          "coordinates": [[[-24.55, 14.85], [-24.48, 14.85], [-24.48, 14.93], [-24.55, 14.93], [-24.55, 14.85]]]
+        }
+      },
+      {
+        "type": "Feature",
+        "properties": {
+          "comissao": "São Lourenço dos Órgãos",
+          "inscritos_nacionais": 5757,
+          "inscritos_estrangeiros": 1,
+          "total_eleitores": 5757,
+          "eliminados": 86
+        },
+        "geometry": {
+          "type": "Polygon",
+          "coordinates": [[[-23.60, 15.04], [-23.57, 15.04], [-23.57, 15.08], [-23.60, 15.08], [-23.60, 15.04]]]
+        }
+      },
+      {
+        "type": "Feature",
+        "properties": {
+          "comissao": "São Miguel",
+          "inscritos_nacionais": 10183,
+          "inscritos_estrangeiros": 13,
+          "total_eleitores": 10196,
+          "eliminados": 125
+        },
+        "geometry": {
+          "type": "Polygon",
+          "coordinates": [[[-23.50, 15.15], [-23.45, 15.15], [-23.45, 15.22], [-23.50, 15.22], [-23.50, 15.15]]]
+        }
+      },
+      {
+        "type": "Feature",
+        "properties": {
+          "comissao": "São Salvador do Mundo",
+          "inscritos_nacionais": 6041,
+          "inscritos_estrangeiros": 0,
+          "total_eleitores": 6041,
+          "eliminados": 87
+        },
+        "geometry": {
+          "type": "Polygon",
+          "coordinates": [[[-23.62, 15.06], [-23.59, 15.06], [-23.59, 15.10], [-23.62, 15.10], [-23.62, 15.06]]]
+        }
+      },
+      {
+        "type": "Feature",
+        "properties": {
+          "comissao": "São Vicente",
+          "inscritos_nacionais": 54865,
+          "inscritos_estrangeiros": 180,
+          "total_eleitores": 55045,
+          "eliminados": 418
+        },
+        "geometry": {
+          "type": "Polygon",
+          "coordinates": [[[-25.00, 16.80], [-24.92, 16.80], [-24.92, 16.92], [-25.00, 16.92], [-25.00, 16.80]]]
+        }
+      },
+      {
+        "type": "Feature",
+        "properties": {
+          "comissao": "Tarrafal",
+          "inscritos_nacionais": 11951,
+          "inscritos_estrangeiros": 55,
+          "total_eleitores": 12006,
+          "eliminados": 153
+        },
+        "geometry": {
+          "type": "Polygon",
+          "coordinates": [[[-23.70, 15.22], [-23.65, 15.22], [-23.65, 15.32], [-23.70, 15.32], [-23.70, 15.22]]]
+        }
+      },
+      {
+        "type": "Feature",
+        "properties": {
+          "comissao": "Tarrafal de São Nicolau",
+          "inscritos_nacionais": 4230,
+          "inscritos_estrangeiros": 12,
+          "total_eleitores": 4242,
+          "eliminados": 32
+        },
+        "geometry": {
+          "type": "Polygon",
+          "coordinates": [[[-24.38, 16.55], [-24.35, 16.55], [-24.35, 16.60], [-24.38, 16.60], [-24.38, 16.55]]]
+        }
+      }
+    ]
+  }
