@@ -89,6 +89,23 @@ export function LayerControls({
             value={state.municipalityColor}
             onChange={(event) => update("municipalityColor", event.target.value)}
           />
+          <label className="flex items-center gap-2 text-sm">
+            <input
+              type="checkbox"
+              checked={state.municipioBorderSameAsFill}
+              onChange={(event) =>
+                update("municipioBorderSameAsFill", event.target.checked)
+              }
+            />
+            Borda igual a cor do municipio
+          </label>
+          <label className="block text-sm">Cor especifica da borda</label>
+          <input
+            type="color"
+            value={state.municipioBorderColor}
+            disabled={state.municipioBorderSameAsFill}
+            onChange={(event) => update("municipioBorderColor", event.target.value)}
+          />
         </section>
       )}
 
@@ -214,40 +231,6 @@ export function LayerControls({
             type="color"
             value={state.markerColor}
             onChange={(event) => update("markerColor", event.target.value)}
-          />
-        </section>
-      )}
-
-      {selectedLayer === "Labels de municipios" && (
-        <section className="mt-4 space-y-3 rounded-md border border-border p-3">
-          <h2 className="font-medium">Labels de municipios</h2>
-          <label className="block text-sm">Tamanho: {state.labelSize}</label>
-          <input
-            className="w-full"
-            type="range"
-            min={8}
-            max={24}
-            step={1}
-            value={state.labelSize}
-            onChange={(event) => update("labelSize", Number(event.target.value))}
-          />
-          <label className="block text-sm">
-            Deslocamento vertical: {state.labelOffset}
-          </label>
-          <input
-            className="w-full"
-            type="range"
-            min={0}
-            max={24}
-            step={1}
-            value={state.labelOffset}
-            onChange={(event) => update("labelOffset", Number(event.target.value))}
-          />
-          <label className="block text-sm">Cor</label>
-          <input
-            type="color"
-            value={state.labelColor}
-            onChange={(event) => update("labelColor", event.target.value)}
           />
         </section>
       )}

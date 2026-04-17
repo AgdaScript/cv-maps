@@ -32,7 +32,6 @@ export const LAYER_OPTIONS: LayerOption[] = [
   "Municipios",
   "Scatterplot",
   "Marker points",
-  "Labels de municipios",
   "HexagonLayer",
   "IconLayer",
 ];

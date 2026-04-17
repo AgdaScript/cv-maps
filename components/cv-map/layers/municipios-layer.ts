@@ -80,19 +80,11 @@ export function createMunicipiosLayer(
     id: "municipios",
     data,
     extruded: true,
-    stroked: true,
+    stroked: false,
     filled: true,
     pickable: true,
-    lineWidthUnits: "pixels",
-    lineWidthScale: 1,
-    lineWidthMinPixels: state.municipalityLineWidth,
-    getLineWidth: (feature: any) => {
-      const isHovered = feature?.properties?.GID_1 === hoveredMunicipioId;
-      return isHovered ? state.municipalityLineWidth * 2.8 : state.municipalityLineWidth;
-    },
     getElevation: (feature: any) =>
       feature?.properties?.GID_1 === hoveredMunicipioId ? 1800 : 0,
-    getLineColor: [255, 255, 255, 255],
     getFillColor: (feature: any) => {
       const rawName = feature?.properties?.NAME_1 ?? "";
       const normalized = normalizeName(rawName);
@@ -110,7 +102,6 @@ export function createMunicipiosLayer(
     },
     updateTriggers: {
       getFillColor: [hoveredMunicipioId, state.municipalityOpacity],
-      getLineWidth: [hoveredMunicipioId, state.municipalityLineWidth],
       getElevation: [hoveredMunicipioId],
     },
   });
@@ -118,6 +109,7 @@ export function createMunicipiosLayer(
 
 export function createMunicipiosBordersLayer(state: MapState) {
   const data = getFilteredMunicipiosData(state);
+  const fixedBorderRgb = hexToRgb(state.municipioBorderColor);
 
   return new GeoJsonLayer({
     id: "municipios-borders",
@@ -129,6 +121,24 @@ export function createMunicipiosBordersLayer(state: MapState) {
     lineWidthScale: 1,
     lineWidthMinPixels: Math.max(1.5, state.municipalityLineWidth + 1),
     getLineWidth: Math.max(1.5, state.municipalityLineWidth + 1),
-    getLineColor: [255, 255, 255, 255],
+    getLineColor: (feature: any) => {
+      if (state.municipioBorderSameAsFill) {
+        return [0, 0, 0, 0];
+      }
+
+      if (!state.municipioBorderSameAsFill) {
+        return [fixedBorderRgb[0], fixedBorderRgb[1], fixedBorderRgb[2], 255];
+      }
+
+      const rawName = feature?.properties?.NAME_1 ?? "";
+      const normalized = normalizeName(rawName);
+      const aliased = ALIASES[normalized] ?? normalized;
+      const hex = municipioColorMap[aliased];
+      const rgb = hex ? hexToRgb(hex) : fixedBorderRgb;
+      return [rgb[0], rgb[1], rgb[2], 255];
+    },
+    updateTriggers: {
+      getLineColor: [state.municipioBorderSameAsFill, state.municipioBorderColor],
+    },
   });
 }

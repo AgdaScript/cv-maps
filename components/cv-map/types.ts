@@ -6,7 +6,6 @@ export type LayerOption =
   | "Municipios"
   | "Scatterplot"
   | "Marker points"
-  | "Labels de municipios"
   | "HexagonLayer"
   | "IconLayer";
 
@@ -48,6 +47,8 @@ export type MapState = {
   municipalityOpacity: number;
   municipalityLineWidth: number;
   municipalityColor: string;
+  municipioBorderSameAsFill: boolean;
+  municipioBorderColor: string;
   municipioValueMinFilter: number;
   municipioValueMaxFilter: number;
   scatterCount: number;
@@ -61,9 +62,6 @@ export type MapState = {
   hexagonExtruded: boolean;
   markerRadius: number;
   markerColor: string;
-  labelSize: number;
-  labelColor: string;
-  labelOffset: number;
   iconSize: number;
   iconColor: string;
   iconPointsPerMunicipality: number;

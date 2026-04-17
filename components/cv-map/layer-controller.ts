@@ -3,7 +3,6 @@
 import type { LayerControllerContext } from "@/components/cv-map/layers/layer-context";
 import { createHexagonLayer } from "@/components/cv-map/layers/hexagon-layer";
 import { createIconLayers } from "@/components/cv-map/layers/icon-layer";
-import { createLabelsLayer } from "@/components/cv-map/layers/labels-layer";
 import { createMarkersLayer } from "@/components/cv-map/layers/markers-layer";
 import {
   createMunicipiosBordersLayer,
@@ -33,8 +32,6 @@ export function buildLayers(context: LayerControllerContext) {
       return [createHexagonLayer(state, scatterPoints)];
     case "Marker points":
       return [createMarkersLayer(state, markerPoints)];
-    case "Labels de municipios":
-      return [createLabelsLayer(state, markerPoints)];
     case "IconLayer":
       return createIconLayers(
         state,
