@@ -23,7 +23,7 @@ import type { LayerOption, MapState } from "@/components/cv-map/types";
 type MapStyleName = keyof typeof MAP_STYLES;
 
 const INITIAL_MAP_STATE: MapState = {
-  municipalityOpacity: 45,
+  municipalityOpacity: 78,
   municipalityLineWidth: 2,
   municipalityColor: "#22d3ee",
   municipioBorderSameAsFill: false,
