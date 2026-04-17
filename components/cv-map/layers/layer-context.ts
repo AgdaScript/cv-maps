@@ -13,6 +13,7 @@ export type LayerControllerContext = {
   selectedLayer: LayerOption;
   state: MapState;
   zoom: number;
+  hoveredMunicipioId: string | null;
   markerPoints: MarkerPoint[];
   scatterPoints: ScatterPoint[];
   clusterIconPoints: ClusterIconPoint[];

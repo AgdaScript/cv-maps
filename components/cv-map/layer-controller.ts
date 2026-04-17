@@ -5,15 +5,28 @@ import { createHexagonLayer } from "@/components/cv-map/layers/hexagon-layer";
 import { createIconLayers } from "@/components/cv-map/layers/icon-layer";
 import { createLabelsLayer } from "@/components/cv-map/layers/labels-layer";
 import { createMarkersLayer } from "@/components/cv-map/layers/markers-layer";
-import { createMunicipiosLayer } from "@/components/cv-map/layers/municipios-layer";
+import {
+  createMunicipiosBordersLayer,
+  createMunicipiosLayer,
+} from "@/components/cv-map/layers/municipios-layer";
 import { createScatterLayer } from "@/components/cv-map/layers/scatter-layer";
 
 export function buildLayers(context: LayerControllerContext) {
-  const { selectedLayer, state, zoom, markerPoints, scatterPoints } = context;
+  const {
+    selectedLayer,
+    state,
+    zoom,
+    hoveredMunicipioId,
+    markerPoints,
+    scatterPoints,
+  } = context;
 
   switch (selectedLayer) {
     case "Municipios":
-      return [createMunicipiosLayer(state)];
+      return [
+        createMunicipiosLayer(state, hoveredMunicipioId),
+        createMunicipiosBordersLayer(state),
+      ];
     case "Scatterplot":
       return [createScatterLayer(state, scatterPoints)];
     case "HexagonLayer":

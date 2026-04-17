@@ -43,12 +43,12 @@ const MUNICIPIO_ABSOLUTE_MAX = Math.max(
   ...(municipiosValores as MunicipioValor[]).map((item) => item.total_eleitores)
 );
 
-export function createMunicipiosLayer(state: MapState) {
-  const fallbackRgb = hexToRgb(state.municipalityColor);
+function getFilteredMunicipiosData(state: MapState) {
   const effectiveMaxFilter =
     state.municipioValueMaxFilter >= MUNICIPIO_ABSOLUTE_MAX - 1
       ? Number.POSITIVE_INFINITY
       : state.municipioValueMaxFilter;
+
   const filteredFeatures = caboverde.features.filter((feature) => {
     const rawName = feature?.properties?.NAME_1 ?? "";
     const normalized = normalizeName(rawName);
@@ -63,29 +63,72 @@ export function createMunicipiosLayer(state: MapState) {
     );
   });
 
+  return {
+    ...caboverde,
+    features: filteredFeatures,
+  } as any;
+}
+
+export function createMunicipiosLayer(
+  state: MapState,
+  hoveredMunicipioId: string | null
+) {
+  const fallbackRgb = hexToRgb(state.municipalityColor);
+  const data = getFilteredMunicipiosData(state);
+
   return new GeoJsonLayer({
     id: "municipios",
-    data: {
-      ...caboverde,
-      features: filteredFeatures,
-    } as any,
+    data,
+    extruded: true,
     stroked: true,
     filled: true,
     pickable: true,
+    lineWidthUnits: "pixels",
+    lineWidthScale: 1,
     lineWidthMinPixels: state.municipalityLineWidth,
-    getLineColor: [235, 235, 235, 230],
+    getLineWidth: (feature: any) => {
+      const isHovered = feature?.properties?.GID_1 === hoveredMunicipioId;
+      return isHovered ? state.municipalityLineWidth * 2.8 : state.municipalityLineWidth;
+    },
+    getElevation: (feature: any) =>
+      feature?.properties?.GID_1 === hoveredMunicipioId ? 1800 : 0,
+    getLineColor: [255, 255, 255, 255],
     getFillColor: (feature: any) => {
       const rawName = feature?.properties?.NAME_1 ?? "";
       const normalized = normalizeName(rawName);
       const aliased = ALIASES[normalized] ?? normalized;
       const hex = municipioColorMap[aliased];
       const rgb = hex ? hexToRgb(hex) : fallbackRgb;
+      const isHovered = feature?.properties?.GID_1 === hoveredMunicipioId;
+      const alphaBase = Math.round((state.municipalityOpacity / 100) * 255);
       return [
         rgb[0],
         rgb[1],
         rgb[2],
-        Math.round((state.municipalityOpacity / 100) * 255),
+        isHovered ? Math.min(255, alphaBase + 40) : alphaBase,
       ];
     },
+    updateTriggers: {
+      getFillColor: [hoveredMunicipioId, state.municipalityOpacity],
+      getLineWidth: [hoveredMunicipioId, state.municipalityLineWidth],
+      getElevation: [hoveredMunicipioId],
+    },
+  });
+}
+
+export function createMunicipiosBordersLayer(state: MapState) {
+  const data = getFilteredMunicipiosData(state);
+
+  return new GeoJsonLayer({
+    id: "municipios-borders",
+    data,
+    stroked: true,
+    filled: false,
+    pickable: false,
+    lineWidthUnits: "pixels",
+    lineWidthScale: 1,
+    lineWidthMinPixels: Math.max(1.5, state.municipalityLineWidth + 1),
+    getLineWidth: Math.max(1.5, state.municipalityLineWidth + 1),
+    getLineColor: [255, 255, 255, 255],
   });
 }

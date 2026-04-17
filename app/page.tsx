@@ -54,6 +54,7 @@ export default function HomePage() {
   const [selectedLayer, setSelectedLayer] =
     useState<LayerOption>("HexagonLayer");
   const [state, setState] = useState<MapState>(INITIAL_MAP_STATE);
+  const [hoveredMunicipioId, setHoveredMunicipioId] = useState<string | null>(null);
 
   const markerPoints = useMemo(() => buildMarkerPoints(), []);
 
@@ -88,6 +89,7 @@ export default function HomePage() {
         selectedLayer,
         state,
         zoom: viewState.zoom ?? INITIAL_VIEW_STATE.zoom,
+        hoveredMunicipioId,
         markerPoints,
         scatterPoints,
         clusterIconPoints,
@@ -97,6 +99,7 @@ export default function HomePage() {
       selectedLayer,
       state,
       viewState.zoom,
+      hoveredMunicipioId,
       markerPoints,
       scatterPoints,
       clusterIconPoints,
@@ -131,6 +134,15 @@ export default function HomePage() {
             viewState={viewState}
             onViewStateChange={({ viewState: nextViewState }) => {
               setViewState(nextViewState as typeof INITIAL_VIEW_STATE);
+            }}
+            onHover={(info) => {
+              if (selectedLayer !== "Municipios") {
+                if (hoveredMunicipioId !== null) setHoveredMunicipioId(null);
+                return;
+              }
+
+              const gid = info.object?.properties?.GID_1 ?? null;
+              setHoveredMunicipioId(gid);
             }}
             controller
             layers={layers}
