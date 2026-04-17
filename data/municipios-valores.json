@@ -1,0 +1,134 @@
+[
+  {
+    "comissao": "Tarrafal de São Nicolau",
+    "total_eleitores": 4242,
+    "intervalo": "Muito Baixo (<= 5.000)",
+    "color": "#d9f99d"
+  },
+  {
+    "comissao": "Santa Catarina do Fogo",
+    "total_eleitores": 4273,
+    "intervalo": "Muito Baixo (<= 5.000)",
+    "color": "#d9f99d"
+  },
+  {
+    "comissao": "Brava",
+    "total_eleitores": 4588,
+    "intervalo": "Muito Baixo (<= 5.000)",
+    "color": "#d9f99d"
+  },
+  {
+    "comissao": "Maio",
+    "total_eleitores": 4970,
+    "intervalo": "Muito Baixo (<= 5.000)",
+    "color": "#d9f99d"
+  },
+  {
+    "comissao": "Paul",
+    "total_eleitores": 5249,
+    "intervalo": "Baixo (5.001 - 10.000)",
+    "color": "#bef264"
+  },
+  {
+    "comissao": "Ribeira Brava",
+    "total_eleitores": 5506,
+    "intervalo": "Baixo (5.001 - 10.000)",
+    "color": "#bef264"
+  },
+  {
+    "comissao": "São Lourenço dos Órgãos",
+    "total_eleitores": 5757,
+    "intervalo": "Baixo (5.001 - 10.000)",
+    "color": "#bef264"
+  },
+  {
+    "comissao": "São Salvador do Mundo",
+    "total_eleitores": 6041,
+    "intervalo": "Baixo (5.001 - 10.000)",
+    "color": "#bef264"
+  },
+  {
+    "comissao": "Mosteiros",
+    "total_eleitores": 6639,
+    "intervalo": "Médio-Baixo (10.001 - 15.000)",
+    "color": "#fde047"
+  },
+  {
+    "comissao": "Ribeira Grande Santiago",
+    "total_eleitores": 6700,
+    "intervalo": "Médio-Baixo (10.001 - 15.000)",
+    "color": "#fde047"
+  },
+  {
+    "comissao": "Boavista",
+    "total_eleitores": 9534,
+    "intervalo": "Médio-Baixo (10.001 - 15.000)",
+    "color": "#fde047"
+  },
+  {
+    "comissao": "São Domingos",
+    "total_eleitores": 9850,
+    "intervalo": "Médio-Baixo (10.001 - 15.000)",
+    "color": "#fde047"
+  },
+  {
+    "comissao": "São Miguel",
+    "total_eleitores": 10196,
+    "intervalo": "Médio (15.001 - 25.000)",
+    "color": "#fb923c"
+  },
+  {
+    "comissao": "Tarrafal",
+    "total_eleitores": 12006,
+    "intervalo": "Médio (15.001 - 25.000)",
+    "color": "#fb923c"
+  },
+  {
+    "comissao": "Ribeira Grande",
+    "total_eleitores": 12918,
+    "intervalo": "Médio (15.001 - 25.000)",
+    "color": "#fb923c"
+  },
+  {
+    "comissao": "Porto Novo",
+    "total_eleitores": 13724,
+    "intervalo": "Médio (15.001 - 25.000)",
+    "color": "#fb923c"
+  },
+  {
+    "comissao": "São Filipe",
+    "total_eleitores": 15809,
+    "intervalo": "Médio-Alto (25.001 - 40.000)",
+    "color": "#f97316"
+  },
+  {
+    "comissao": "Santa Cruz",
+    "total_eleitores": 17558,
+    "intervalo": "Médio-Alto (25.001 - 40.000)",
+    "color": "#f97316"
+  },
+  {
+    "comissao": "Sal",
+    "total_eleitores": 21162,
+    "intervalo": "Médio-Alto (25.001 - 40.000)",
+    "color": "#f97316"
+  },
+  {
+    "comissao": "Santa Catarina",
+    "total_eleitores": 26398,
+    "intervalo": "Alto (40.001 - 70.000)",
+    "color": "#ef4444"
+  },
+  {
+    "comissao": "São Vicente",
+    "total_eleitores": 55045,
+    "intervalo": "Alto (40.001 - 70.000)",
+    "color": "#ef4444"
+  },
+  {
+    "comissao": "Praia",
+    "total_eleitores": 91335,
+    "intervalo": "Muito Alto (> 70.000)",
+    "color": "#991b1b"
+  }
+]

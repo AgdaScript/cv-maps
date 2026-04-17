@@ -48,6 +48,8 @@ export type MapState = {
   municipalityOpacity: number;
   municipalityLineWidth: number;
   municipalityColor: string;
+  municipioValueMinFilter: number;
+  municipioValueMaxFilter: number;
   scatterCount: number;
   scatterRadius: number;
   scatterOpacity: number;

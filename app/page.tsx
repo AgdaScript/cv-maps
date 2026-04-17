@@ -6,6 +6,10 @@ import Map from "react-map-gl/maplibre";
 import { LayerControls } from "@/components/cv-map/layer-controls";
 import { buildLayers } from "@/components/cv-map/layer-controller";
 import { MapStyleSelector } from "@/components/cv-map/map-style-selector";
+import {
+  MUNICIPIOS_FILTER_LIMITS,
+  MunicipiosToolbox,
+} from "@/components/cv-map/municipios-toolbox";
 import { INITIAL_VIEW_STATE, MAP_STYLES } from "@/components/cv-map/constants";
 import { getMapTooltip } from "@/components/cv-map/tooltip";
 import {
@@ -22,6 +26,8 @@ const INITIAL_MAP_STATE: MapState = {
   municipalityOpacity: 45,
   municipalityLineWidth: 2,
   municipalityColor: "#22d3ee",
+  municipioValueMinFilter: MUNICIPIOS_FILTER_LIMITS.min,
+  municipioValueMaxFilter: MUNICIPIOS_FILTER_LIMITS.max,
   scatterCount: 8,
   scatterRadius: 1200,
   scatterOpacity: 65,
@@ -98,6 +104,13 @@ export default function HomePage() {
     ]
   );
 
+  const handleMaxFilterChange = (value: number) => {
+    setState((prev) => ({
+      ...prev,
+      municipioValueMaxFilter: Math.max(value, prev.municipioValueMinFilter),
+    }));
+  };
+
   return (
     <main className="h-screen w-screen overflow-hidden bg-background text-foreground">
       <div className="grid h-full w-full grid-cols-1 md:grid-cols-[360px_1fr]">
@@ -125,6 +138,12 @@ export default function HomePage() {
           >
             <Map reuseMaps mapStyle={MAP_STYLES[mapStyle]} />
           </DeckGL>
+          {selectedLayer === "Municipios" && (
+            <MunicipiosToolbox
+              maxFilter={state.municipioValueMaxFilter}
+              onMaxChange={handleMaxFilterChange}
+            />
+          )}
         </section>
       </div>
     </main>
