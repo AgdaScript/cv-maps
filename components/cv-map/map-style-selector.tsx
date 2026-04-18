@@ -40,7 +40,7 @@ export function MapStyleSelector({ mapStyle, setMapStyle }: Props) {
           </Button>
         </DropdownMenuTrigger>
         <DropdownMenuContent className="w-(--radix-dropdown-menu-trigger-width)">
-          <DropdownMenuLabel>Estilo do mapa</DropdownMenuLabel>
+          {/* <DropdownMenuLabel>Estilo do mapa</DropdownMenuLabel> */}
           <DropdownMenuSeparator />
           <DropdownMenuRadioGroup
             value={mapStyle}

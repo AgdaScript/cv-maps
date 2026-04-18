@@ -33,7 +33,7 @@ const ACTIONS_CARD_THEME: Record<
     empty: string;
   }
 > = {
-  Escuro: {
+  Dark: {
     shell: "border-white/20 bg-slate-950/70",
     button:
       "border-white/20 bg-slate-900/80 text-slate-50 hover:bg-slate-800/90",
@@ -46,7 +46,7 @@ const ACTIONS_CARD_THEME: Record<
     rowText: "text-slate-100",
     empty: "text-slate-400",
   },
-  Claro: {
+  Light: {
     shell: "border-slate-900/20 bg-white/90",
     button:
       "border-slate-300 bg-white/95 text-slate-900 hover:bg-slate-100/95",

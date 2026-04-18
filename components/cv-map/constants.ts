@@ -3,8 +3,8 @@
 import type { LayerOption } from "@/components/cv-map/types";
 
 export const MAP_STYLES = {
-  Escuro: "https://basemaps.cartocdn.com/gl/dark-matter-gl-style/style.json",
-  Claro: "https://basemaps.cartocdn.com/gl/positron-gl-style/style.json",
+  Dark: "https://basemaps.cartocdn.com/gl/dark-matter-gl-style/style.json",
+  Light: "https://basemaps.cartocdn.com/gl/positron-gl-style/style.json",
   Voyager: "https://basemaps.cartocdn.com/gl/voyager-gl-style/style.json",
 } as const;
 

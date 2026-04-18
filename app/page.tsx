@@ -30,12 +30,12 @@ const MUNICIPIOS_HEADER_THEME: Record<
   MapStyleName,
   { title: string; subtitle: string; shadow: string }
 > = {
-  Escuro: {
+  Dark: {
     title: "text-slate-50",
     subtitle: "text-slate-300",
     shadow: "drop-shadow-[0_1px_2px_rgba(0,0,0,0.7)]",
   },
-  Claro: {
+  Light: {
     title: "text-slate-900",
     subtitle: "text-slate-600",
     shadow: "drop-shadow-[0_1px_1px_rgba(255,255,255,0.35)]",
@@ -94,7 +94,7 @@ const SOCIAL_LINKS = [
 export default function HomePage() {
   const mapSectionRef = useRef<HTMLElement | null>(null);
   const [viewState, setViewState] = useState(INITIAL_VIEW_STATE);
-  const [mapStyle, setMapStyle] = useState<MapStyleName>("Escuro");
+  const [mapStyle, setMapStyle] = useState<MapStyleName>("Dark");
   const [selectedLayer, setSelectedLayer] =
     useState<LayerOption>("Municipios");
   const [state, setState] = useState<MapState>(INITIAL_MAP_STATE);

@@ -55,13 +55,13 @@ const TOOLBOX_THEME: Record<
   MapStyleName,
   { label: string; value: string; thumb: string }
 > = {
-  Escuro: {
+  Dark: {
     label: "text-slate-300",
     value: "text-slate-50",
     thumb:
       "[&::-webkit-slider-thumb]:bg-slate-100 [&::-webkit-slider-thumb]:border-slate-300/80 [&::-moz-range-thumb]:bg-slate-100 [&::-moz-range-thumb]:border-slate-300/80",
   },
-  Claro: {
+  Light: {
     label: "text-slate-600",
     value: "text-slate-900",
     thumb:

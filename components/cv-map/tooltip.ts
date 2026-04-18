@@ -34,14 +34,14 @@ const TOOLTIP_THEME: Record<
   MapStyleName,
   { border: string; background: string; text: string; shadow: string; title: string }
 > = {
-  Escuro: {
+  Dark: {
     border: "rgba(255,255,255,0.2)",
     background: "rgba(20,20,24,0.96)",
     text: "#f3f4f6",
     shadow: "0 10px 30px rgba(0,0,0,0.35)",
     title: "#ffffff",
   },
-  Claro: {
+  Light: {
     border: "rgba(15,23,42,0.18)",
     background: "rgba(255,255,255,0.96)",
     text: "#0f172a",
@@ -57,7 +57,7 @@ const TOOLTIP_THEME: Record<
   },
 };
 
-export function getMapTooltip(info: PickingInfo<any>, mapStyle: MapStyleName = "Escuro") {
+export function getMapTooltip(info: PickingInfo<any>, mapStyle: MapStyleName = "Dark") {
   const object = info.object;
   if (!object) return null;
   const theme = TOOLTIP_THEME[mapStyle];
