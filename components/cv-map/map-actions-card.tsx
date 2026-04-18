@@ -1,7 +1,7 @@
 "use client";
 
 import { useMemo, useState } from "react";
-import { FileDown, Table2, X } from "lucide-react";
+import { Download, Table2, X } from "lucide-react";
 import municipiosValores from "@/data/municipios-valores.json";
 
 type MunicipioValor = {
@@ -14,55 +14,10 @@ type MunicipioValor = {
 type Props = {
   minFilter: number;
   maxFilter: number;
+  onDownloadMapImage: () => void;
 };
 
-function buildTableSvg(rows: MunicipioValor[]) {
-  const rowHeight = 28;
-  const width = 760;
-  const height = 96 + rows.length * rowHeight;
-
-  const escapeXml = (value: string) =>
-    value
-      .replaceAll("&", "&amp;")
-      .replaceAll("<", "&lt;")
-      .replaceAll(">", "&gt;")
-      .replaceAll('"', "&quot;")
-      .replaceAll("'", "&apos;");
-
-  const rowElements = rows
-    .map((item, index) => {
-      const y = 80 + index * rowHeight;
-      const zebra = index % 2 === 0 ? "#10151f" : "#0b1018";
-
-      return `
-      <rect x="20" y="${y - 18}" width="720" height="${rowHeight}" fill="${zebra}" rx="8" />
-      <rect x="34" y="${y - 10}" width="14" height="14" fill="${item.color}" rx="4" />
-      <text x="58" y="${y}" fill="#e5e7eb" font-size="13" font-family="Arial, sans-serif">${escapeXml(item.comissao)}</text>
-      <text x="420" y="${y}" fill="#9ca3af" font-size="12" font-family="Arial, sans-serif">${escapeXml(item.intervalo)}</text>
-      <text x="718" y="${y}" fill="#f8fafc" font-size="13" text-anchor="end" font-family="Arial, sans-serif">${item.total_eleitores.toLocaleString("pt-PT")}</text>
-      `;
-    })
-    .join("");
-
-  return `<?xml version="1.0" encoding="UTF-8"?>
-<svg xmlns="http://www.w3.org/2000/svg" width="${width}" height="${height}" viewBox="0 0 ${width} ${height}">
-  <defs>
-    <linearGradient id="header" x1="0%" y1="0%" x2="100%" y2="0%">
-      <stop offset="0%" stop-color="#0f172a" />
-      <stop offset="100%" stop-color="#1e293b" />
-    </linearGradient>
-  </defs>
-  <rect width="${width}" height="${height}" fill="#05070c" />
-  <rect x="20" y="20" width="720" height="44" fill="url(#header)" rx="10" />
-  <text x="34" y="48" fill="#f8fafc" font-size="15" font-weight="700" font-family="Arial, sans-serif">Census Data - Municipios</text>
-  <text x="58" y="76" fill="#94a3b8" font-size="12" font-family="Arial, sans-serif">Municipio</text>
-  <text x="420" y="76" fill="#94a3b8" font-size="12" font-family="Arial, sans-serif">Intervalo</text>
-  <text x="718" y="76" fill="#94a3b8" font-size="12" text-anchor="end" font-family="Arial, sans-serif">Total eleitores</text>
-  ${rowElements}
-</svg>`;
-}
-
-export function MapActionsCard({ minFilter, maxFilter }: Props) {
+export function MapActionsCard({ minFilter, maxFilter, onDownloadMapImage }: Props) {
   const [showTable, setShowTable] = useState(false);
 
   const filteredRows = useMemo(() => {
@@ -72,19 +27,6 @@ export function MapActionsCard({ minFilter, maxFilter }: Props) {
       )
       .sort((a, b) => b.total_eleitores - a.total_eleitores);
   }, [minFilter, maxFilter]);
-
-  const handleSaveAsSvg = () => {
-    const svg = buildTableSvg(filteredRows);
-    const blob = new Blob([svg], { type: "image/svg+xml;charset=utf-8" });
-    const url = URL.createObjectURL(blob);
-    const anchor = document.createElement("a");
-    anchor.href = url;
-    anchor.download = "municipios-census-data.svg";
-    document.body.appendChild(anchor);
-    anchor.click();
-    document.body.removeChild(anchor);
-    URL.revokeObjectURL(url);
-  };
 
   return (
     <>
@@ -102,11 +44,11 @@ export function MapActionsCard({ minFilter, maxFilter }: Props) {
           <button
             type="button"
             className="inline-flex h-9 w-9 items-center justify-center rounded-xl border border-border bg-background text-foreground transition hover:bg-accent"
-            onClick={handleSaveAsSvg}
-            title="Salvar tabela em SVG"
-            aria-label="Salvar tabela em SVG"
+            onClick={onDownloadMapImage}
+            title="Baixar imagem do mapa"
+            aria-label="Baixar imagem do mapa"
           >
-            <FileDown className="h-4 w-4" />
+            <Download className="h-4 w-4" />
           </button>
         </div>
       </div>

@@ -1,6 +1,6 @@
 "use client";
 
-import { useMemo, useState } from "react";
+import { useMemo, useRef, useState } from "react";
 import DeckGL from "@deck.gl/react";
 import Map from "react-map-gl/maplibre";
 import { LayerControls } from "@/components/cv-map/layer-controls";
@@ -50,6 +50,7 @@ const INITIAL_MAP_STATE: MapState = {
 };
 
 export default function HomePage() {
+  const mapSectionRef = useRef<HTMLElement | null>(null);
   const [viewState, setViewState] = useState(INITIAL_VIEW_STATE);
   const [mapStyle, setMapStyle] = useState<MapStyleName>("Escuro");
   const [selectedLayer, setSelectedLayer] =
@@ -115,6 +116,55 @@ export default function HomePage() {
     }));
   };
 
+  const handleDownloadMapImage = () => {
+    const container = mapSectionRef.current;
+    if (!container) return;
+
+    const canvases = Array.from(
+      container.querySelectorAll("canvas")
+    ) as HTMLCanvasElement[];
+    if (canvases.length === 0) return;
+
+    const containerRect = container.getBoundingClientRect();
+    const width = Math.max(1, Math.floor(containerRect.width));
+    const height = Math.max(1, Math.floor(containerRect.height));
+    const devicePixelRatio = Math.max(1, window.devicePixelRatio || 1);
+
+    const exportCanvas = document.createElement("canvas");
+    exportCanvas.width = Math.floor(width * devicePixelRatio);
+    exportCanvas.height = Math.floor(height * devicePixelRatio);
+    const context = exportCanvas.getContext("2d");
+    if (!context) return;
+
+    context.scale(devicePixelRatio, devicePixelRatio);
+    context.fillStyle = "#111827";
+    context.fillRect(0, 0, width, height);
+
+    canvases.forEach((canvas) => {
+      const canvasRect = canvas.getBoundingClientRect();
+      const offsetX = canvasRect.left - containerRect.left;
+      const offsetY = canvasRect.top - containerRect.top;
+
+      try {
+        context.drawImage(canvas, offsetX, offsetY, canvasRect.width, canvasRect.height);
+      } catch {
+        // Ignora canvas que não possa ser exportado por restrições de segurança.
+      }
+    });
+
+    try {
+      const dataUrl = exportCanvas.toDataURL("image/png");
+      const anchor = document.createElement("a");
+      anchor.href = dataUrl;
+      anchor.download = "cv-map.png";
+      document.body.appendChild(anchor);
+      anchor.click();
+      document.body.removeChild(anchor);
+    } catch {
+      window.alert("Não foi possível exportar a imagem do mapa neste navegador.");
+    }
+  };
+
   return (
     <main className="h-screen w-screen overflow-hidden bg-background text-foreground">
       <div className="grid h-full w-full grid-cols-1 md:grid-cols-[360px_1fr]">
@@ -130,7 +180,7 @@ export default function HomePage() {
           />
         </aside>
 
-        <section className="relative h-full w-full">
+        <section ref={mapSectionRef} className="relative h-full w-full">
           <DeckGL
             viewState={viewState}
             onViewStateChange={({ viewState: nextViewState }) => {
@@ -156,6 +206,7 @@ export default function HomePage() {
               <MapActionsCard
                 minFilter={state.municipioValueMinFilter}
                 maxFilter={state.municipioValueMaxFilter}
+                onDownloadMapImage={handleDownloadMapImage}
               />
               <MunicipiosToolbox
                 maxFilter={state.municipioValueMaxFilter}
