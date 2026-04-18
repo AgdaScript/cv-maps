@@ -23,6 +23,27 @@ import type { LayerOption, MapState } from "@/components/cv-map/types";
 
 type MapStyleName = keyof typeof MAP_STYLES;
 
+const MUNICIPIOS_HEADER_THEME: Record<
+  MapStyleName,
+  { title: string; subtitle: string; shadow: string }
+> = {
+  Escuro: {
+    title: "text-slate-50",
+    subtitle: "text-slate-300",
+    shadow: "drop-shadow-[0_1px_2px_rgba(0,0,0,0.7)]",
+  },
+  Claro: {
+    title: "text-slate-900",
+    subtitle: "text-slate-600",
+    shadow: "drop-shadow-[0_1px_1px_rgba(255,255,255,0.35)]",
+  },
+  Voyager: {
+    title: "text-slate-900",
+    subtitle: "text-slate-700",
+    shadow: "drop-shadow-[0_1px_2px_rgba(255,255,255,0.35)]",
+  },
+};
+
 const INITIAL_MAP_STATE: MapState = {
   municipalityOpacity: 78,
   municipalityLineWidth: 2,
@@ -57,6 +78,7 @@ export default function HomePage() {
     useState<LayerOption>("HexagonLayer");
   const [state, setState] = useState<MapState>(INITIAL_MAP_STATE);
   const [hoveredMunicipioId, setHoveredMunicipioId] = useState<string | null>(null);
+  const municipiosHeaderTheme = MUNICIPIOS_HEADER_THEME[mapStyle];
 
   const markerPoints = useMemo(() => buildMarkerPoints(), []);
 
@@ -203,6 +225,16 @@ export default function HomePage() {
           </DeckGL>
           {selectedLayer === "Municipios" && (
             <>
+              <div
+                className={`pointer-events-auto absolute top-4 left-4 z-20 select-text ${municipiosHeaderTheme.shadow}`}
+              >
+                <h2 className={`text-lg font-semibold leading-tight ${municipiosHeaderTheme.title}`}>
+                  Cabo Verde Census Data
+                </h2>
+                <p className={`text-sm ${municipiosHeaderTheme.subtitle}`}>
+                Distribution of competitors by municipality
+                </p>
+              </div>
               <MapActionsCard
                 minFilter={state.municipioValueMinFilter}
                 maxFilter={state.municipioValueMaxFilter}
