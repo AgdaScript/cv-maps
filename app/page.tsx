@@ -11,7 +11,11 @@ import {
   MunicipiosToolbox,
 } from "@/components/cv-map/municipios-toolbox";
 import { MapActionsCard } from "@/components/cv-map/map-actions-card";
-import { INITIAL_VIEW_STATE, MAP_STYLES } from "@/components/cv-map/constants";
+import {
+  INITIAL_VIEW_STATE,
+  MAP_STYLES,
+  type MapStyleName,
+} from "@/components/cv-map/constants";
 import { getMapTooltip } from "@/components/cv-map/tooltip";
 import {
   buildClusterIconPoints,
@@ -20,8 +24,6 @@ import {
   buildScatterPoints,
 } from "@/components/cv-map/utils";
 import type { LayerOption, MapState } from "@/components/cv-map/types";
-
-type MapStyleName = keyof typeof MAP_STYLES;
 
 const MUNICIPIOS_HEADER_THEME: Record<
   MapStyleName,
@@ -238,10 +240,12 @@ export default function HomePage() {
               <MapActionsCard
                 minFilter={state.municipioValueMinFilter}
                 maxFilter={state.municipioValueMaxFilter}
+                mapStyle={mapStyle}
                 onDownloadMapImage={handleDownloadMapImage}
               />
               <MunicipiosToolbox
                 maxFilter={state.municipioValueMaxFilter}
+                mapStyle={mapStyle}
                 onMaxChange={handleMaxFilterChange}
               />
             </>

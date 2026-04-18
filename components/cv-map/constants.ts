@@ -8,6 +8,8 @@ export const MAP_STYLES = {
   Voyager: "https://basemaps.cartocdn.com/gl/voyager-gl-style/style.json",
 } as const;
 
+export type MapStyleName = keyof typeof MAP_STYLES;
+
 export const HEXAGON_COLOR_RANGE: [number, number, number][] = [
   [20, 184, 166],
   [34, 197, 94],
