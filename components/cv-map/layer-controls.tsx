@@ -1,6 +1,6 @@
 "use client";
 
-import type { Dispatch, SetStateAction } from "react";
+import { useState, type Dispatch, type SetStateAction } from "react";
 import { ChevronDown } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import {
@@ -28,6 +28,8 @@ export function LayerControls({
   state,
   setState,
 }: Props) {
+  const [isLayerMenuOpen, setIsLayerMenuOpen] = useState(false);
+
   const update = <K extends keyof MapState>(key: K, value: MapState[K]) => {
     setState((prev) => ({ ...prev, [key]: value }));
   };
@@ -36,11 +38,15 @@ export function LayerControls({
     <>
       <section className="space-y-3">
         <h2 className="font-medium">Camadas</h2>
-        <DropdownMenu>
+        <DropdownMenu onOpenChange={setIsLayerMenuOpen}>
           <DropdownMenuTrigger asChild>
             <Button variant="outline" className="w-full justify-between">
               {selectedLayer}
-              <ChevronDown className="size-4 text-muted-foreground" />
+              <ChevronDown
+                className={`size-4 text-muted-foreground transition-transform duration-200 ${
+                  isLayerMenuOpen ? "rotate-180" : "rotate-0"
+                }`}
+              />
             </Button>
           </DropdownMenuTrigger>
           <DropdownMenuContent className="w-64">
