@@ -12,7 +12,7 @@ import {
   DropdownMenuSeparator,
   DropdownMenuTrigger,
 } from "@/components/ui/dropdown-menu";
-import { LAYER_OPTIONS } from "@/components/cv-map/constants";
+import { LAYER_OPTIONS, TRAFFIC_ACCIDENTS_SCATTER_MAX } from "@/components/cv-map/constants";
 import type { LayerOption, MapState } from "@/components/cv-map/types";
 
 type Props = {
@@ -142,13 +142,15 @@ export function LayerControls({
         <section className="mt-4 space-y-3 rounded-md border border-border p-3">
           <h2 className="font-medium">Traffic accidents (Scatterplot)</h2>
           <label className="block text-sm">
-            Accident records: {state.scatterCount}
+            {state.scatterCount >= TRAFFIC_ACCIDENTS_SCATTER_MAX
+              ? `Accident records: all (${TRAFFIC_ACCIDENTS_SCATTER_MAX})`
+              : `Accident records: ${state.scatterCount}`}
           </label>
           <input
             className="w-full"
             type="range"
             min={1}
-            max={300}
+            max={TRAFFIC_ACCIDENTS_SCATTER_MAX}
             value={state.scatterCount}
             onChange={(event) => update("scatterCount", Number(event.target.value))}
           />

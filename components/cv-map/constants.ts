@@ -1,6 +1,11 @@
 "use client";
 
 import type { LayerOption } from "@/components/cv-map/types";
+import trafficAccidentsScatter from "@/data/traffic-accidents-scatter.json";
+
+export const TRAFFIC_ACCIDENTS_SCATTER_MAX = (
+  trafficAccidentsScatter as { id: string }[]
+).length;
 
 export const MAP_STYLES = {
   Dark: "https://basemaps.cartocdn.com/gl/dark-matter-gl-style/style.json",

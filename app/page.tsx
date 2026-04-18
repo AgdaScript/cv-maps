@@ -15,6 +15,7 @@ import { MapActionsCard } from "@/components/cv-map/map-actions-card";
 import {
   INITIAL_VIEW_STATE,
   MAP_STYLES,
+  TRAFFIC_ACCIDENTS_SCATTER_MAX,
   type MapStyleName,
 } from "@/components/cv-map/constants";
 import { getMapTooltip } from "@/components/cv-map/tooltip";
@@ -56,7 +57,7 @@ const INITIAL_MAP_STATE: MapState = {
   municipioBorderColor: "#ffffff",
   municipioValueMinFilter: MUNICIPIOS_FILTER_LIMITS.min,
   municipioValueMaxFilter: MUNICIPIOS_FILTER_LIMITS.max,
-  scatterCount: 20,
+  scatterCount: TRAFFIC_ACCIDENTS_SCATTER_MAX,
   scatterRadius: 1200,
   scatterOpacity: 65,
   scatterColor: "#84cc16",
