@@ -49,7 +49,7 @@ export function LayerControls({
               />
             </Button>
           </DropdownMenuTrigger>
-          <DropdownMenuContent className="w-64">
+          <DropdownMenuContent className="w-(--radix-dropdown-menu-trigger-width)">
             <DropdownMenuLabel>Selecionar camada ativa</DropdownMenuLabel>
             <DropdownMenuSeparator />
             <DropdownMenuRadioGroup
