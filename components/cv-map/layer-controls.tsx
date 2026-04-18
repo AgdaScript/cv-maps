@@ -83,29 +83,39 @@ export function LayerControls({
             value={state.municipalityLineWidth}
             onChange={(event) => update("municipalityLineWidth", Number(event.target.value))}
           />
-          <label className="block text-sm">Cor</label>
+          {/* <label className="block text-sm">Cor</label>
           <input
+            className="h-10 w-10 cursor-pointer overflow-hidden rounded-full border border-border bg-transparent p-0 [&::-webkit-color-swatch-wrapper]:p-0 [&::-webkit-color-swatch]:rounded-full [&::-webkit-color-swatch]:border-0 [&::-moz-color-swatch]:rounded-full [&::-moz-color-swatch]:border-0"
             type="color"
             value={state.municipalityColor}
             onChange={(event) => update("municipalityColor", event.target.value)}
-          />
-          <label className="flex items-center gap-2 text-sm">
-            <input
-              type="checkbox"
-              checked={state.municipioBorderSameAsFill}
-              onChange={(event) =>
-                update("municipioBorderSameAsFill", event.target.checked)
-              }
-            />
-            Borda igual a cor do municipio
-          </label>
-          <label className="block text-sm">Cor especifica da borda</label>
+          /> */}
+
+          <div className="mt-2 border-t border-border pt-2">
+            <p className="mb-2 text-sm font-medium">Bordas do município</p>
+            <label className="flex items-center gap-2 text-sm">
+              <input
+                type="checkbox"
+                checked={state.municipioBorderSameAsFill}
+                onChange={(event) =>
+                  update("municipioBorderSameAsFill", event.target.checked)
+                }
+              />
+              Borda transparente
+            </label>
+          </div>
+
+          <label className="block text-sm">Cor específica da borda</label>
           <input
+            className="h-10 w-10 cursor-pointer overflow-hidden rounded-full border border-border bg-transparent p-0 [&::-webkit-color-swatch-wrapper]:p-0 [&::-webkit-color-swatch]:rounded-full [&::-webkit-color-swatch]:border-0 [&::-moz-color-swatch]:rounded-full [&::-moz-color-swatch]:border-0"
             type="color"
             value={state.municipioBorderColor}
             disabled={state.municipioBorderSameAsFill}
             onChange={(event) => update("municipioBorderColor", event.target.value)}
           />
+          <label className="block text-xs text-muted-foreground">
+            Desative “Borda transparente” para aplicar esta cor.
+          </label>
         </section>
       )}
 
@@ -144,6 +154,7 @@ export function LayerControls({
           />
           <label className="block text-sm">Cor</label>
           <input
+            className="h-10 w-10 cursor-pointer overflow-hidden rounded-full border border-border bg-transparent p-0 [&::-webkit-color-swatch-wrapper]:p-0 [&::-webkit-color-swatch]:rounded-full [&::-webkit-color-swatch]:border-0 [&::-moz-color-swatch]:rounded-full [&::-moz-color-swatch]:border-0"
             type="color"
             value={state.scatterColor}
             onChange={(event) => update("scatterColor", event.target.value)}
@@ -228,6 +239,7 @@ export function LayerControls({
           />
           <label className="block text-sm">Cor</label>
           <input
+            className="h-10 w-10 cursor-pointer overflow-hidden rounded-full border border-border bg-transparent p-0 [&::-webkit-color-swatch-wrapper]:p-0 [&::-webkit-color-swatch]:rounded-full [&::-webkit-color-swatch]:border-0 [&::-moz-color-swatch]:rounded-full [&::-moz-color-swatch]:border-0"
             type="color"
             value={state.markerColor}
             onChange={(event) => update("markerColor", event.target.value)}
@@ -275,6 +287,7 @@ export function LayerControls({
           />
           <label className="block text-sm">Cor do icone</label>
           <input
+            className="h-10 w-10 cursor-pointer overflow-hidden rounded-full border border-border bg-transparent p-0 [&::-webkit-color-swatch-wrapper]:p-0 [&::-webkit-color-swatch]:rounded-full [&::-webkit-color-swatch]:border-0 [&::-moz-color-swatch]:rounded-full [&::-moz-color-swatch]:border-0"
             type="color"
             value={state.iconColor}
             onChange={(event) => update("iconColor", event.target.value)}
