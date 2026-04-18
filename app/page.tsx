@@ -243,6 +243,7 @@ export default function HomePage() {
           </section>
 
           <MapStyleSelector mapStyle={mapStyle} setMapStyle={setMapStyle} />
+          <div className="my-3 border-b border-border" />
           <LayerControls
             selectedLayer={selectedLayer}
             setSelectedLayer={setSelectedLayer}

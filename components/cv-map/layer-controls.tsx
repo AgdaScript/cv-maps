@@ -34,7 +34,7 @@ export function LayerControls({
 
   return (
     <>
-      <section className="mt-4 space-y-3 rounded-md border border-border p-3">
+      <section className="space-y-3">
         <h2 className="font-medium">Camadas</h2>
         <DropdownMenu>
           <DropdownMenuTrigger asChild>

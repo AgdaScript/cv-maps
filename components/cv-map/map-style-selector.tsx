@@ -22,7 +22,7 @@ type Props = {
 
 export function MapStyleSelector({ mapStyle, setMapStyle }: Props) {
   return (
-    <section className="mt-4 space-y-2 rounded-md border border-border p-3">
+    <section className="mt-4 space-y-2">
       <h2 className="font-medium">Mapa Base</h2>
       <label className="text-sm">Estilo (dropdown)</label>
       <DropdownMenu>
