@@ -30,6 +30,25 @@ const municipioInfoMap = (municipiosValores as MunicipioValor[]).reduce<
   return acc;
 }, {});
 
+function escapeHtml(value: string) {
+  return value
+    .replaceAll("&", "&amp;")
+    .replaceAll("<", "&lt;")
+    .replaceAll(">", "&gt;")
+    .replaceAll('"', "&quot;")
+    .replaceAll("'", "&#039;");
+}
+
+const ACCIDENT_SEX_COLOR: Record<string, string> = {
+  Homem: "#2563eb",
+  Mulher: "#ec4899",
+};
+
+const ACCIDENT_SEX_LABEL: Record<string, string> = {
+  Homem: "Male",
+  Mulher: "Female",
+};
+
 const TOOLTIP_THEME: Record<
   MapStyleName,
   { border: string; background: string; text: string; shadow: string; title: string }
@@ -112,8 +131,55 @@ export function getMapTooltip(info: PickingInfo<any>, mapStyle: MapStyleName = "
     return `Hexagono\nPontos agregados: ${object.points.length}`;
   }
 
-  if ("municipality" in object && "value" in object) {
-    return `Accident\nMunicipality: ${object.municipality}\nLocation: ${object.location}\nSex: ${object.sex}\nImpact: ${object.value}`;
+  if (
+    typeof object?.location === "string" &&
+    typeof object?.municipality === "string" &&
+    (object.sex === "Homem" || object.sex === "Mulher") &&
+    typeof object?.value === "number"
+  ) {
+    const barColor = ACCIDENT_SEX_COLOR[object.sex] ?? "#64748b";
+    const sexLabel = ACCIDENT_SEX_LABEL[object.sex] ?? String(object.sex);
+    const location = escapeHtml(object.location);
+
+    return {
+      html: `
+        <div style="
+          display:flex;
+          gap:12px;
+          align-items:stretch;
+          min-width:280px;
+          border-radius:16px;
+          border:1px solid ${theme.border};
+          background:${theme.background};
+          color:${theme.text};
+          padding:14px 14px 14px 10px;
+          box-shadow:${theme.shadow};
+          font-family:ui-sans-serif,system-ui,-apple-system,Segoe UI,Roboto,Helvetica,Arial,sans-serif;
+        ">
+          <div style="
+            width:6px;
+            border-radius:999px;
+            background:${barColor};
+          "></div>
+          <div style="display:flex;flex-direction:column;gap:6px;">
+            <div style="font-size:14px;font-weight:700;line-height:1.1;color:${theme.title};">Traffic accident</div>
+            <div style="font-size:13px;line-height:1.35;opacity:0.92;">
+              <span style="font-weight:600;">Sex:</span> ${sexLabel}
+            </div>
+            <div style="font-size:13px;line-height:1.35;opacity:0.92;">
+              <span style="font-weight:600;">Location:</span> ${location}
+            </div>
+          </div>
+        </div>
+      `,
+      style: {
+        backgroundColor: "transparent",
+        border: "none",
+        boxShadow: "none",
+        padding: "0",
+        color: "inherit",
+      },
+    };
   }
 
   if ("count" in object) {
