@@ -101,7 +101,17 @@ export function LayerControls({
                   update("municipioBorderSameAsFill", event.target.checked)
                 }
               />
-              Borda transparente
+              Borda igual à cor do município
+            </label>
+            <label className="mt-1 flex items-center gap-2 text-sm">
+              <input
+                type="checkbox"
+                checked={state.municipioBorderInvisible ?? false}
+                onChange={(event) =>
+                  update("municipioBorderInvisible", event.target.checked)
+                }
+              />
+              Borda invisível
             </label>
           </div>
 
@@ -110,11 +120,14 @@ export function LayerControls({
             className="h-10 w-10 cursor-pointer overflow-hidden rounded-full border border-border bg-transparent p-0 [&::-webkit-color-swatch-wrapper]:p-0 [&::-webkit-color-swatch]:rounded-full [&::-webkit-color-swatch]:border-0 [&::-moz-color-swatch]:rounded-full [&::-moz-color-swatch]:border-0"
             type="color"
             value={state.municipioBorderColor}
-            disabled={state.municipioBorderSameAsFill}
+            disabled={
+              (state.municipioBorderSameAsFill ?? false) ||
+              (state.municipioBorderInvisible ?? false)
+            }
             onChange={(event) => update("municipioBorderColor", event.target.value)}
           />
           <label className="block text-xs text-muted-foreground">
-            Desative “Borda transparente” para aplicar esta cor.
+            Use esta cor quando “Borda igual...” e “Borda invisível” estiverem desativadas.
           </label>
         </section>
       )}

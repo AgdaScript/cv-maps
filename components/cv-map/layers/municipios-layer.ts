@@ -122,13 +122,13 @@ export function createMunicipiosBordersLayer(state: MapState) {
     lineWidthMinPixels: Math.max(1.5, state.municipalityLineWidth + 1),
     getLineWidth: Math.max(1.5, state.municipalityLineWidth + 1),
     getLineColor: (feature: any) => {
-      if (state.municipioBorderSameAsFill) {
+      if (state.municipioBorderInvisible) {
         return [0, 0, 0, 0];
       }
 
       if (!state.municipioBorderSameAsFill) {
         return [fixedBorderRgb[0], fixedBorderRgb[1], fixedBorderRgb[2], 255];
-      }
+      } 
 
       const rawName = feature?.properties?.NAME_1 ?? "";
       const normalized = normalizeName(rawName);
@@ -138,7 +138,11 @@ export function createMunicipiosBordersLayer(state: MapState) {
       return [rgb[0], rgb[1], rgb[2], 255];
     },
     updateTriggers: {
-      getLineColor: [state.municipioBorderSameAsFill, state.municipioBorderColor],
+      getLineColor: [
+        state.municipioBorderInvisible,
+        state.municipioBorderSameAsFill,
+        state.municipioBorderColor,
+      ],
     },
   });
 }

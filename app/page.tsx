@@ -10,6 +10,7 @@ import {
   MUNICIPIOS_FILTER_LIMITS,
   MunicipiosToolbox,
 } from "@/components/cv-map/municipios-toolbox";
+import { MapActionsCard } from "@/components/cv-map/map-actions-card";
 import { INITIAL_VIEW_STATE, MAP_STYLES } from "@/components/cv-map/constants";
 import { getMapTooltip } from "@/components/cv-map/tooltip";
 import {
@@ -27,6 +28,7 @@ const INITIAL_MAP_STATE: MapState = {
   municipalityLineWidth: 2,
   municipalityColor: "#22d3ee",
   municipioBorderSameAsFill: false,
+  municipioBorderInvisible: false,
   municipioBorderColor: "#ffffff",
   municipioValueMinFilter: MUNICIPIOS_FILTER_LIMITS.min,
   municipioValueMaxFilter: MUNICIPIOS_FILTER_LIMITS.max,
@@ -150,10 +152,16 @@ export default function HomePage() {
             <Map reuseMaps mapStyle={MAP_STYLES[mapStyle]} />
           </DeckGL>
           {selectedLayer === "Municipios" && (
-            <MunicipiosToolbox
-              maxFilter={state.municipioValueMaxFilter}
-              onMaxChange={handleMaxFilterChange}
-            />
+            <>
+              <MapActionsCard
+                minFilter={state.municipioValueMinFilter}
+                maxFilter={state.municipioValueMaxFilter}
+              />
+              <MunicipiosToolbox
+                maxFilter={state.municipioValueMaxFilter}
+                onMaxChange={handleMaxFilterChange}
+              />
+            </>
           )}
         </section>
       </div>

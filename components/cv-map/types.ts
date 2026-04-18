@@ -48,6 +48,7 @@ export type MapState = {
   municipalityLineWidth: number;
   municipalityColor: string;
   municipioBorderSameAsFill: boolean;
+  municipioBorderInvisible: boolean;
   municipioBorderColor: string;
   municipioValueMinFilter: number;
   municipioValueMaxFilter: number;
