@@ -68,8 +68,8 @@ export function LayerControls({
 
       {selectedLayer === "Municipalities" && (
         <section className="mt-4 space-y-3 rounded-md border border-border p-3">
-          <h2 className="font-medium">Municipalities</h2>
-          <label className="block text-sm">Opacidade: {state.municipalityOpacity}%</label>
+          <h2 className="font-medium">Municipalities Controls</h2>
+          <label className="block text-sm">Opacity: {state.municipalityOpacity}%</label>
           <input
             className="w-full"
             type="range"
@@ -77,17 +77,6 @@ export function LayerControls({
             max={100}
             value={state.municipalityOpacity}
             onChange={(event) => update("municipalityOpacity", Number(event.target.value))}
-          />
-          <label className="block text-sm">
-            Espessura da borda: {state.municipalityLineWidth}
-          </label>
-          <input
-            className="w-full"
-            type="range"
-            min={1}
-            max={6}
-            value={state.municipalityLineWidth}
-            onChange={(event) => update("municipalityLineWidth", Number(event.target.value))}
           />
           {/* <label className="block text-sm">Cor</label>
           <input
@@ -99,6 +88,17 @@ export function LayerControls({
 
           <div className="mt-2 border-t border-border pt-2">
             <p className="mb-2 text-sm font-medium">Municipality borders</p>
+            <label className="block text-sm">
+              Border width: {state.municipalityLineWidth}
+            </label>
+            <input
+              className="mb-2 w-full"
+              type="range"
+              min={1}
+              max={6}
+              value={state.municipalityLineWidth}
+              onChange={(event) => update("municipalityLineWidth", Number(event.target.value))}
+            />
             <label className="flex items-center gap-2 text-sm">
               <input
                 type="checkbox"
@@ -117,11 +117,11 @@ export function LayerControls({
                   update("municipioBorderInvisible", event.target.checked)
                 }
               />
-              Borda invisível
+              Invisible border
             </label>
           </div>
 
-          <label className="block text-sm">Cor específica da borda</label>
+          <label className="block text-sm">Specific border color</label>
           <input
             className="h-10 w-10 cursor-pointer overflow-hidden rounded-full border border-border bg-transparent p-0 [&::-webkit-color-swatch-wrapper]:p-0 [&::-webkit-color-swatch]:rounded-full [&::-webkit-color-swatch]:border-0 [&::-moz-color-swatch]:rounded-full [&::-moz-color-swatch]:border-0"
             type="color"
@@ -132,9 +132,9 @@ export function LayerControls({
             }
             onChange={(event) => update("municipioBorderColor", event.target.value)}
           />
-          <label className="block text-xs text-muted-foreground">
+          {/* <label className="block text-xs text-muted-foreground">
             Use esta cor quando “Borda igual...” e “Borda invisível” estiverem desativadas.
-          </label>
+          </label> */}
         </section>
       )}
 
