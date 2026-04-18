@@ -21,7 +21,7 @@ export function buildLayers(context: LayerControllerContext) {
   } = context;
 
   switch (selectedLayer) {
-    case "Municipios":
+    case "Municipalities":
       return [
         createMunicipiosLayer(state, hoveredMunicipioId),
         createMunicipiosBordersLayer(state),

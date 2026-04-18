@@ -96,7 +96,7 @@ export default function HomePage() {
   const [viewState, setViewState] = useState(INITIAL_VIEW_STATE);
   const [mapStyle, setMapStyle] = useState<MapStyleName>("Dark");
   const [selectedLayer, setSelectedLayer] =
-    useState<LayerOption>("Municipios");
+    useState<LayerOption>("Municipalities");
   const [state, setState] = useState<MapState>(INITIAL_MAP_STATE);
   const [hoveredMunicipioId, setHoveredMunicipioId] = useState<string | null>(null);
   const municipiosHeaderTheme = MUNICIPIOS_HEADER_THEME[mapStyle];
@@ -259,7 +259,7 @@ export default function HomePage() {
               setViewState(nextViewState as typeof INITIAL_VIEW_STATE);
             }}
             onHover={(info) => {
-              if (selectedLayer !== "Municipios") {
+              if (selectedLayer !== "Municipalities") {
                 if (hoveredMunicipioId !== null) setHoveredMunicipioId(null);
                 return;
               }
@@ -273,7 +273,7 @@ export default function HomePage() {
           >
             <Map reuseMaps mapStyle={MAP_STYLES[mapStyle]} />
           </DeckGL>
-          {selectedLayer === "Municipios" && (
+          {selectedLayer === "Municipalities" && (
             <>
               <div
                 className={`pointer-events-auto absolute top-4 left-4 z-20 select-text ${municipiosHeaderTheme.shadow}`}

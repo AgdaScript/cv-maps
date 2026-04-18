@@ -121,7 +121,7 @@ export function MapActionsCard({
     const url = URL.createObjectURL(blob);
     const anchor = document.createElement("a");
     anchor.href = url;
-    anchor.download = "municipios-tabela.csv";
+    anchor.download = "municipalities-table.csv";
     document.body.appendChild(anchor);
     anchor.click();
     document.body.removeChild(anchor);
@@ -160,7 +160,7 @@ export function MapActionsCard({
           className={`pointer-events-auto absolute top-20 right-4 z-20 w-[420px] max-w-[calc(100%-1rem)] rounded-2xl border p-3 shadow-xl backdrop-blur ${theme.tableShell}`}
         >
           <div className="mb-2 flex items-center justify-between">
-            <h3 className={`text-sm font-semibold ${theme.title}`}>Tabela de municipios</h3>
+            <h3 className={`text-sm font-semibold ${theme.title}`}>Municipalities table</h3>
             <button
               type="button"
               className={`inline-flex h-7 w-7 items-center justify-center rounded-lg border transition ${theme.button}`}
@@ -182,7 +182,7 @@ export function MapActionsCard({
               type="search"
               value={searchTerm}
               onChange={(event) => setSearchTerm(event.target.value)}
-              placeholder="Pesquisar município..."
+              placeholder="Search municipality..."
               className={`h-9 w-full rounded-lg border px-3 text-sm outline-none focus-visible:ring-2 ${theme.search}`}
             />
             <button
@@ -201,7 +201,7 @@ export function MapActionsCard({
               <thead className={`sticky top-0 text-left text-xs ${theme.head}`}>
                 <tr>
                   <th className="px-2 py-2">Cor</th>
-                  <th className="px-2 py-2">Municipio</th>
+                  <th className="px-2 py-2">Municipality</th>
                   <th className="px-2 py-2">Total</th>
                 </tr>
               </thead>
@@ -223,7 +223,7 @@ export function MapActionsCard({
                 {tableRows.length === 0 && (
                   <tr>
                     <td className={`px-2 py-3 text-center text-sm ${theme.empty}`} colSpan={3}>
-                      Nenhum município encontrado para esta pesquisa.
+                      No municipality found for this search.
                     </td>
                   </tr>
                 )}

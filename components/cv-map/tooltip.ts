@@ -113,19 +113,19 @@ export function getMapTooltip(info: PickingInfo<any>, mapStyle: MapStyleName = "
   }
 
   if ("municipality" in object && "value" in object) {
-    return `Scatter\nMunicipio: ${object.municipality}\nValor: ${object.value}`;
+    return `Scatter\nMunicipality: ${object.municipality}\nValor: ${object.value}`;
   }
 
   if ("count" in object) {
-    return `Cluster\nMunicipio: ${object.name}\nTotal: ${object.count}`;
+    return `Cluster\nMunicipality: ${object.name}\nTotal: ${object.count}`;
   }
 
   if ("municipality" in object) {
-    return `Icon\nMunicipio: ${object.municipality}`;
+    return `Icon\nMunicipality: ${object.municipality}`;
   }
 
   if ("name" in object) {
-    return `Marker\nMunicipio: ${object.name}`;
+    return `Marker\nMunicipality: ${object.name}`;
   }
 
   return null;

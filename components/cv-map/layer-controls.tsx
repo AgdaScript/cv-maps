@@ -37,7 +37,7 @@ export function LayerControls({
   return (
     <>
       <section className="space-y-3">
-        <h2 className="font-medium">Camadas</h2>
+        <h2 className="font-medium">Layers Selector</h2>
         <DropdownMenu onOpenChange={setIsLayerMenuOpen}>
           <DropdownMenuTrigger asChild>
             <Button variant="outline" className="w-full justify-between">
@@ -50,7 +50,7 @@ export function LayerControls({
             </Button>
           </DropdownMenuTrigger>
           <DropdownMenuContent className="w-(--radix-dropdown-menu-trigger-width)">
-            <DropdownMenuLabel>Selecionar camada ativa</DropdownMenuLabel>
+            {/* <DropdownMenuLabel>Selecionar camada ativa</DropdownMenuLabel> */}
             <DropdownMenuSeparator />
             <DropdownMenuRadioGroup
               value={selectedLayer}
@@ -66,9 +66,9 @@ export function LayerControls({
         </DropdownMenu>
       </section>
 
-      {selectedLayer === "Municipios" && (
+      {selectedLayer === "Municipalities" && (
         <section className="mt-4 space-y-3 rounded-md border border-border p-3">
-          <h2 className="font-medium">Municipios</h2>
+          <h2 className="font-medium">Municipalities</h2>
           <label className="block text-sm">Opacidade: {state.municipalityOpacity}%</label>
           <input
             className="w-full"
@@ -98,7 +98,7 @@ export function LayerControls({
           /> */}
 
           <div className="mt-2 border-t border-border pt-2">
-            <p className="mb-2 text-sm font-medium">Bordas do município</p>
+            <p className="mb-2 text-sm font-medium">Municipality borders</p>
             <label className="flex items-center gap-2 text-sm">
               <input
                 type="checkbox"
@@ -107,7 +107,7 @@ export function LayerControls({
                   update("municipioBorderSameAsFill", event.target.checked)
                 }
               />
-              Borda igual à cor do município
+              Border matches municipality color
             </label>
             <label className="mt-1 flex items-center gap-2 text-sm">
               <input
@@ -142,7 +142,7 @@ export function LayerControls({
         <section className="mt-4 space-y-3 rounded-md border border-border p-3">
           <h2 className="font-medium">Scatterplot</h2>
           <label className="block text-sm">
-            Pontos por municipio: {state.scatterCount}
+            Points per municipality: {state.scatterCount}
           </label>
           <input
             className="w-full"
@@ -270,7 +270,7 @@ export function LayerControls({
         <section className="mt-4 space-y-3 rounded-md border border-border p-3">
           <h2 className="font-medium">IconLayer</h2>
           <label className="block text-sm">
-            Pontos por municipio (cluster): {state.iconPointsPerMunicipality}
+            Points per municipality (cluster): {state.iconPointsPerMunicipality}
           </label>
           <input
             className="w-full"

@@ -31,7 +31,7 @@ export const INITIAL_VIEW_STATE = {
 };
 
 export const LAYER_OPTIONS: LayerOption[] = [
-  "Municipios",
+  "Municipalities",
   "Scatterplot",
   "Marker points",
   "HexagonLayer",

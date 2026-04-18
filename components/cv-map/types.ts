@@ -3,7 +3,7 @@
 export type Position = [number, number];
 
 export type LayerOption =
-  | "Municipios"
+  | "Municipalities"
   | "Scatterplot"
   | "Marker points"
   | "HexagonLayer"
