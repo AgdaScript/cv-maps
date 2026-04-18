@@ -2,6 +2,7 @@
 
 import type { PickingInfo } from "@deck.gl/core";
 import municipiosValores from "@/data/municipios-valores.json";
+import type { MapStyleName } from "@/components/cv-map/constants";
 
 type MunicipioValor = {
   comissao: string;
@@ -29,9 +30,37 @@ const municipioInfoMap = (municipiosValores as MunicipioValor[]).reduce<
   return acc;
 }, {});
 
-export function getMapTooltip(info: PickingInfo<any>) {
+const TOOLTIP_THEME: Record<
+  MapStyleName,
+  { border: string; background: string; text: string; shadow: string; title: string }
+> = {
+  Escuro: {
+    border: "rgba(255,255,255,0.2)",
+    background: "rgba(20,20,24,0.96)",
+    text: "#f3f4f6",
+    shadow: "0 10px 30px rgba(0,0,0,0.35)",
+    title: "#ffffff",
+  },
+  Claro: {
+    border: "rgba(15,23,42,0.18)",
+    background: "rgba(255,255,255,0.96)",
+    text: "#0f172a",
+    shadow: "0 10px 28px rgba(2,8,23,0.12)",
+    title: "#0f172a",
+  },
+  Voyager: {
+    border: "rgba(120,53,15,0.2)",
+    background: "rgba(255,251,235,0.95)",
+    text: "#451a03",
+    shadow: "0 10px 28px rgba(120,53,15,0.16)",
+    title: "#7c2d12",
+  },
+};
+
+export function getMapTooltip(info: PickingInfo<any>, mapStyle: MapStyleName = "Escuro") {
   const object = info.object;
   if (!object) return null;
+  const theme = TOOLTIP_THEME[mapStyle];
 
   const featureName = object?.properties?.NAME_1;
   if (typeof featureName === "string") {
@@ -49,11 +78,11 @@ export function getMapTooltip(info: PickingInfo<any>) {
           align-items:stretch;
           min-width:280px;
           border-radius:16px;
-          border:1px solid rgba(255,255,255,0.2);
-          background:rgba(20,20,24,0.96);
-          color:#f3f4f6;
+          border:1px solid ${theme.border};
+          background:${theme.background};
+          color:${theme.text};
           padding:14px 14px 14px 10px;
-          box-shadow:0 10px 30px rgba(0,0,0,0.35);
+          box-shadow:${theme.shadow};
           font-family:ui-sans-serif,system-ui,-apple-system,Segoe UI,Roboto,Helvetica,Arial,sans-serif;
         ">
           <div style="
@@ -62,7 +91,7 @@ export function getMapTooltip(info: PickingInfo<any>) {
             background:${color};
           "></div>
           <div style="display:flex;flex-direction:column;gap:4px;">
-            <div style="font-size:14px;font-weight:700;line-height:1.1;">Census Data</div>
+            <div style="font-size:14px;font-weight:700;line-height:1.1;color:${theme.title};">Census Data</div>
             <div style="font-size:18px;font-weight:600;line-height:1.2;">
               ${featureName}: ${valor.toLocaleString("pt-PT")}
             </div>

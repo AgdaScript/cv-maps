@@ -221,7 +221,7 @@ export default function HomePage() {
             }}
             controller
             layers={layers}
-            getTooltip={getMapTooltip}
+            getTooltip={(info) => getMapTooltip(info, mapStyle)}
           >
             <Map reuseMaps mapStyle={MAP_STYLES[mapStyle]} />
           </DeckGL>
