@@ -2,6 +2,7 @@
 
 import { useMemo, useRef, useState } from "react";
 import DeckGL from "@deck.gl/react";
+import { Instagram, Linkedin, Music2 } from "lucide-react";
 import Map from "react-map-gl/maplibre";
 import { LayerControls } from "@/components/cv-map/layer-controls";
 import { buildLayers } from "@/components/cv-map/layer-controller";
@@ -71,6 +72,24 @@ const INITIAL_MAP_STATE: MapState = {
   iconPointsPerMunicipality: 12,
   iconClusterZoom: 8.3,
 };
+
+const SOCIAL_LINKS = [
+  {
+    label: "LinkedIn",
+    href: "https://www.linkedin.com/in/agda-lopes/",
+    Icon: Linkedin,
+  },
+  {
+    label: "TikTok",
+    href: "https://www.tiktok.com/@agdascript?_r=1&_t=ZS-95e1vU44Fya",
+    Icon: Music2,
+  },
+  {
+    label: "Instagram",
+    href: "https://www.instagram.com/agdascript?igsh=MTNxeXdpYTQ0cXZwZw==",
+    Icon: Instagram,
+  },
+] as const;
 
 export default function HomePage() {
   const mapSectionRef = useRef<HTMLElement | null>(null);
@@ -194,6 +213,34 @@ export default function HomePage() {
       <div className="grid h-full w-full grid-cols-1 md:grid-cols-[360px_1fr]">
         <aside className="z-10 overflow-y-auto border-r border-border bg-card p-4">
           <h1 className="text-xl font-semibold">CV Map Sandbox</h1>
+          <section className="mt-4 space-y-2">
+            <h2 className="font-medium">About Author</h2>
+            <p className="text-sm">
+              This project is a sandbox for testing the cv-map library. Made by{" "}
+              <span className="font-semibold text-amber-700 dark:text-amber-300">
+                Agda Lopes
+              </span>
+              .
+            </p>
+            <div className="flex items-center gap-2">
+              {SOCIAL_LINKS.map(({ label, href, Icon }) => (
+                <a
+                  key={label}
+                  href={href}
+                  target="_blank"
+                  rel="noreferrer"
+                  className="inline-flex h-9 w-9 items-center justify-center rounded-full border border-border bg-background text-foreground transition hover:bg-accent"
+                  aria-label={label}
+                  title={label}
+                >
+                  <Icon className="h-4 w-4" />
+                </a>
+              ))}
+            </div>
+            <div className="pt-2">
+              <div className="border-b border-border" />
+            </div>
+          </section>
 
           <MapStyleSelector mapStyle={mapStyle} setMapStyle={setMapStyle} />
           <LayerControls
