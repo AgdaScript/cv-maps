@@ -140,19 +140,19 @@ export function LayerControls({
 
       {selectedLayer === "Scatterplot" && (
         <section className="mt-4 space-y-3 rounded-md border border-border p-3">
-          <h2 className="font-medium">Scatterplot</h2>
+          <h2 className="font-medium">Traffic accidents (Scatterplot)</h2>
           <label className="block text-sm">
-            Points per municipality: {state.scatterCount}
+            Accident records: {state.scatterCount}
           </label>
           <input
             className="w-full"
             type="range"
             min={1}
-            max={20}
+            max={300}
             value={state.scatterCount}
             onChange={(event) => update("scatterCount", Number(event.target.value))}
           />
-          <label className="block text-sm">Raio base: {state.scatterRadius}</label>
+          <label className="block text-sm">Base radius: {state.scatterRadius}</label>
           <input
             className="w-full"
             type="range"
@@ -162,7 +162,7 @@ export function LayerControls({
             value={state.scatterRadius}
             onChange={(event) => update("scatterRadius", Number(event.target.value))}
           />
-          <label className="block text-sm">Opacidade: {state.scatterOpacity}%</label>
+          <label className="block text-sm">Opacity: {state.scatterOpacity}%</label>
           <input
             className="w-full"
             type="range"
@@ -171,13 +171,9 @@ export function LayerControls({
             value={state.scatterOpacity}
             onChange={(event) => update("scatterOpacity", Number(event.target.value))}
           />
-          <label className="block text-sm">Cor</label>
-          <input
-            className="h-10 w-10 cursor-pointer overflow-hidden rounded-full border border-border bg-transparent p-0 [&::-webkit-color-swatch-wrapper]:p-0 [&::-webkit-color-swatch]:rounded-full [&::-webkit-color-swatch]:border-0 [&::-moz-color-swatch]:rounded-full [&::-moz-color-swatch]:border-0"
-            type="color"
-            value={state.scatterColor}
-            onChange={(event) => update("scatterColor", event.target.value)}
-          />
+          <div className="text-xs text-muted-foreground">
+            Color mapping: blue points = Homem, pink points = Mulher.
+          </div>
         </section>
       )}
 

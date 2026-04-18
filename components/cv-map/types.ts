@@ -15,7 +15,10 @@ export type MarkerPoint = {
 };
 
 export type ScatterPoint = {
+  id: string;
   municipality: string;
+  location: string;
+  sex: "Homem" | "Mulher";
   value: number;
   position: Position;
 };

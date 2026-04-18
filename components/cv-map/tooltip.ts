@@ -113,7 +113,7 @@ export function getMapTooltip(info: PickingInfo<any>, mapStyle: MapStyleName = "
   }
 
   if ("municipality" in object && "value" in object) {
-    return `Scatter\nMunicipality: ${object.municipality}\nValor: ${object.value}`;
+    return `Accident\nMunicipality: ${object.municipality}\nLocation: ${object.location}\nSex: ${object.sex}\nImpact: ${object.value}`;
   }
 
   if ("count" in object) {

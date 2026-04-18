@@ -56,7 +56,7 @@ const INITIAL_MAP_STATE: MapState = {
   municipioBorderColor: "#ffffff",
   municipioValueMinFilter: MUNICIPIOS_FILTER_LIMITS.min,
   municipioValueMaxFilter: MUNICIPIOS_FILTER_LIMITS.max,
-  scatterCount: 8,
+  scatterCount: 20,
   scatterRadius: 1200,
   scatterOpacity: 65,
   scatterColor: "#84cc16",

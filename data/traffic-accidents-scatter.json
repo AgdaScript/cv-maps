@@ -1,0 +1,3302 @@
+[
+  {
+    "id": "acc-101",
+    "municipality": "Mosteiros",
+    "location": "São Domingos, EN3-ST",
+    "sex": "Homem",
+    "value": 53,
+    "position": [
+      -24.3358325,
+      15.0096775
+    ]
+  },
+  {
+    "id": "acc-102",
+    "municipality": "São Filipe",
+    "location": "São Domingos, rua principal",
+    "sex": "Mulher",
+    "value": 41,
+    "position": [
+      -24.4646325,
+      14.962166
+    ]
+  },
+  {
+    "id": "acc-103",
+    "municipality": "Paul",
+    "location": "Estrada de Praia Baixo",
+    "sex": "Homem",
+    "value": 38,
+    "position": [
+      -24.973757799999998,
+      17.0805424
+    ]
+  },
+  {
+    "id": "acc-104",
+    "municipality": "São Lourenço dos Órgãos",
+    "location": "Bairro de Água Doce",
+    "sex": "Homem",
+    "value": 35,
+    "position": [
+      -23.5977696,
+      15.0863532
+    ]
+  },
+  {
+    "id": "acc-105",
+    "municipality": "Porto Novo",
+    "location": "EN3-ST, cruzamento",
+    "sex": "Mulher",
+    "value": 39,
+    "position": [
+      -25.128974799999998,
+      17.0904976
+    ]
+  },
+  {
+    "id": "acc-106",
+    "municipality": "São Lourenço dos Órgãos",
+    "location": "São Domingos, zona comercial",
+    "sex": "Homem",
+    "value": 46,
+    "position": [
+      -23.620056599999998,
+      15.068512199999999
+    ]
+  },
+  {
+    "id": "acc-107",
+    "municipality": "Praia",
+    "location": "Estrada de Rui Vaz",
+    "sex": "Homem",
+    "value": 32,
+    "position": [
+      -23.5440432,
+      14.9774122
+    ]
+  },
+  {
+    "id": "acc-108",
+    "municipality": "São Miguel",
+    "location": "Bairro de Vale da Custa",
+    "sex": "Mulher",
+    "value": 30,
+    "position": [
+      -23.6910032,
+      15.1949236
+    ]
+  },
+  {
+    "id": "acc-109",
+    "municipality": "Ribeira Brava",
+    "location": "São Domingos, rotunda central",
+    "sex": "Homem",
+    "value": 43,
+    "position": [
+      -24.189520111731834,
+      16.58779106145252
+    ]
+  },
+  {
+    "id": "acc-110",
+    "municipality": "São Miguel",
+    "location": "Estrada de Achada Baleia",
+    "sex": "Homem",
+    "value": 34,
+    "position": [
+      -23.6165616,
+      15.1589188
+    ]
+  },
+  {
+    "id": "acc-111",
+    "municipality": "Praia",
+    "location": "Cidade Velha",
+    "sex": "Mulher",
+    "value": 45,
+    "position": [
+      -23.5323216,
+      14.985622600000001
+    ]
+  },
+  {
+    "id": "acc-112",
+    "municipality": "São Salvador do Mundo",
+    "location": "Pico Leão",
+    "sex": "Homem",
+    "value": 37,
+    "position": [
+      -23.6255566,
+      15.1039569
+    ]
+  },
+  {
+    "id": "acc-113",
+    "municipality": "Ribeira Brava",
+    "location": "Cidade Velha, rua histórica",
+    "sex": "Homem",
+    "value": 49,
+    "position": [
+      -24.189520111731834,
+      16.58779106145252
+    ]
+  },
+  {
+    "id": "acc-114",
+    "municipality": "São Vicente",
+    "location": "Estrada de São Martinho",
+    "sex": "Mulher",
+    "value": 36,
+    "position": [
+      -25.0042422,
+      16.8181695
+    ]
+  },
+  {
+    "id": "acc-115",
+    "municipality": "Ribeira Grande",
+    "location": "Bairro de Aboboreiro",
+    "sex": "Homem",
+    "value": 33,
+    "position": [
+      -25.132607272727277,
+      17.15350909090909
+    ]
+  },
+  {
+    "id": "acc-116",
+    "municipality": "Tarrafal",
+    "location": "Cidade Velha, rotunda central",
+    "sex": "Homem",
+    "value": 42,
+    "position": [
+      -23.7102237,
+      15.2039154
+    ]
+  },
+  {
+    "id": "acc-117",
+    "municipality": "Ribeira Grande Santiago",
+    "location": "Estrada de Porto Gouveia",
+    "sex": "Mulher",
+    "value": 31,
+    "position": [
+      -23.62734810126583,
+      14.956611392405069
+    ]
+  },
+  {
+    "id": "acc-118",
+    "municipality": "Tarrafal de São Nicolau",
+    "location": "Bairro de São Martinho Grande",
+    "sex": "Homem",
+    "value": 40,
+    "position": [
+      -24.365321052631582,
+      16.588785526315792
+    ]
+  },
+  {
+    "id": "acc-119",
+    "municipality": "Sal",
+    "location": "Cidade Velha, acesso à praia",
+    "sex": "Homem",
+    "value": 38,
+    "position": [
+      -22.9475676,
+      16.7453321
+    ]
+  },
+  {
+    "id": "acc-120",
+    "municipality": "Tarrafal",
+    "location": "Estrada de Ribeira da Barca",
+    "sex": "Mulher",
+    "value": 28,
+    "position": [
+      -23.7121906,
+      15.3040432
+    ]
+  },
+  {
+    "id": "acc-121",
+    "municipality": "Sal",
+    "location": "São Filipe, avenida central",
+    "sex": "Homem",
+    "value": 69,
+    "position": [
+      -22.9238672,
+      16.7973842
+    ]
+  },
+  {
+    "id": "acc-122",
+    "municipality": "Tarrafal de São Nicolau",
+    "location": "São Filipe, rua comercial",
+    "sex": "Mulher",
+    "value": 52,
+    "position": [
+      -24.33692,
+      16.525538
+    ]
+  },
+  {
+    "id": "acc-123",
+    "municipality": "Santa Catarina",
+    "location": "Estrada do Monte Vermelho",
+    "sex": "Homem",
+    "value": 48,
+    "position": [
+      -23.7702296,
+      15.1121304
+    ]
+  },
+  {
+    "id": "acc-124",
+    "municipality": "Boavista",
+    "location": "Bairro de Campanas",
+    "sex": "Homem",
+    "value": 55,
+    "position": [
+      -22.7368828,
+      16.0382078
+    ]
+  },
+  {
+    "id": "acc-125",
+    "municipality": "Santa Catarina do Fogo",
+    "location": "São Filipe, rotunda central",
+    "sex": "Mulher",
+    "value": 47,
+    "position": [
+      -24.318663100000002,
+      14.9525182
+    ]
+  },
+  {
+    "id": "acc-126",
+    "municipality": "Brava",
+    "location": "Estrada de Patim",
+    "sex": "Homem",
+    "value": 44,
+    "position": [
+      -24.690196551724142,
+      14.892840229885056
+    ]
+  },
+  {
+    "id": "acc-127",
+    "municipality": "Santa Cruz",
+    "location": "Bairro de Achada Grande",
+    "sex": "Homem",
+    "value": 51,
+    "position": [
+      -23.5792848,
+      15.1236034
+    ]
+  },
+  {
+    "id": "acc-128",
+    "municipality": "Maio",
+    "location": "EN1-FG-01, acesso sul",
+    "sex": "Mulher",
+    "value": 38,
+    "position": [
+      -23.2263411,
+      15.1787449
+    ]
+  },
+  {
+    "id": "acc-129",
+    "municipality": "Santa Cruz",
+    "location": "São Filipe, zona portuária",
+    "sex": "Homem",
+    "value": 58,
+    "position": [
+      -23.507056799999997,
+      15.0992494
+    ]
+  },
+  {
+    "id": "acc-130",
+    "municipality": "Maio",
+    "location": "Estrada de Lomba",
+    "sex": "Homem",
+    "value": 41,
+    "position": [
+      -23.1981438,
+      15.2252772
+    ]
+  },
+  {
+    "id": "acc-131",
+    "municipality": "Santa Cruz",
+    "location": "Mosteiros, estrada litoral",
+    "sex": "Mulher",
+    "value": 43,
+    "position": [
+      -23.5491435,
+      15.058253500000001
+    ]
+  },
+  {
+    "id": "acc-132",
+    "municipality": "Mosteiros",
+    "location": "Mosteiros, rua principal",
+    "sex": "Homem",
+    "value": 50,
+    "position": [
+      -24.2911407,
+      14.969183300000001
+    ]
+  },
+  {
+    "id": "acc-133",
+    "municipality": "São Domingos",
+    "location": "Estrada de Ribeira Ilhéu",
+    "sex": "Homem",
+    "value": 36,
+    "position": [
+      -23.500393199999998,
+      15.074914399999999
+    ]
+  },
+  {
+    "id": "acc-134",
+    "municipality": "Paul",
+    "location": "Bairro de Laranjeiras",
+    "sex": "Mulher",
+    "value": 32,
+    "position": [
+      -25.00406382978723,
+      17.121376595744685
+    ]
+  },
+  {
+    "id": "acc-135",
+    "municipality": "São Filipe",
+    "location": "Mosteiros, rotunda central",
+    "sex": "Homem",
+    "value": 44,
+    "position": [
+      -24.4245925,
+      14.935134
+    ]
+  },
+  {
+    "id": "acc-136",
+    "municipality": "Paul",
+    "location": "Estrada do Porto",
+    "sex": "Homem",
+    "value": 39,
+    "position": [
+      -24.9912634,
+      17.0940592
+    ]
+  },
+  {
+    "id": "acc-137",
+    "municipality": "São Lourenço dos Órgãos",
+    "location": "Bairro de Corvo",
+    "sex": "Mulher",
+    "value": 29,
+    "position": [
+      -23.637182399999997,
+      15.0548028
+    ]
+  },
+  {
+    "id": "acc-138",
+    "municipality": "Porto Novo",
+    "location": "EN1-FG-02, acesso norte",
+    "sex": "Homem",
+    "value": 37,
+    "position": [
+      -25.314543399999998,
+      17.0491213
+    ]
+  },
+  {
+    "id": "acc-139",
+    "municipality": "São Miguel",
+    "location": "Mosteiros, zona comercial",
+    "sex": "Homem",
+    "value": 42,
+    "position": [
+      -23.631507547169804,
+      15.201350943396223
+    ]
+  },
+  {
+    "id": "acc-140",
+    "municipality": "Porto Novo",
+    "location": "Estrada de Achada Grande",
+    "sex": "Mulher",
+    "value": 27,
+    "position": [
+      -25.20882108433736,
+      17.009618072289154
+    ]
+  },
+  {
+    "id": "acc-141",
+    "municipality": "São Lourenço dos Órgãos",
+    "location": "Cova Figueira",
+    "sex": "Homem",
+    "value": 38,
+    "position": [
+      -23.593781399999997,
+      15.0895458
+    ]
+  },
+  {
+    "id": "acc-142",
+    "municipality": "Praia",
+    "location": "Cova Figueira, rua principal",
+    "sex": "Mulher",
+    "value": 34,
+    "position": [
+      -23.4996876,
+      14.9804911
+    ]
+  },
+  {
+    "id": "acc-143",
+    "municipality": "São Miguel",
+    "location": "Estrada de Chã das Caldeiras",
+    "sex": "Homem",
+    "value": 30,
+    "position": [
+      -23.6570284,
+      15.1965392
+    ]
+  },
+  {
+    "id": "acc-144",
+    "municipality": "Ribeira Brava",
+    "location": "Bairro de Achada Furna",
+    "sex": "Homem",
+    "value": 28,
+    "position": [
+      -24.2692376,
+      16.6357932
+    ]
+  },
+  {
+    "id": "acc-145",
+    "municipality": "São Salvador do Mundo",
+    "location": "Cova Figueira, rotunda central",
+    "sex": "Mulher",
+    "value": 31,
+    "position": [
+      -23.663961399999998,
+      15.0733641
+    ]
+  },
+  {
+    "id": "acc-146",
+    "municipality": "Ribeira Grande",
+    "location": "Estrada de Monte Velho",
+    "sex": "Homem",
+    "value": 26,
+    "position": [
+      -25.132607272727277,
+      17.15350909090909
+    ]
+  },
+  {
+    "id": "acc-147",
+    "municipality": "São Vicente",
+    "location": "Bairro de Relva",
+    "sex": "Homem",
+    "value": 29,
+    "position": [
+      -24.887593832599112,
+      16.816133480176216
+    ]
+  },
+  {
+    "id": "acc-148",
+    "municipality": "Ribeira Grande Santiago",
+    "location": "EN1-FG-03, acesso sul",
+    "sex": "Mulher",
+    "value": 24,
+    "position": [
+      -23.6195611,
+      15.0064948
+    ]
+  },
+  {
+    "id": "acc-149",
+    "municipality": "Tarrafal",
+    "location": "Cova Figueira, zona comercial",
+    "sex": "Homem",
+    "value": 35,
+    "position": [
+      -23.7190169,
+      15.295393800000001
+    ]
+  },
+  {
+    "id": "acc-150",
+    "municipality": "Ribeira Grande",
+    "location": "Estrada de Monte Largo",
+    "sex": "Homem",
+    "value": 27,
+    "position": [
+      -25.0952084,
+      17.186885200000003
+    ]
+  },
+  {
+    "id": "acc-151",
+    "municipality": "Tarrafal",
+    "location": "Nova Sintra, rua principal",
+    "sex": "Mulher",
+    "value": 36,
+    "position": [
+      -23.737528899999997,
+      15.2719378
+    ]
+  },
+  {
+    "id": "acc-152",
+    "municipality": "Ribeira Grande Santiago",
+    "location": "Nova Sintra, avenida central",
+    "sex": "Homem",
+    "value": 40,
+    "position": [
+      -23.62734810126583,
+      14.956611392405069
+    ]
+  },
+  {
+    "id": "acc-153",
+    "municipality": "Tarrafal de São Nicolau",
+    "location": "Estrada de Furna",
+    "sex": "Homem",
+    "value": 31,
+    "position": [
+      -24.409928,
+      16.60472
+    ]
+  },
+  {
+    "id": "acc-154",
+    "municipality": "Sal",
+    "location": "Bairro de Lomba Tantum",
+    "sex": "Mulher",
+    "value": 27,
+    "position": [
+      -22.9063068,
+      16.8359513
+    ]
+  },
+  {
+    "id": "acc-155",
+    "municipality": "Boavista",
+    "location": "Nova Sintra, rotunda central",
+    "sex": "Homem",
+    "value": 38,
+    "position": [
+      -22.9066336,
+      16.1544756
+    ]
+  },
+  {
+    "id": "acc-156",
+    "municipality": "Santa Catarina",
+    "location": "Estrada de Porto Inglês",
+    "sex": "Homem",
+    "value": 33,
+    "position": [
+      -23.7120562,
+      15.1262168
+    ]
+  },
+  {
+    "id": "acc-157",
+    "municipality": "Brava",
+    "location": "Bairro de Lomba Branca",
+    "sex": "Mulher",
+    "value": 25,
+    "position": [
+      -24.6788078,
+      14.8195316
+    ]
+  },
+  {
+    "id": "acc-158",
+    "municipality": "Santa Catarina do Fogo",
+    "location": "EN1-BR-01, acesso norte",
+    "sex": "Homem",
+    "value": 29,
+    "position": [
+      -24.3677023,
+      14.9165326
+    ]
+  },
+  {
+    "id": "acc-159",
+    "municipality": "Brava",
+    "location": "Nova Sintra, zona comercial",
+    "sex": "Homem",
+    "value": 35,
+    "position": [
+      -24.690196551724142,
+      14.892840229885056
+    ]
+  },
+  {
+    "id": "acc-160",
+    "municipality": "Santa Catarina do Fogo",
+    "location": "Estrada de Monte Fontainhas",
+    "sex": "Mulher",
+    "value": 23,
+    "position": [
+      -24.3813243,
+      14.9279566
+    ]
+  },
+  {
+    "id": "acc-161",
+    "municipality": "Brava",
+    "location": "Centro da Ribeira Brava",
+    "sex": "Homem",
+    "value": 42,
+    "position": [
+      -24.690196551724142,
+      14.892840229885056
+    ]
+  },
+  {
+    "id": "acc-162",
+    "municipality": "Santa Cruz",
+    "location": "Ribeira Brava, rua comercial",
+    "sex": "Mulher",
+    "value": 37,
+    "position": [
+      -23.627344200000003,
+      15.1173796
+    ]
+  },
+  {
+    "id": "acc-163",
+    "municipality": "Maio",
+    "location": "Estrada de Carriçal",
+    "sex": "Homem",
+    "value": 34,
+    "position": [
+      -23.1280158,
+      15.172235200000001
+    ]
+  },
+  {
+    "id": "acc-164",
+    "municipality": "Santa Cruz",
+    "location": "Bairro de Fajã",
+    "sex": "Homem",
+    "value": 31,
+    "position": [
+      -23.5722009,
+      15.1305037
+    ]
+  },
+  {
+    "id": "acc-165",
+    "municipality": "Mosteiros",
+    "location": "Ribeira Brava, rotunda central",
+    "sex": "Mulher",
+    "value": 35,
+    "position": [
+      -24.349050300000002,
+      15.0187337
+    ]
+  },
+  {
+    "id": "acc-166",
+    "municipality": "São Domingos",
+    "location": "Estrada do Porto",
+    "sex": "Homem",
+    "value": 39,
+    "position": [
+      -23.600487599999997,
+      15.0142832
+    ]
+  },
+  {
+    "id": "acc-167",
+    "municipality": "Paul",
+    "location": "Bairro de Morro Brás",
+    "sex": "Homem",
+    "value": 28,
+    "position": [
+      -24.981260199999998,
+      17.0731696
+    ]
+  },
+  {
+    "id": "acc-168",
+    "municipality": "São Filipe",
+    "location": "EN1-SN-01, acesso sul",
+    "sex": "Mulher",
+    "value": 30,
+    "position": [
+      -24.3072025,
+      14.895022
+    ]
+  },
+  {
+    "id": "acc-169",
+    "municipality": "Porto Novo",
+    "location": "Ribeira Brava, zona escolar",
+    "sex": "Homem",
+    "value": 33,
+    "position": [
+      -25.158174,
+      17.073314
+    ]
+  },
+  {
+    "id": "acc-170",
+    "municipality": "São Filipe",
+    "location": "Estrada de Aguada",
+    "sex": "Homem",
+    "value": 27,
+    "position": [
+      -24.3781825,
+      14.827006
+    ]
+  },
+  {
+    "id": "acc-171",
+    "municipality": "Paul",
+    "location": "Tarrafal, zona portuária",
+    "sex": "Mulher",
+    "value": 35,
+    "position": [
+      -25.00406382978723,
+      17.121376595744685
+    ]
+  },
+  {
+    "id": "acc-172",
+    "municipality": "São Lourenço dos Órgãos",
+    "location": "Tarrafal, rua principal",
+    "sex": "Homem",
+    "value": 41,
+    "position": [
+      -23.6109072,
+      15.0758364
+    ]
+  },
+  {
+    "id": "acc-173",
+    "municipality": "Porto Novo",
+    "location": "Estrada de Praia Branca",
+    "sex": "Homem",
+    "value": 32,
+    "position": [
+      -25.2450032,
+      17.0900454
+    ]
+  },
+  {
+    "id": "acc-174",
+    "municipality": "São Miguel",
+    "location": "Bairro de Cachaço",
+    "sex": "Mulher",
+    "value": 28,
+    "position": [
+      -23.693059,
+      15.192731
+    ]
+  },
+  {
+    "id": "acc-175",
+    "municipality": "Praia",
+    "location": "Tarrafal, rotunda central",
+    "sex": "Homem",
+    "value": 38,
+    "position": [
+      -23.4934272,
+      14.9195662
+    ]
+  },
+  {
+    "id": "acc-176",
+    "municipality": "São Salvador do Mundo",
+    "location": "Estrada de Barril",
+    "sex": "Homem",
+    "value": 29,
+    "position": [
+      -23.6372152,
+      15.1128798
+    ]
+  },
+  {
+    "id": "acc-177",
+    "municipality": "Ribeira Brava",
+    "location": "Bairro de Ribeira Prata",
+    "sex": "Mulher",
+    "value": 26,
+    "position": [
+      -24.179372,
+      16.626247499999998
+    ]
+  },
+  {
+    "id": "acc-178",
+    "municipality": "São Vicente",
+    "location": "EN1-SN-02, acesso norte",
+    "sex": "Homem",
+    "value": 33,
+    "position": [
+      -24.887593832599112,
+      16.816133480176216
+    ]
+  },
+  {
+    "id": "acc-179",
+    "municipality": "Ribeira Grande",
+    "location": "Tarrafal, zona comercial",
+    "sex": "Homem",
+    "value": 36,
+    "position": [
+      -25.181646,
+      17.135344
+    ]
+  },
+  {
+    "id": "acc-180",
+    "municipality": "Paul",
+    "location": "Estrada de Monte Gordo",
+    "sex": "Mulher",
+    "value": 24,
+    "position": [
+      -25.0260662,
+      17.131537599999998
+    ]
+  },
+  {
+    "id": "acc-181",
+    "municipality": "São Filipe",
+    "location": "Achada Igreja",
+    "sex": "Mulher",
+    "value": 33,
+    "position": [
+      -24.3140275,
+      14.888482
+    ]
+  },
+  {
+    "id": "acc-182",
+    "municipality": "Porto Novo",
+    "location": "Achada Igreja, rua principal",
+    "sex": "Homem",
+    "value": 37,
+    "position": [
+      -25.321074799999998,
+      16.977447599999998
+    ]
+  },
+  {
+    "id": "acc-183",
+    "municipality": "São Lourenço dos Órgãos",
+    "location": "Estrada de Pico Leão",
+    "sex": "Homem",
+    "value": 29,
+    "position": [
+      -23.5732148,
+      15.0621896
+    ]
+  },
+  {
+    "id": "acc-184",
+    "municipality": "Praia",
+    "location": "Bairro de Covão Grande",
+    "sex": "Mulher",
+    "value": 27,
+    "position": [
+      -23.496023214285714,
+      14.934333928571428
+    ]
+  },
+  {
+    "id": "acc-185",
+    "municipality": "São Miguel",
+    "location": "Achada Igreja, rotunda central",
+    "sex": "Homem",
+    "value": 34,
+    "position": [
+      -23.639499999999998,
+      15.215233999999999
+    ]
+  },
+  {
+    "id": "acc-186",
+    "municipality": "Ribeira Brava",
+    "location": "Estrada de Achada Leite",
+    "sex": "Homem",
+    "value": 26,
+    "position": [
+      -24.189520111731834,
+      16.58779106145252
+    ]
+  },
+  {
+    "id": "acc-187",
+    "municipality": "São Salvador do Mundo",
+    "location": "Bairro de Boa Ventura",
+    "sex": "Mulher",
+    "value": 24,
+    "position": [
+      -23.651616999999998,
+      15.083197499999999
+    ]
+  },
+  {
+    "id": "acc-188",
+    "municipality": "Ribeira Grande",
+    "location": "EN1-ST-02, acesso sul",
+    "sex": "Homem",
+    "value": 30,
+    "position": [
+      -25.132607272727277,
+      17.15350909090909
+    ]
+  },
+  {
+    "id": "acc-189",
+    "municipality": "São Vicente",
+    "location": "Achada Igreja, zona comercial",
+    "sex": "Homem",
+    "value": 32,
+    "position": [
+      -24.887593832599112,
+      16.816133480176216
+    ]
+  },
+  {
+    "id": "acc-190",
+    "municipality": "Ribeira Brava",
+    "location": "Estrada de Ribeira Montanha",
+    "sex": "Mulher",
+    "value": 22,
+    "position": [
+      -24.189520111731834,
+      16.58779106145252
+    ]
+  },
+  {
+    "id": "acc-191",
+    "municipality": "São Vicente",
+    "location": "João Teves",
+    "sex": "Homem",
+    "value": 40,
+    "position": [
+      -24.887593832599112,
+      16.816133480176216
+    ]
+  },
+  {
+    "id": "acc-192",
+    "municipality": "Ribeira Grande",
+    "location": "João Teves, rua principal",
+    "sex": "Mulher",
+    "value": 35,
+    "position": [
+      -25.132607272727277,
+      17.15350909090909
+    ]
+  },
+  {
+    "id": "acc-193",
+    "municipality": "Tarrafal",
+    "location": "Estrada de Órgãos",
+    "sex": "Homem",
+    "value": 33,
+    "position": [
+      -23.7187855,
+      15.295687000000001
+    ]
+  },
+  {
+    "id": "acc-194",
+    "municipality": "Ribeira Grande Santiago",
+    "location": "Bairro de Levada",
+    "sex": "Homem",
+    "value": 29,
+    "position": [
+      -23.6774752,
+      15.0094816
+    ]
+  },
+  {
+    "id": "acc-195",
+    "municipality": "Tarrafal de São Nicolau",
+    "location": "João Teves, rotunda central",
+    "sex": "Mulher",
+    "value": 32,
+    "position": [
+      -24.319073600000003,
+      16.5528224
+    ]
+  },
+  {
+    "id": "acc-196",
+    "municipality": "Sal",
+    "location": "Estrada de Ribeira Seca",
+    "sex": "Homem",
+    "value": 28,
+    "position": [
+      -22.924849599999998,
+      16.6064366
+    ]
+  },
+  {
+    "id": "acc-197",
+    "municipality": "Boavista",
+    "location": "Bairro de Pedra Branca",
+    "sex": "Homem",
+    "value": 26,
+    "position": [
+      -22.8831344,
+      16.1740684
+    ]
+  },
+  {
+    "id": "acc-198",
+    "municipality": "Santa Catarina",
+    "location": "EN1-ST-03, acesso norte",
+    "sex": "Mulher",
+    "value": 28,
+    "position": [
+      -23.6860228,
+      15.163023200000001
+    ]
+  },
+  {
+    "id": "acc-199",
+    "municipality": "Brava",
+    "location": "João Teves, zona escolar",
+    "sex": "Homem",
+    "value": 31,
+    "position": [
+      -24.690196551724142,
+      14.892840229885056
+    ]
+  },
+  {
+    "id": "acc-200",
+    "municipality": "São Domingos",
+    "location": "Estrada de Lagoa",
+    "sex": "Homem",
+    "value": 25,
+    "position": [
+      -23.611807799999998,
+      15.0074261
+    ]
+  },
+  {
+    "id": "acc-201",
+    "municipality": "Paul",
+    "location": "Bairro de Achada Grande Trás",
+    "sex": "Homem",
+    "value": 58,
+    "position": [
+      -25.00406382978723,
+      17.121376595744685
+    ]
+  },
+  {
+    "id": "acc-202",
+    "municipality": "São Filipe",
+    "location": "Avenida Cidade de Lisboa, rotunda Sucupira",
+    "sex": "Homem",
+    "value": 92,
+    "position": [
+      -24.5014875,
+      14.92685
+    ]
+  },
+  {
+    "id": "acc-203",
+    "municipality": "Porto Novo",
+    "location": "Bairro de Lem Ferreira",
+    "sex": "Mulher",
+    "value": 51,
+    "position": [
+      -25.180073399999998,
+      17.0604263
+    ]
+  },
+  {
+    "id": "acc-204",
+    "municipality": "São Lourenço dos Órgãos",
+    "location": "Estrada de São Francisco",
+    "sex": "Homem",
+    "value": 62,
+    "position": [
+      -23.6304572,
+      15.0601864
+    ]
+  },
+  {
+    "id": "acc-205",
+    "municipality": "Praia",
+    "location": "Rotunda de Terra Branca, acesso Palmarejo",
+    "sex": "Homem",
+    "value": 86,
+    "position": [
+      -23.5621584,
+      14.9367334
+    ]
+  },
+  {
+    "id": "acc-206",
+    "municipality": "São Miguel",
+    "location": "Bairro de Craveiro Lopes",
+    "sex": "Mulher",
+    "value": 47,
+    "position": [
+      -23.6469658,
+      15.2418914
+    ]
+  },
+  {
+    "id": "acc-207",
+    "municipality": "Ribeira Brava",
+    "location": "Avenida Amílcar Cabral, Plateau sul",
+    "sex": "Homem",
+    "value": 75,
+    "position": [
+      -24.3157688,
+      16.6091871
+    ]
+  },
+  {
+    "id": "acc-208",
+    "municipality": "São Salvador do Mundo",
+    "location": "Bairro de Monte Vaca",
+    "sex": "Homem",
+    "value": 45,
+    "position": [
+      -23.623499199999998,
+      15.1055958
+    ]
+  },
+  {
+    "id": "acc-209",
+    "municipality": "Ribeira Grande",
+    "location": "Estrada de Tira Chapéu, zona industrial",
+    "sex": "Mulher",
+    "value": 55,
+    "position": [
+      -25.174303000000002,
+      17.1397225
+    ]
+  },
+  {
+    "id": "acc-210",
+    "municipality": "São Salvador do Mundo",
+    "location": "Bairro de Bela Vista",
+    "sex": "Homem",
+    "value": 49,
+    "position": [
+      -23.636218181818183,
+      15.08833636363636
+    ]
+  },
+  {
+    "id": "acc-211",
+    "municipality": "Ribeira Brava",
+    "location": "Mindelo, bairro Ribeira Bote",
+    "sex": "Homem",
+    "value": 68,
+    "position": [
+      -24.199618400000002,
+      16.6146708
+    ]
+  },
+  {
+    "id": "acc-212",
+    "municipality": "São Vicente",
+    "location": "Mindelo, Avenida 5 de Julho",
+    "sex": "Mulher",
+    "value": 52,
+    "position": [
+      -24.887593832599112,
+      16.816133480176216
+    ]
+  },
+  {
+    "id": "acc-213",
+    "municipality": "Ribeira Grande",
+    "location": "Estrada de Monte Verde, curva",
+    "sex": "Homem",
+    "value": 63,
+    "position": [
+      -25.1936046,
+      17.128213300000002
+    ]
+  },
+  {
+    "id": "acc-214",
+    "municipality": "Tarrafal",
+    "location": "Mindelo, zona portuária",
+    "sex": "Homem",
+    "value": 71,
+    "position": [
+      -23.72505631067961,
+      15.285237864077677
+    ]
+  },
+  {
+    "id": "acc-215",
+    "municipality": "Ribeira Grande Santiago",
+    "location": "Bairro Alto São Nicolau",
+    "sex": "Mulher",
+    "value": 48,
+    "position": [
+      -23.5748374,
+      14.9305672
+    ]
+  },
+  {
+    "id": "acc-216",
+    "municipality": "Tarrafal de São Nicolau",
+    "location": "Estrada do Calhau, praia",
+    "sex": "Homem",
+    "value": 58,
+    "position": [
+      -24.3817232,
+      16.6478408
+    ]
+  },
+  {
+    "id": "acc-217",
+    "municipality": "Sal",
+    "location": "Mindelo, rua de Lisboa",
+    "sex": "Homem",
+    "value": 77,
+    "position": [
+      -22.9639,
+      16.709462
+    ]
+  },
+  {
+    "id": "acc-218",
+    "municipality": "Tarrafal de São Nicolau",
+    "location": "Bairro de Madeiral",
+    "sex": "Mulher",
+    "value": 44,
+    "position": [
+      -24.3758576,
+      16.656808400000003
+    ]
+  },
+  {
+    "id": "acc-219",
+    "municipality": "Santa Catarina",
+    "location": "Estrada de São Pedro, cruzamento",
+    "sex": "Homem",
+    "value": 66,
+    "position": [
+      -23.7636409,
+      15.121445600000001
+    ]
+  },
+  {
+    "id": "acc-220",
+    "municipality": "Tarrafal de São Nicolau",
+    "location": "Mindelo, Praça Nova",
+    "sex": "Homem",
+    "value": 73,
+    "position": [
+      -24.410926399999997,
+      16.6031936
+    ]
+  },
+  {
+    "id": "acc-221",
+    "municipality": "Santa Catarina",
+    "location": "Santa Maria, rua das Dunas",
+    "sex": "Homem",
+    "value": 66,
+    "position": [
+      -23.7564094,
+      15.0635096
+    ]
+  },
+  {
+    "id": "acc-222",
+    "municipality": "Boavista",
+    "location": "Espargos, bairro comercial",
+    "sex": "Mulher",
+    "value": 55,
+    "position": [
+      -22.80958512820512,
+      16.132543076923074
+    ]
+  },
+  {
+    "id": "acc-223",
+    "municipality": "Santa Catarina",
+    "location": "Estrada de Palmeira",
+    "sex": "Homem",
+    "value": 52,
+    "position": [
+      -23.720205511811034,
+      15.089896062992118
+    ]
+  },
+  {
+    "id": "acc-224",
+    "municipality": "Brava",
+    "location": "Santa Maria, zona de restaurantes",
+    "sex": "Homem",
+    "value": 70,
+    "position": [
+      -24.6797726,
+      14.8180692
+    ]
+  },
+  {
+    "id": "acc-225",
+    "municipality": "Santa Catarina do Fogo",
+    "location": "Espargos, rotunda do aeroporto",
+    "sex": "Mulher",
+    "value": 49,
+    "position": [
+      -24.3593345,
+      14.922673
+    ]
+  },
+  {
+    "id": "acc-226",
+    "municipality": "Maio",
+    "location": "Santa Maria, Avenida dos Hotéis sul",
+    "sex": "Homem",
+    "value": 75,
+    "position": [
+      -23.1941991,
+      15.231786900000001
+    ]
+  },
+  {
+    "id": "acc-227",
+    "municipality": "Santa Cruz",
+    "location": "Espargos, rua principal",
+    "sex": "Homem",
+    "value": 64,
+    "position": [
+      -23.5403928,
+      15.066777400000001
+    ]
+  },
+  {
+    "id": "acc-228",
+    "municipality": "Mosteiros",
+    "location": "Estrada de Pedra Lume, salinas",
+    "sex": "Mulher",
+    "value": 43,
+    "position": [
+      -24.2880384,
+      14.9718806
+    ]
+  },
+  {
+    "id": "acc-229",
+    "municipality": "São Domingos",
+    "location": "Santa Maria, cruzamento centro",
+    "sex": "Homem",
+    "value": 72,
+    "position": [
+      -23.495031,
+      15.0781625
+    ]
+  },
+  {
+    "id": "acc-230",
+    "municipality": "Maio",
+    "location": "Espargos, zona industrial",
+    "sex": "Homem",
+    "value": 56,
+    "position": [
+      -23.133713699999998,
+      15.1628323
+    ]
+  },
+  {
+    "id": "acc-231",
+    "municipality": "São Domingos",
+    "location": "Sal Rei, rua comercial",
+    "sex": "Homem",
+    "value": 53,
+    "position": [
+      -23.4567012,
+      14.9810804
+    ]
+  },
+  {
+    "id": "acc-232",
+    "municipality": "Mosteiros",
+    "location": "Rabil, estrada do aeroporto",
+    "sex": "Mulher",
+    "value": 42,
+    "position": [
+      -24.3391689,
+      15.0273251
+    ]
+  },
+  {
+    "id": "acc-233",
+    "municipality": "São Filipe",
+    "location": "Sal Rei, zona balnear",
+    "sex": "Homem",
+    "value": 51,
+    "position": [
+      -24.45485,
+      14.90614
+    ]
+  },
+  {
+    "id": "acc-234",
+    "municipality": "Paul",
+    "location": "Estrada de Cabo Santa Maria",
+    "sex": "Homem",
+    "value": 39,
+    "position": [
+      -25.0401332,
+      17.1177136
+    ]
+  },
+  {
+    "id": "acc-235",
+    "municipality": "São Lourenço dos Órgãos",
+    "location": "Rabil, rotunda central",
+    "sex": "Mulher",
+    "value": 38,
+    "position": [
+      -23.577593999999998,
+      15.058684
+    ]
+  },
+  {
+    "id": "acc-236",
+    "municipality": "Porto Novo",
+    "location": "Sal Rei, acesso ao porto",
+    "sex": "Homem",
+    "value": 47,
+    "position": [
+      -25.20882108433736,
+      17.009618072289154
+    ]
+  },
+  {
+    "id": "acc-237",
+    "municipality": "São Miguel",
+    "location": "Bairro de Fundo das Figueiras",
+    "sex": "Homem",
+    "value": 35,
+    "position": [
+      -23.668714,
+      15.218696
+    ]
+  },
+  {
+    "id": "acc-238",
+    "municipality": "Praia",
+    "location": "Estrada de Norte",
+    "sex": "Mulher",
+    "value": 32,
+    "position": [
+      -23.5431108,
+      14.9500753
+    ]
+  },
+  {
+    "id": "acc-239",
+    "municipality": "São Salvador do Mundo",
+    "location": "Sal Rei, rotunda principal",
+    "sex": "Homem",
+    "value": 49,
+    "position": [
+      -23.640187,
+      15.0923025
+    ]
+  },
+  {
+    "id": "acc-240",
+    "municipality": "Praia",
+    "location": "Rabil, zona escolar",
+    "sex": "Homem",
+    "value": 44,
+    "position": [
+      -23.5174032,
+      14.9680822
+    ]
+  },
+  {
+    "id": "acc-241",
+    "municipality": "São Miguel",
+    "location": "Assomada, zona comercial",
+    "sex": "Homem",
+    "value": 65,
+    "position": [
+      -23.671419,
+      15.181191
+    ]
+  },
+  {
+    "id": "acc-242",
+    "municipality": "Ribeira Brava",
+    "location": "Estrada de Achada Falcão",
+    "sex": "Mulher",
+    "value": 41,
+    "position": [
+      -24.277407200000003,
+      16.570191899999998
+    ]
+  },
+  {
+    "id": "acc-243",
+    "municipality": "São Salvador do Mundo",
+    "location": "Assomada, bairro de Cobon",
+    "sex": "Homem",
+    "value": 58,
+    "position": [
+      -23.640187,
+      15.1105125
+    ]
+  },
+  {
+    "id": "acc-244",
+    "municipality": "Ribeira Grande",
+    "location": "EN1-ST-01, curva perigosa",
+    "sex": "Homem",
+    "value": 63,
+    "position": [
+      -25.0805224,
+      17.108072200000002
+    ]
+  },
+  {
+    "id": "acc-245",
+    "municipality": "São Vicente",
+    "location": "Bairro de Achada Costa",
+    "sex": "Mulher",
+    "value": 39,
+    "position": [
+      -24.887593832599112,
+      16.816133480176216
+    ]
+  },
+  {
+    "id": "acc-246",
+    "municipality": "Ribeira Grande",
+    "location": "Assomada, rotunda do mercado",
+    "sex": "Homem",
+    "value": 60,
+    "position": [
+      -25.1636032,
+      17.146102600000003
+    ]
+  },
+  {
+    "id": "acc-247",
+    "municipality": "Tarrafal",
+    "location": "Estrada de Ribeira da Barca",
+    "sex": "Homem",
+    "value": 46,
+    "position": [
+      -23.734405,
+      15.275896
+    ]
+  },
+  {
+    "id": "acc-248",
+    "municipality": "Ribeira Grande Santiago",
+    "location": "Assomada, zona residencial",
+    "sex": "Mulher",
+    "value": 42,
+    "position": [
+      -23.62734810126583,
+      14.956611392405069
+    ]
+  },
+  {
+    "id": "acc-249",
+    "municipality": "Tarrafal de São Nicolau",
+    "location": "Estrada de Pico da Antónia",
+    "sex": "Homem",
+    "value": 50,
+    "position": [
+      -24.3201968,
+      16.5511052
+    ]
+  },
+  {
+    "id": "acc-250",
+    "municipality": "Ribeira Grande Santiago",
+    "location": "Bairro de Fundura",
+    "sex": "Homem",
+    "value": 44,
+    "position": [
+      -23.6659336,
+      14.9711248
+    ]
+  },
+  {
+    "id": "acc-251",
+    "municipality": "Tarrafal de São Nicolau",
+    "location": "Bairro da Várzea, zona comercial",
+    "sex": "Homem",
+    "value": 84,
+    "position": [
+      -24.314456,
+      16.502641999999998
+    ]
+  },
+  {
+    "id": "acc-252",
+    "municipality": "Sal",
+    "location": "Rotunda 1º de Maio, Fazenda",
+    "sex": "Mulher",
+    "value": 60,
+    "position": [
+      -22.964268399999998,
+      16.7895629
+    ]
+  },
+  {
+    "id": "acc-253",
+    "municipality": "Tarrafal de São Nicolau",
+    "location": "Avenida Marginal, Gamboa norte",
+    "sex": "Homem",
+    "value": 67,
+    "position": [
+      -24.309214400000002,
+      16.5678956
+    ]
+  },
+  {
+    "id": "acc-254",
+    "municipality": "Santa Catarina",
+    "location": "Bairro de Achadinha Pires",
+    "sex": "Homem",
+    "value": 55,
+    "position": [
+      -23.7334293,
+      15.095999200000001
+    ]
+  },
+  {
+    "id": "acc-255",
+    "municipality": "Boavista",
+    "location": "Estrada de Palmarejo, rotunda",
+    "sex": "Mulher",
+    "value": 53,
+    "position": [
+      -22.862418,
+      16.114001000000002
+    ]
+  },
+  {
+    "id": "acc-256",
+    "municipality": "Santa Catarina do Fogo",
+    "location": "Bairro de Quebra Canela",
+    "sex": "Homem",
+    "value": 48,
+    "position": [
+      -24.3146738,
+      14.905465600000001
+    ]
+  },
+  {
+    "id": "acc-257",
+    "municipality": "Brava",
+    "location": "Avenida Cidade de Lisboa, Homem de Pedra",
+    "sex": "Homem",
+    "value": 93,
+    "position": [
+      -24.743570000000002,
+      14.849328
+    ]
+  },
+  {
+    "id": "acc-258",
+    "municipality": "Santa Cruz",
+    "location": "Bairro de São Pedro Latada",
+    "sex": "Mulher",
+    "value": 40,
+    "position": [
+      -23.617343400000003,
+      15.1271212
+    ]
+  },
+  {
+    "id": "acc-259",
+    "municipality": "Maio",
+    "location": "Rotunda de Vila Nova, acesso norte",
+    "sex": "Homem",
+    "value": 78,
+    "position": [
+      -23.1174966,
+      15.1895944
+    ]
+  },
+  {
+    "id": "acc-260",
+    "municipality": "Santa Catarina do Fogo",
+    "location": "Bairro de Trindade",
+    "sex": "Homem",
+    "value": 52,
+    "position": [
+      -24.32968888888889,
+      14.937700000000003
+    ]
+  },
+  {
+    "id": "acc-261",
+    "municipality": "Maio",
+    "location": "Mindelo, bairro de Fonte Cónego",
+    "sex": "Homem",
+    "value": 64,
+    "position": [
+      -23.2146531,
+      15.2703629
+    ]
+  },
+  {
+    "id": "acc-262",
+    "municipality": "Santa Cruz",
+    "location": "Estrada de São Pedro, ponte",
+    "sex": "Mulher",
+    "value": 46,
+    "position": [
+      -23.5906746,
+      15.1125088
+    ]
+  },
+  {
+    "id": "acc-263",
+    "municipality": "Mosteiros",
+    "location": "Mindelo, Avenida Marginal oeste",
+    "sex": "Homem",
+    "value": 72,
+    "position": [
+      -24.364332,
+      15.005447
+    ]
+  },
+  {
+    "id": "acc-264",
+    "municipality": "São Domingos",
+    "location": "Bairro de Ribeira Julião",
+    "sex": "Homem",
+    "value": 55,
+    "position": [
+      -23.48483925233645,
+      15.031448598130847
+    ]
+  },
+  {
+    "id": "acc-265",
+    "municipality": "Paul",
+    "location": "Estrada do Calhau, curva",
+    "sex": "Mulher",
+    "value": 50,
+    "position": [
+      -24.9697982,
+      17.1151536
+    ]
+  },
+  {
+    "id": "acc-266",
+    "municipality": "São Filipe",
+    "location": "Mindelo, Praça Estrela",
+    "sex": "Homem",
+    "value": 69,
+    "position": [
+      -24.44211,
+      14.983748
+    ]
+  },
+  {
+    "id": "acc-267",
+    "municipality": "Porto Novo",
+    "location": "Bairro de Monte Sossego",
+    "sex": "Homem",
+    "value": 58,
+    "position": [
+      -25.2092726,
+      17.0432427
+    ]
+  },
+  {
+    "id": "acc-268",
+    "municipality": "São Lourenço dos Órgãos",
+    "location": "Estrada de Lazareto, praia",
+    "sex": "Mulher",
+    "value": 45,
+    "position": [
+      -23.6087958,
+      15.0775266
+    ]
+  },
+  {
+    "id": "acc-269",
+    "municipality": "Praia",
+    "location": "Mindelo, rua de Santo António",
+    "sex": "Homem",
+    "value": 62,
+    "position": [
+      -23.5371168,
+      14.9822638
+    ]
+  },
+  {
+    "id": "acc-270",
+    "municipality": "São Lourenço dos Órgãos",
+    "location": "Bairro de Matiota",
+    "sex": "Homem",
+    "value": 53,
+    "position": [
+      -23.6213078,
+      15.0675106
+    ]
+  },
+  {
+    "id": "acc-271",
+    "municipality": "Porto Novo",
+    "location": "Santa Maria, rua principal norte",
+    "sex": "Homem",
+    "value": 68,
+    "position": [
+      -25.244619,
+      17.0224415
+    ]
+  },
+  {
+    "id": "acc-272",
+    "municipality": "São Miguel",
+    "location": "Espargos, zona residencial",
+    "sex": "Mulher",
+    "value": 51,
+    "position": [
+      -23.6491298,
+      15.239583399999999
+    ]
+  },
+  {
+    "id": "acc-273",
+    "municipality": "Praia",
+    "location": "Estrada de Terra Boa",
+    "sex": "Homem",
+    "value": 48,
+    "position": [
+      -23.5724148,
+      14.9575393
+    ]
+  },
+  {
+    "id": "acc-274",
+    "municipality": "São Salvador do Mundo",
+    "location": "Santa Maria, acesso à praia",
+    "sex": "Homem",
+    "value": 73,
+    "position": [
+      -23.6145838,
+      15.1126977
+    ]
+  },
+  {
+    "id": "acc-275",
+    "municipality": "Ribeira Brava",
+    "location": "Espargos, rotunda central",
+    "sex": "Mulher",
+    "value": 54,
+    "position": [
+      -24.2266136,
+      16.5992352
+    ]
+  },
+  {
+    "id": "acc-276",
+    "municipality": "São Salvador do Mundo",
+    "location": "Santa Maria, zona hoteleira",
+    "sex": "Homem",
+    "value": 71,
+    "position": [
+      -23.6363008,
+      15.0953982
+    ]
+  },
+  {
+    "id": "acc-277",
+    "municipality": "Ribeira Grande",
+    "location": "Espargos, bairro de Fontona",
+    "sex": "Homem",
+    "value": 59,
+    "position": [
+      -25.2095494,
+      17.1187057
+    ]
+  },
+  {
+    "id": "acc-278",
+    "municipality": "São Vicente",
+    "location": "Estrada de Palmeira, cruzamento",
+    "sex": "Mulher",
+    "value": 44,
+    "position": [
+      -24.953336399999998,
+      16.849404
+    ]
+  },
+  {
+    "id": "acc-279",
+    "municipality": "Ribeira Grande Santiago",
+    "location": "Santa Maria, rotunda principal",
+    "sex": "Homem",
+    "value": 74,
+    "position": [
+      -23.62734810126583,
+      14.956611392405069
+    ]
+  },
+  {
+    "id": "acc-280",
+    "municipality": "São Vicente",
+    "location": "Espargos, zona militar",
+    "sex": "Homem",
+    "value": 52,
+    "position": [
+      -24.887593832599112,
+      16.816133480176216
+    ]
+  },
+  {
+    "id": "acc-281",
+    "municipality": "Ribeira Grande",
+    "location": "Sal Rei, bairro residencial",
+    "sex": "Homem",
+    "value": 50,
+    "position": [
+      -25.0943692,
+      17.0998156
+    ]
+  },
+  {
+    "id": "acc-282",
+    "municipality": "Tarrafal",
+    "location": "Rabil, zona rural",
+    "sex": "Mulher",
+    "value": 36,
+    "position": [
+      -23.6955298,
+      15.3251536
+    ]
+  },
+  {
+    "id": "acc-283",
+    "municipality": "Ribeira Grande Santiago",
+    "location": "Sal Rei, estrada litoral",
+    "sex": "Homem",
+    "value": 48,
+    "position": [
+      -23.6364613,
+      14.9936044
+    ]
+  },
+  {
+    "id": "acc-284",
+    "municipality": "Tarrafal de São Nicolau",
+    "location": "Estrada de Varandinha",
+    "sex": "Homem",
+    "value": 37,
+    "position": [
+      -24.3773552,
+      16.5972788
+    ]
+  },
+  {
+    "id": "acc-285",
+    "municipality": "Sal",
+    "location": "Rabil, estrada de Curral Velho",
+    "sex": "Mulher",
+    "value": 33,
+    "position": [
+      -22.9793728,
+      16.7563898
+    ]
+  },
+  {
+    "id": "acc-286",
+    "municipality": "Boavista",
+    "location": "Sal Rei, zona comercial",
+    "sex": "Homem",
+    "value": 54,
+    "position": [
+      -22.930132800000003,
+      16.0575428
+    ]
+  },
+  {
+    "id": "acc-287",
+    "municipality": "Santa Catarina",
+    "location": "Bairro de Povoação Velha",
+    "sex": "Homem",
+    "value": 34,
+    "position": [
+      -23.759302,
+      15.12758
+    ]
+  },
+  {
+    "id": "acc-288",
+    "municipality": "Brava",
+    "location": "Estrada de Norte, acesso",
+    "sex": "Mulher",
+    "value": 31,
+    "position": [
+      -24.690196551724142,
+      14.892840229885056
+    ]
+  },
+  {
+    "id": "acc-289",
+    "municipality": "Santa Catarina do Fogo",
+    "location": "Sal Rei, rotunda da praia",
+    "sex": "Homem",
+    "value": 46,
+    "position": [
+      -24.3323824,
+      14.942450800000001
+    ]
+  },
+  {
+    "id": "acc-290",
+    "municipality": "Boavista",
+    "location": "Rabil, cruzamento central",
+    "sex": "Homem",
+    "value": 41,
+    "position": [
+      -22.758526800000002,
+      16.2006218
+    ]
+  },
+  {
+    "id": "acc-291",
+    "municipality": "Santa Catarina do Fogo",
+    "location": "Assomada, estrada de Achada Leite",
+    "sex": "Homem",
+    "value": 56,
+    "position": [
+      -24.347950400000002,
+      14.9310268
+    ]
+  },
+  {
+    "id": "acc-292",
+    "municipality": "Brava",
+    "location": "Bairro de Achada Lagoa",
+    "sex": "Mulher",
+    "value": 38,
+    "position": [
+      -24.690196551724142,
+      14.892840229885056
+    ]
+  },
+  {
+    "id": "acc-293",
+    "municipality": "Santa Cruz",
+    "location": "Assomada, rotunda do hospital",
+    "sex": "Homem",
+    "value": 59,
+    "position": [
+      -23.5922025,
+      15.1516105
+    ]
+  },
+  {
+    "id": "acc-294",
+    "municipality": "Maio",
+    "location": "Estrada de Ribeira Seca",
+    "sex": "Homem",
+    "value": 47,
+    "position": [
+      -23.2187439,
+      15.1912821
+    ]
+  },
+  {
+    "id": "acc-295",
+    "municipality": "São Domingos",
+    "location": "Bairro de Cobon, zona escolar",
+    "sex": "Mulher",
+    "value": 40,
+    "position": [
+      -23.493045,
+      14.9951555
+    ]
+  },
+  {
+    "id": "acc-296",
+    "municipality": "Mosteiros",
+    "location": "EN1-ST-01, acesso sul",
+    "sex": "Homem",
+    "value": 53,
+    "position": [
+      -24.306652200000002,
+      14.9556968
+    ]
+  },
+  {
+    "id": "acc-297",
+    "municipality": "São Filipe",
+    "location": "Assomada, zona industrial",
+    "sex": "Homem",
+    "value": 49,
+    "position": [
+      -24.3918325,
+      14.966526
+    ]
+  },
+  {
+    "id": "acc-298",
+    "municipality": "Paul",
+    "location": "Estrada de Pico Leão",
+    "sex": "Mulher",
+    "value": 37,
+    "position": [
+      -25.0480524,
+      17.1099312
+    ]
+  },
+  {
+    "id": "acc-299",
+    "municipality": "São Filipe",
+    "location": "Bairro de Chão de Lagoa",
+    "sex": "Homem",
+    "value": 43,
+    "position": [
+      -24.45667,
+      14.904396
+    ]
+  },
+  {
+    "id": "acc-300",
+    "municipality": "Ribeira Brava",
+    "location": "Assomada, rua da Cultura",
+    "sex": "Homem",
+    "value": 55,
+    "position": [
+      -24.189520111731834,
+      16.58779106145252
+    ]
+  },
+  {
+    "id": "acc-301",
+    "municipality": "São Vicente",
+    "location": "Bairro de Zona do Aeroporto",
+    "sex": "Homem",
+    "value": 56,
+    "position": [
+      -25.023267599999997,
+      16.806496
+    ]
+  },
+  {
+    "id": "acc-302",
+    "municipality": "Ribeira Grande",
+    "location": "Avenida Cidade de Lisboa, acesso Fazenda",
+    "sex": "Mulher",
+    "value": 59,
+    "position": [
+      -25.1514348,
+      17.153358400000002
+    ]
+  },
+  {
+    "id": "acc-303",
+    "municipality": "Tarrafal",
+    "location": "Bairro de Lem Cachorro",
+    "sex": "Homem",
+    "value": 51,
+    "position": [
+      -23.72505631067961,
+      15.285237864077677
+    ]
+  },
+  {
+    "id": "acc-304",
+    "municipality": "Ribeira Grande Santiago",
+    "location": "Estrada de São Francisco de Baixo",
+    "sex": "Homem",
+    "value": 44,
+    "position": [
+      -23.6727349,
+      15.0130972
+    ]
+  },
+  {
+    "id": "acc-305",
+    "municipality": "Tarrafal de São Nicolau",
+    "location": "Rotunda de Caiada, acesso Palmarejo",
+    "sex": "Mulher",
+    "value": 48,
+    "position": [
+      -24.3162032,
+      16.5572108
+    ]
+  },
+  {
+    "id": "acc-306",
+    "municipality": "Sal",
+    "location": "Bairro de Monte Babosa",
+    "sex": "Homem",
+    "value": 39,
+    "position": [
+      -22.939217199999998,
+      16.7636717
+    ]
+  },
+  {
+    "id": "acc-307",
+    "municipality": "Boavista",
+    "location": "Avenida Combatentes da Pátria, rotunda",
+    "sex": "Homem",
+    "value": 70,
+    "position": [
+      -22.816038000000002,
+      16.152671
+    ]
+  },
+  {
+    "id": "acc-308",
+    "municipality": "Santa Catarina",
+    "location": "Bairro de Achada Eugénio Lima, zona comercial",
+    "sex": "Mulher",
+    "value": 50,
+    "position": [
+      -23.7551238,
+      15.0653272
+    ]
+  },
+  {
+    "id": "acc-309",
+    "municipality": "Brava",
+    "location": "EN1-ST-01, saída para Tarrafal",
+    "sex": "Homem",
+    "value": 68,
+    "position": [
+      -24.72548,
+      14.876748000000001
+    ]
+  },
+  {
+    "id": "acc-310",
+    "municipality": "Santa Catarina",
+    "location": "Bairro de Monte Pensamento",
+    "sex": "Homem",
+    "value": 46,
+    "position": [
+      -23.7241087,
+      15.1091768
+    ]
+  },
+  {
+    "id": "acc-311",
+    "municipality": "Boavista",
+    "location": "Mindelo, rua de França",
+    "sex": "Homem",
+    "value": 65,
+    "position": [
+      -22.953632000000002,
+      16.03795
+    ]
+  },
+  {
+    "id": "acc-312",
+    "municipality": "Santa Catarina do Fogo",
+    "location": "Estrada de Monte Verde, topo",
+    "sex": "Mulher",
+    "value": 43,
+    "position": [
+      -24.3749998,
+      14.9111776
+    ]
+  },
+  {
+    "id": "acc-313",
+    "municipality": "Brava",
+    "location": "Mindelo, bairro de Ribeira Fria",
+    "sex": "Homem",
+    "value": 57,
+    "position": [
+      -24.690196551724142,
+      14.892840229885056
+    ]
+  },
+  {
+    "id": "acc-314",
+    "municipality": "Santa Cruz",
+    "location": "Estrada do Calhau, rotunda",
+    "sex": "Homem",
+    "value": 61,
+    "position": [
+      -23.5698396,
+      15.1328038
+    ]
+  },
+  {
+    "id": "acc-315",
+    "municipality": "Maio",
+    "location": "Mindelo, Avenida Marginal este",
+    "sex": "Mulher",
+    "value": 49,
+    "position": [
+      -23.164832999999998,
+      15.280248
+    ]
+  },
+  {
+    "id": "acc-316",
+    "municipality": "São Domingos",
+    "location": "Bairro de Alto Mira",
+    "sex": "Homem",
+    "value": 54,
+    "position": [
+      -23.5971114,
+      15.0163283
+    ]
+  },
+  {
+    "id": "acc-317",
+    "municipality": "Mosteiros",
+    "location": "Estrada de São Pedro, acesso praia",
+    "sex": "Homem",
+    "value": 67,
+    "position": [
+      -24.341352,
+      14.955497000000001
+    ]
+  },
+  {
+    "id": "acc-318",
+    "municipality": "São Domingos",
+    "location": "Mindelo, rua da Praia",
+    "sex": "Mulher",
+    "value": 47,
+    "position": [
+      -23.4551124,
+      14.982042799999999
+    ]
+  },
+  {
+    "id": "acc-319",
+    "municipality": "Paul",
+    "location": "Bairro de Ribeira Bote, zona alta",
+    "sex": "Homem",
+    "value": 59,
+    "position": [
+      -24.970736,
+      17.114232
+    ]
+  },
+  {
+    "id": "acc-320",
+    "municipality": "São Domingos",
+    "location": "Estrada de Madeiral",
+    "sex": "Homem",
+    "value": 52,
+    "position": [
+      -23.6153826,
+      15.0052607
+    ]
+  },
+  {
+    "id": "acc-321",
+    "municipality": "Paul",
+    "location": "Santa Maria, rua da Igreja",
+    "sex": "Homem",
+    "value": 64,
+    "position": [
+      -25.00406382978723,
+      17.121376595744685
+    ]
+  },
+  {
+    "id": "acc-322",
+    "municipality": "São Filipe",
+    "location": "Espargos, bairro de Palmeira",
+    "sex": "Mulher",
+    "value": 46,
+    "position": [
+      -24.4091225,
+      14.949958
+    ]
+  },
+  {
+    "id": "acc-323",
+    "municipality": "Paul",
+    "location": "Estrada de Murdeira",
+    "sex": "Homem",
+    "value": 50,
+    "position": [
+      -25.019189,
+      17.138296
+    ]
+  },
+  {
+    "id": "acc-324",
+    "municipality": "São Lourenço dos Órgãos",
+    "location": "Santa Maria, zona de bares",
+    "sex": "Homem",
+    "value": 69,
+    "position": [
+      -23.6318648,
+      15.0590596
+    ]
+  },
+  {
+    "id": "acc-325",
+    "municipality": "Porto Novo",
+    "location": "Espargos, rotunda da polícia",
+    "sex": "Mulher",
+    "value": 48,
+    "position": [
+      -25.296485999999998,
+      16.991918
+    ]
+  },
+  {
+    "id": "acc-326",
+    "municipality": "São Miguel",
+    "location": "Santa Maria, estrada do farol",
+    "sex": "Homem",
+    "value": 62,
+    "position": [
+      -23.611909,
+      15.163881
+    ]
+  },
+  {
+    "id": "acc-327",
+    "municipality": "Praia",
+    "location": "Espargos, zona escolar",
+    "sex": "Homem",
+    "value": 55,
+    "position": [
+      -23.5163376,
+      14.9688286
+    ]
+  },
+  {
+    "id": "acc-328",
+    "municipality": "São Salvador do Mundo",
+    "location": "Estrada de Terra Boa, cruzamento",
+    "sex": "Mulher",
+    "value": 41,
+    "position": [
+      -23.6248708,
+      15.1045032
+    ]
+  },
+  {
+    "id": "acc-329",
+    "municipality": "Ribeira Brava",
+    "location": "Santa Maria, Avenida dos Hotéis norte",
+    "sex": "Homem",
+    "value": 67,
+    "position": [
+      -24.274565600000003,
+      16.5718167
+    ]
+  },
+  {
+    "id": "acc-330",
+    "municipality": "São Miguel",
+    "location": "Espargos, estrada do aeroporto",
+    "sex": "Homem",
+    "value": 58,
+    "position": [
+      -23.6496708,
+      15.2043864
+    ]
+  },
+  {
+    "id": "acc-331",
+    "municipality": "Ribeira Brava",
+    "location": "Sal Rei, estrada do farol",
+    "sex": "Homem",
+    "value": 45,
+    "position": [
+      -24.206012,
+      16.611015
+    ]
+  },
+  {
+    "id": "acc-332",
+    "municipality": "São Salvador do Mundo",
+    "location": "Rabil, zona de artesanato",
+    "sex": "Mulher",
+    "value": 35,
+    "position": [
+      -23.658779799999998,
+      15.0774917
+    ]
+  },
+  {
+    "id": "acc-333",
+    "municipality": "Ribeira Grande",
+    "location": "Sal Rei, rua do Porto",
+    "sex": "Homem",
+    "value": 49,
+    "position": [
+      -25.197381,
+      17.125961500000003
+    ]
+  },
+  {
+    "id": "acc-334",
+    "municipality": "São Vicente",
+    "location": "Estrada de Cabo Santa Maria, areal",
+    "sex": "Homem",
+    "value": 36,
+    "position": [
+      -24.887593832599112,
+      16.816133480176216
+    ]
+  },
+  {
+    "id": "acc-335",
+    "municipality": "Ribeira Grande Santiago",
+    "location": "Rabil, acesso ao aeroporto",
+    "sex": "Mulher",
+    "value": 37,
+    "position": [
+      -23.5808143,
+      14.9260084
+    ]
+  },
+  {
+    "id": "acc-336",
+    "municipality": "Tarrafal",
+    "location": "Sal Rei, rotunda do mercado",
+    "sex": "Homem",
+    "value": 51,
+    "position": [
+      -23.7111493,
+      15.3053626
+    ]
+  },
+  {
+    "id": "acc-337",
+    "municipality": "Sal",
+    "location": "Bairro de Fundo das Figueiras, centro",
+    "sex": "Homem",
+    "value": 33,
+    "position": [
+      -22.966110399999998,
+      16.7046074
+    ]
+  },
+  {
+    "id": "acc-338",
+    "municipality": "Tarrafal de São Nicolau",
+    "location": "Estrada de Norte, rotunda",
+    "sex": "Mulher",
+    "value": 30,
+    "position": [
+      -24.3794768,
+      16.6512752
+    ]
+  },
+  {
+    "id": "acc-339",
+    "municipality": "Santa Catarina",
+    "location": "Sal Rei, zona escolar",
+    "sex": "Homem",
+    "value": 43,
+    "position": [
+      -23.7683012,
+      15.1148568
+    ]
+  },
+  {
+    "id": "acc-340",
+    "municipality": "Tarrafal de São Nicolau",
+    "location": "Rabil, estrada principal",
+    "sex": "Homem",
+    "value": 39,
+    "position": [
+      -24.365321052631582,
+      16.588785526315792
+    ]
+  },
+  {
+    "id": "acc-341",
+    "municipality": "Sal",
+    "location": "Vila do Maio, rua principal",
+    "sex": "Homem",
+    "value": 43,
+    "position": [
+      -22.8997984,
+      16.6614554
+    ]
+  },
+  {
+    "id": "acc-342",
+    "municipality": "Boavista",
+    "location": "Vila do Maio, zona portuária",
+    "sex": "Mulher",
+    "value": 35,
+    "position": [
+      -22.809854,
+      15.977367
+    ]
+  },
+  {
+    "id": "acc-343",
+    "municipality": "Santa Catarina",
+    "location": "Estrada de Porto Inglês",
+    "sex": "Homem",
+    "value": 38,
+    "position": [
+      -23.7011286,
+      15.1416664
+    ]
+  },
+  {
+    "id": "acc-344",
+    "municipality": "Brava",
+    "location": "Bairro de Cascabulho",
+    "sex": "Homem",
+    "value": 31,
+    "position": [
+      -24.690196551724142,
+      14.892840229885056
+    ]
+  },
+  {
+    "id": "acc-345",
+    "municipality": "Santa Catarina do Fogo",
+    "location": "Vila do Maio, rotunda central",
+    "sex": "Mulher",
+    "value": 33,
+    "position": [
+      -24.361085900000003,
+      14.9213878
+    ]
+  },
+  {
+    "id": "acc-346",
+    "municipality": "Brava",
+    "location": "Estrada de Morro",
+    "sex": "Homem",
+    "value": 29,
+    "position": [
+      -24.7193294,
+      14.8860708
+    ]
+  },
+  {
+    "id": "acc-347",
+    "municipality": "Santa Cruz",
+    "location": "Bairro de Calheta",
+    "sex": "Homem",
+    "value": 27,
+    "position": [
+      -23.5444209,
+      15.0628537
+    ]
+  },
+  {
+    "id": "acc-348",
+    "municipality": "Maio",
+    "location": "EN1-MA-01, acesso sul",
+    "sex": "Mulher",
+    "value": 28,
+    "position": [
+      -23.182365,
+      15.323646
+    ]
+  },
+  {
+    "id": "acc-349",
+    "municipality": "São Domingos",
+    "location": "Vila do Maio, zona comercial",
+    "sex": "Homem",
+    "value": 37,
+    "position": [
+      -23.4986058,
+      15.075997099999999
+    ]
+  },
+  {
+    "id": "acc-350",
+    "municipality": "Maio",
+    "location": "Estrada de Ribeira Dom João",
+    "sex": "Homem",
+    "value": 26,
+    "position": [
+      -23.1379506,
+      15.1558404
+    ]
+  },
+  {
+    "id": "acc-351",
+    "municipality": "Santa Cruz",
+    "location": "Ponta do Sol, rua principal",
+    "sex": "Homem",
+    "value": 44,
+    "position": [
+      -23.5627557,
+      15.1397041
+    ]
+  },
+  {
+    "id": "acc-352",
+    "municipality": "Mosteiros",
+    "location": "Ponta do Sol, zona portuária",
+    "sex": "Mulher",
+    "value": 36,
+    "position": [
+      -24.3412371,
+      15.025526900000001
+    ]
+  },
+  {
+    "id": "acc-353",
+    "municipality": "São Domingos",
+    "location": "Estrada de Sinagoga",
+    "sex": "Homem",
+    "value": 39,
+    "position": [
+      -23.586982799999998,
+      15.0224636
+    ]
+  },
+  {
+    "id": "acc-354",
+    "municipality": "Paul",
+    "location": "Bairro de Cruzinha",
+    "sex": "Homem",
+    "value": 32,
+    "position": [
+      -25.0420088,
+      17.1158704
+    ]
+  },
+  {
+    "id": "acc-355",
+    "municipality": "São Filipe",
+    "location": "Ponta do Sol, rotunda central",
+    "sex": "Mulher",
+    "value": 34,
+    "position": [
+      -24.3226725,
+      14.880198
+    ]
+  },
+  {
+    "id": "acc-356",
+    "municipality": "Porto Novo",
+    "location": "Estrada de Monte Trigo",
+    "sex": "Homem",
+    "value": 30,
+    "position": [
+      -25.1320484,
+      17.0886888
+    ]
+  },
+  {
+    "id": "acc-357",
+    "municipality": "São Lourenço dos Órgãos",
+    "location": "Bairro de Chã de Igreja",
+    "sex": "Homem",
+    "value": 28,
+    "position": [
+      -23.593077599999997,
+      15.0901092
+    ]
+  },
+  {
+    "id": "acc-358",
+    "municipality": "Praia",
+    "location": "EN1-SA-01, acesso sul",
+    "sex": "Mulher",
+    "value": 31,
+    "position": [
+      -23.5455084,
+      14.9483959
+    ]
+  },
+  {
+    "id": "acc-359",
+    "municipality": "São Miguel",
+    "location": "Ponta do Sol, zona comercial",
+    "sex": "Homem",
+    "value": 38,
+    "position": [
+      -23.6560546,
+      15.1975778
+    ]
+  },
+  {
+    "id": "acc-360",
+    "municipality": "Porto Novo",
+    "location": "Estrada de Fontainhas",
+    "sex": "Homem",
+    "value": 27,
+    "position": [
+      -25.1673948,
+      17.0678876
+    ]
+  },
+  {
+    "id": "acc-361",
+    "municipality": "São Miguel",
+    "location": "Vila das Pombas, rua principal",
+    "sex": "Homem",
+    "value": 39,
+    "position": [
+      -23.6733666,
+      15.1791138
+    ]
+  },
+  {
+    "id": "acc-362",
+    "municipality": "Praia",
+    "location": "Vila das Pombas, zona agrícola",
+    "sex": "Mulher",
+    "value": 31,
+    "position": [
+      -23.5577628,
+      14.9398123
+    ]
+  },
+  {
+    "id": "acc-363",
+    "municipality": "São Salvador do Mundo",
+    "location": "Estrada de Ribeira Grande",
+    "sex": "Homem",
+    "value": 34,
+    "position": [
+      -23.6423968,
+      15.1087522
+    ]
+  },
+  {
+    "id": "acc-364",
+    "municipality": "Ribeira Brava",
+    "location": "Bairro de Pombas",
+    "sex": "Homem",
+    "value": 28,
+    "position": [
+      -24.189520111731834,
+      16.58779106145252
+    ]
+  },
+  {
+    "id": "acc-365",
+    "municipality": "São Vicente",
+    "location": "Vila das Pombas, rotunda central",
+    "sex": "Mulher",
+    "value": 30,
+    "position": [
+      -24.887593832599112,
+      16.816133480176216
+    ]
+  },
+  {
+    "id": "acc-366",
+    "municipality": "Ribeira Grande",
+    "location": "Estrada de Santo António",
+    "sex": "Homem",
+    "value": 26,
+    "position": [
+      -25.1673796,
+      17.143850800000003
+    ]
+  },
+  {
+    "id": "acc-367",
+    "municipality": "Tarrafal",
+    "location": "Bairro de Figueiral",
+    "sex": "Homem",
+    "value": 25,
+    "position": [
+      -23.7364876,
+      15.2732572
+    ]
+  },
+  {
+    "id": "acc-368",
+    "municipality": "Ribeira Grande Santiago",
+    "location": "EN1-PA-01, acesso norte",
+    "sex": "Mulher",
+    "value": 27,
+    "position": [
+      -23.62734810126583,
+      14.956611392405069
+    ]
+  },
+  {
+    "id": "acc-369",
+    "municipality": "Tarrafal de São Nicolau",
+    "location": "Vila das Pombas, zona comercial",
+    "sex": "Homem",
+    "value": 33,
+    "position": [
+      -24.4045616,
+      16.6129244
+    ]
+  },
+  {
+    "id": "acc-370",
+    "municipality": "Ribeira Grande Santiago",
+    "location": "Estrada de Lombo",
+    "sex": "Homem",
+    "value": 24,
+    "position": [
+      -23.669643399999998,
+      14.9682952
+    ]
+  },
+  {
+    "id": "acc-371",
+    "municipality": "Tarrafal",
+    "location": "EN1-SA-01, acesso ao Porto Novo",
+    "sex": "Homem",
+    "value": 66,
+    "position": [
+      -23.7113807,
+      15.202449399999999
+    ]
+  },
+  {
+    "id": "acc-372",
+    "municipality": "Sal",
+    "location": "Porto Novo, rua principal",
+    "sex": "Mulher",
+    "value": 48,
+    "position": [
+      -22.924849599999998,
+      16.7952266
+    ]
+  },
+  {
+    "id": "acc-373",
+    "municipality": "Tarrafal de São Nicolau",
+    "location": "Estrada de Ribeira das Patas",
+    "sex": "Homem",
+    "value": 52,
+    "position": [
+      -24.3128336,
+      16.5623624
+    ]
+  },
+  {
+    "id": "acc-374",
+    "municipality": "Santa Catarina",
+    "location": "Bairro de Alto Mira",
+    "sex": "Homem",
+    "value": 44,
+    "position": [
+      -23.7363219,
+      15.091909600000001
+    ]
+  },
+  {
+    "id": "acc-375",
+    "municipality": "Boavista",
+    "location": "Porto Novo, rotunda central",
+    "sex": "Mulher",
+    "value": 45,
+    "position": [
+      -22.867983600000002,
+      16.1093606
+    ]
+  },
+  {
+    "id": "acc-376",
+    "municipality": "Santa Catarina",
+    "location": "Estrada de Chã de Norte",
+    "sex": "Homem",
+    "value": 40,
+    "position": [
+      -23.720205511811034,
+      15.089896062992118
+    ]
+  },
+  {
+    "id": "acc-377",
+    "municipality": "Brava",
+    "location": "Bairro de Lombo Branco",
+    "sex": "Homem",
+    "value": 37,
+    "position": [
+      -24.690196551724142,
+      14.892840229885056
+    ]
+  },
+  {
+    "id": "acc-378",
+    "municipality": "Santa Catarina do Fogo",
+    "location": "EN1-SA-01, zona portuária",
+    "sex": "Mulher",
+    "value": 42,
+    "position": [
+      -24.3758755,
+      14.931955
+    ]
+  },
+  {
+    "id": "acc-379",
+    "municipality": "Maio",
+    "location": "Porto Novo, zona comercial",
+    "sex": "Homem",
+    "value": 49,
+    "position": [
+      -23.1759366,
+      15.2619244
+    ]
+  },
+  {
+    "id": "acc-380",
+    "municipality": "Santa Catarina do Fogo",
+    "location": "Estrada de Monte Leste",
+    "sex": "Homem",
+    "value": 35,
+    "position": [
+      -24.3283931,
+      14.9453782
+    ]
+  },
+  {
+    "id": "acc-381",
+    "municipality": "Brava",
+    "location": "Bairro de Achada Mato",
+    "sex": "Homem",
+    "value": 47,
+    "position": [
+      -24.690196551724142,
+      14.892840229885056
+    ]
+  },
+  {
+    "id": "acc-382",
+    "municipality": "Santa Cruz",
+    "location": "Avenida Cidade de Lisboa, rotunda da Várzea",
+    "sex": "Mulher",
+    "value": 61,
+    "position": [
+      -23.51928,
+      15.087343
+    ]
+  },
+  {
+    "id": "acc-383",
+    "municipality": "Maio",
+    "location": "Bairro de Paiol, zona residencial",
+    "sex": "Homem",
+    "value": 43,
+    "position": [
+      -23.1893778,
+      15.239743200000001
+    ]
+  },
+  {
+    "id": "acc-384",
+    "municipality": "São Domingos",
+    "location": "Estrada de São Tomé",
+    "sex": "Homem",
+    "value": 41,
+    "position": [
+      -23.4318762,
+      14.9961179
+    ]
+  },
+  {
+    "id": "acc-385",
+    "municipality": "Mosteiros",
+    "location": "Rotunda de Ponta de Água, acesso norte",
+    "sex": "Mulher",
+    "value": 52,
+    "position": [
+      -24.29769,
+      14.993459
+    ]
+  },
+  {
+    "id": "acc-386",
+    "municipality": "São Filipe",
+    "location": "Bairro de Monteagarro",
+    "sex": "Homem",
+    "value": 38,
+    "position": [
+      -24.3684,
+      14.83638
+    ]
+  },
+  {
+    "id": "acc-387",
+    "municipality": "Paul",
+    "location": "Avenida Amílcar Cabral, zona histórica",
+    "sex": "Homem",
+    "value": 72,
+    "position": [
+      -25.0271082,
+      17.1305136
+    ]
+  },
+  {
+    "id": "acc-388",
+    "municipality": "São Lourenço dos Órgãos",
+    "location": "Bairro de Calabaceira, zona rural",
+    "sex": "Mulher",
+    "value": 39,
+    "position": [
+      -23.6102034,
+      15.076399799999999
+    ]
+  },
+  {
+    "id": "acc-389",
+    "municipality": "Porto Novo",
+    "location": "EN1-ST-05, acesso Cidade Velha",
+    "sex": "Homem",
+    "value": 59,
+    "position": [
+      -25.2284826,
+      17.0997677
+    ]
+  },
+  {
+    "id": "acc-390",
+    "municipality": "São Filipe",
+    "location": "Bairro de Achada Grande Frente, rotunda",
+    "sex": "Homem",
+    "value": 63,
+    "position": [
+      -24.447342499999998,
+      14.913334
+    ]
+  },
+  {
+    "id": "acc-391",
+    "municipality": "Porto Novo",
+    "location": "Mindelo, bairro de Alto São Nicolau",
+    "sex": "Homem",
+    "value": 60,
+    "position": [
+      -25.2515346,
+      17.0183717
+    ]
+  },
+  {
+    "id": "acc-392",
+    "municipality": "São Lourenço dos Órgãos",
+    "location": "Estrada de São Pedro, rotunda",
+    "sex": "Mulher",
+    "value": 44,
+    "position": [
+      -23.585023,
+      15.052737
+    ]
+  },
+  {
+    "id": "acc-393",
+    "municipality": "Praia",
+    "location": "Mindelo, rua de Angola",
+    "sex": "Homem",
+    "value": 66,
+    "position": [
+      -23.500753200000002,
+      14.979744700000001
+    ]
+  },
+  {
+    "id": "acc-394",
+    "municipality": "São Miguel",
+    "location": "Bairro de Ribeira Julião, zona baixa",
+    "sex": "Homem",
+    "value": 56,
+    "position": [
+      -23.6089876,
+      15.1669968
+    ]
+  },
+  {
+    "id": "acc-395",
+    "municipality": "Ribeira Brava",
+    "location": "Estrada do Calhau, zona balnear",
+    "sex": "Mulher",
+    "value": 48,
+    "position": [
+      -24.233007200000003,
+      16.5955794
+    ]
+  },
+  {
+    "id": "acc-396",
+    "municipality": "São Salvador do Mundo",
+    "location": "Mindelo, Praça da República",
+    "sex": "Homem",
+    "value": 71,
+    "position": [
+      -23.6376724,
+      15.0943056
+    ]
+  },
+  {
+    "id": "acc-397",
+    "municipality": "Ribeira Grande",
+    "location": "Bairro de Monte Sossego, zona alta",
+    "sex": "Homem",
+    "value": 55,
+    "position": [
+      -25.2133258,
+      17.1164539
+    ]
+  },
+  {
+    "id": "acc-398",
+    "municipality": "São Vicente",
+    "location": "Estrada de Lazareto, rotunda",
+    "sex": "Mulher",
+    "value": 43,
+    "position": [
+      -24.968248199999998,
+      16.8402545
+    ]
+  },
+  {
+    "id": "acc-399",
+    "municipality": "Ribeira Grande",
+    "location": "Mindelo, rua de Moçambique",
+    "sex": "Homem",
+    "value": 63,
+    "position": [
+      -25.132607272727277,
+      17.15350909090909
+    ]
+  },
+  {
+    "id": "acc-400",
+    "municipality": "Ribeira Grande",
+    "location": "Bairro de Matiota, praia",
+    "sex": "Homem",
+    "value": 51,
+    "position": [
+      -25.1793382,
+      17.1367201
+    ]
+  }
+]

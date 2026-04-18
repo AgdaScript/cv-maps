@@ -1,6 +1,7 @@
 "use client";
 
 import { caboverde } from "@/lib/caboverde";
+import accidentsScatterData from "@/data/traffic-accidents-scatter.json";
 import type {
   ClusterIconPoint,
   ExpandedIconPoint,
@@ -168,47 +169,23 @@ export function buildMarkerPoints(): MarkerPoint[] {
   }));
 }
 
-export function buildScatterPoints(pointsPerMunicipality: number): ScatterPoint[] {
-  const points: ScatterPoint[] = [];
+export function buildScatterPoints(accidentLimit: number): ScatterPoint[] {
+  const normalized = (accidentsScatterData as ScatterPoint[]).filter((item) => {
+    const validSex = item.sex === "Homem" || item.sex === "Mulher";
+    const [lng, lat] = item.position ?? [];
+    return (
+      typeof item.id === "string" &&
+      typeof item.municipality === "string" &&
+      typeof item.location === "string" &&
+      validSex &&
+      Number.isFinite(item.value) &&
+      Number.isFinite(lng) &&
+      Number.isFinite(lat)
+    );
+  });
 
-  for (const feature of caboverde.features) {
-    const center = municipalityCenter(feature);
-    const name = feature.properties.NAME_1;
-    const bbox = geometryBoundingBox(feature);
-
-    for (let i = 0; i < pointsPerMunicipality; i += 1) {
-      const seed = `${name}-${i}`;
-      const value = 20 + Math.round(hashToUnit(`${seed}-val`) * 80);
-      let candidate: Position = center;
-      let found = false;
-
-      for (let attempt = 0; attempt < 18; attempt += 1) {
-        const lngUnit = hashToUnit(`${seed}-lng-${attempt}`);
-        const latUnit = hashToUnit(`${seed}-lat-${attempt}`);
-        candidate = [
-          bbox.minLng + lngUnit * (bbox.maxLng - bbox.minLng),
-          bbox.minLat + latUnit * (bbox.maxLat - bbox.minLat),
-        ];
-
-        if (pointInFeature(candidate, feature)) {
-          found = true;
-          break;
-        }
-      }
-
-      if (!found) {
-        candidate = center;
-      }
-
-      points.push({
-        municipality: name,
-        value,
-        position: candidate,
-      });
-    }
-  }
-
-  return points;
+  const safeLimit = Math.max(1, Math.floor(accidentLimit));
+  return normalized.slice(0, safeLimit);
 }
 
 export function buildClusterIconPoints(
