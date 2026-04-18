@@ -51,7 +51,7 @@ const INITIAL_MAP_STATE: MapState = {
   municipalityLineWidth: 2,
   municipalityColor: "#22d3ee",
   municipioBorderSameAsFill: false,
-  municipioBorderInvisible: false,
+  municipioBorderInvisible: true,
   municipioBorderColor: "#ffffff",
   municipioValueMinFilter: MUNICIPIOS_FILTER_LIMITS.min,
   municipioValueMaxFilter: MUNICIPIOS_FILTER_LIMITS.max,
@@ -77,7 +77,7 @@ export default function HomePage() {
   const [viewState, setViewState] = useState(INITIAL_VIEW_STATE);
   const [mapStyle, setMapStyle] = useState<MapStyleName>("Escuro");
   const [selectedLayer, setSelectedLayer] =
-    useState<LayerOption>("HexagonLayer");
+    useState<LayerOption>("Municipios");
   const [state, setState] = useState<MapState>(INITIAL_MAP_STATE);
   const [hoveredMunicipioId, setHoveredMunicipioId] = useState<string | null>(null);
   const municipiosHeaderTheme = MUNICIPIOS_HEADER_THEME[mapStyle];
