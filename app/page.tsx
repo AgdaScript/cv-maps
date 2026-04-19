@@ -1,6 +1,7 @@
 "use client";
 
-import { useMemo, useRef, useState } from "react";
+import type { PickingInfo } from "@deck.gl/core";
+import { useCallback, useEffect, useMemo, useRef, useState } from "react";
 import DeckGL from "@deck.gl/react";
 import { Github, Instagram, Linkedin, Music2 } from "lucide-react";
 import Map from "react-map-gl/maplibre";
@@ -28,7 +29,13 @@ import {
   countScatterPointsBySexInSlice,
   filterScatterPointsBySex,
 } from "@/components/cv-map/utils";
-import type { LayerOption, MapState } from "@/components/cv-map/types";
+import { fetchDrivingRoute } from "@/lib/osrm-route";
+import type {
+  LayerOption,
+  MapState,
+  Position,
+  RouteEndpoint,
+} from "@/components/cv-map/types";
 
 const MUNICIPIOS_HEADER_THEME: Record<
   MapStyleName,
@@ -113,6 +120,9 @@ export default function HomePage() {
     useState<LayerOption>("Municipalities");
   const [state, setState] = useState<MapState>(INITIAL_MAP_STATE);
   const [hoveredMunicipioId, setHoveredMunicipioId] = useState<string | null>(null);
+  const [routeMarkers, setRouteMarkers] = useState<RouteEndpoint[]>([]);
+  const [routePath, setRoutePath] = useState<Position[] | null>(null);
+  const [routeLoading, setRouteLoading] = useState(false);
   const municipiosHeaderTheme = MUNICIPIOS_HEADER_THEME[mapStyle];
 
   const markerPoints = useMemo(() => buildMarkerPoints(), []);
@@ -166,6 +176,8 @@ export default function HomePage() {
         scatterPoints,
         clusterIconPoints,
         expandedIconPoints,
+        routeMarkers,
+        routePath,
       }),
     [
       selectedLayer,
@@ -176,7 +188,57 @@ export default function HomePage() {
       scatterPoints,
       clusterIconPoints,
       expandedIconPoints,
+      routeMarkers,
+      routePath,
     ]
+  );
+
+  useEffect(() => {
+    if (selectedLayer !== "Route Map") {
+      setRouteMarkers([]);
+      setRoutePath(null);
+      setRouteLoading(false);
+    }
+  }, [selectedLayer]);
+
+  const handleRouteMapClick = useCallback(
+    (info: PickingInfo) => {
+      if (selectedLayer !== "Route Map") return;
+      const viewport = info.viewport;
+      if (!viewport || typeof info.x !== "number" || typeof info.y !== "number") {
+        return;
+      }
+      const unprojected = viewport.unproject([info.x, info.y]);
+      if (!unprojected) return;
+      const position: Position = [unprojected[0], unprojected[1]];
+
+      setRouteMarkers((prev) => {
+        if (prev.length === 2) {
+          setRoutePath(null);
+          return [{ position, label: "A" }];
+        }
+        if (prev.length === 0) {
+          setRoutePath(null);
+          return [{ position, label: "A" }];
+        }
+        if (prev.length === 1) {
+          const start = prev[0].position;
+          void (async () => {
+            setRouteLoading(true);
+            setRoutePath(null);
+            try {
+              const path = await fetchDrivingRoute(start, position);
+              setRoutePath(path);
+            } finally {
+              setRouteLoading(false);
+            }
+          })();
+          return [prev[0], { position, label: "B" }];
+        }
+        return prev;
+      });
+    },
+    [selectedLayer]
   );
 
   const handleMaxFilterChange = (value: number) => {
@@ -294,6 +356,7 @@ export default function HomePage() {
               const gid = info.object?.properties?.GID_1 ?? null;
               setHoveredMunicipioId(gid);
             }}
+            onClick={handleRouteMapClick}
             controller
             layers={layers}
             getTooltip={(info) =>
@@ -305,6 +368,46 @@ export default function HomePage() {
           >
             <Map reuseMaps mapStyle={MAP_STYLES[mapStyle]} />
           </DeckGL>
+          {selectedLayer === "Route Map" && (
+            <div
+              className={`pointer-events-auto absolute top-4 left-4 z-20 max-w-[min(100%-2rem,22rem)] rounded-2xl border border-white/20 bg-slate-950/80 p-3 text-sm shadow-xl backdrop-blur-md dark:border-white/20 ${municipiosHeaderTheme.subtitle}`}
+            >
+              <h3 className={`mb-2 font-semibold ${municipiosHeaderTheme.title}`}>
+                Route Map
+              </h3>
+              {routeMarkers.length === 0 && (
+                <p>Click the map to set point A (green).</p>
+              )}
+              {routeMarkers.length === 1 && (
+                <p>Click again to set point B (red) and load the driving route.</p>
+              )}
+              {routeMarkers.length === 2 && routeLoading && (
+                <p>Loading route…</p>
+              )}
+              {routeMarkers.length === 2 && !routeLoading && routePath && routePath.length > 0 && (
+                <p className="text-emerald-400/90">
+                  Route drawn ({routePath.length} vertices).
+                </p>
+              )}
+              {routeMarkers.length === 2 && !routeLoading && (!routePath || routePath.length === 0) && (
+                <p className="text-amber-400/90">
+                  No road route found for this pair. Try other points or check OSRM coverage.
+                </p>
+              )}
+              {routeMarkers.length > 0 && (
+                <button
+                  type="button"
+                  className="mt-3 rounded-lg border border-border bg-background px-3 py-1.5 text-xs font-medium hover:bg-accent"
+                  onClick={() => {
+                    setRouteMarkers([]);
+                    setRoutePath(null);
+                  }}
+                >
+                  Clear
+                </button>
+              )}
+            </div>
+          )}
           {selectedLayer === "Scatterplot" && (
             <>
               <div

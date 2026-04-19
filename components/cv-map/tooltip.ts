@@ -194,6 +194,16 @@ export function getMapTooltip(
     };
   }
 
+  if (
+    object &&
+    (object.label === "A" || object.label === "B") &&
+    Array.isArray(object.position) &&
+    object.position.length >= 2
+  ) {
+    const [lng, lat] = object.position as [number, number];
+    return `Route point ${object.label}\n${lng.toFixed(5)}, ${lat.toFixed(5)}`;
+  }
+
   if ("count" in object) {
     return `Cluster\nMunicipality: ${object.name}\nTotal: ${object.count}`;
   }

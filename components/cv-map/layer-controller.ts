@@ -3,11 +3,11 @@
 import type { LayerControllerContext } from "@/components/cv-map/layers/layer-context";
 import { createHexagonLayer } from "@/components/cv-map/layers/hexagon-layer";
 import { createIconLayers } from "@/components/cv-map/layers/icon-layer";
-import { createMarkersLayer } from "@/components/cv-map/layers/markers-layer";
 import {
   createMunicipiosBordersLayer,
   createMunicipiosLayer,
 } from "@/components/cv-map/layers/municipios-layer";
+import { createRouteMapLayers } from "@/components/cv-map/layers/route-map-layers";
 import { createScatterLayer } from "@/components/cv-map/layers/scatter-layer";
 
 export function buildLayers(context: LayerControllerContext) {
@@ -16,8 +16,9 @@ export function buildLayers(context: LayerControllerContext) {
     state,
     zoom,
     hoveredMunicipioId,
-    markerPoints,
     scatterPoints,
+    routeMarkers,
+    routePath,
   } = context;
 
   switch (selectedLayer) {
@@ -30,8 +31,8 @@ export function buildLayers(context: LayerControllerContext) {
       return [createScatterLayer(state, scatterPoints)];
     case "HexagonLayer":
       return [createHexagonLayer(state, scatterPoints)];
-    case "Marker points":
-      return [createMarkersLayer(state, markerPoints)];
+    case "Route Map":
+      return createRouteMapLayers(routeMarkers, routePath);
     case "IconLayer":
       return createIconLayers(
         state,

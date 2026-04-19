@@ -294,26 +294,13 @@ export function LayerControls({
         </section>
       )}
 
-      {selectedLayer === "Marker points" && (
-        <section className="mt-4 space-y-3 rounded-md border border-border p-3">
-          <h2 className="font-medium">Marker points</h2>
-          <label className="block text-sm">Raio: {state.markerRadius}</label>
-          <input
-            className="w-full"
-            type="range"
-            min={600}
-            max={5000}
-            step={100}
-            value={state.markerRadius}
-            onChange={(event) => update("markerRadius", Number(event.target.value))}
-          />
-          <label className="block text-sm">Cor</label>
-          <input
-            className="h-10 w-10 cursor-pointer overflow-hidden rounded-full border border-border bg-transparent p-0 [&::-webkit-color-swatch-wrapper]:p-0 [&::-webkit-color-swatch]:rounded-full [&::-webkit-color-swatch]:border-0 [&::-moz-color-swatch]:rounded-full [&::-moz-color-swatch]:border-0"
-            type="color"
-            value={state.markerColor}
-            onChange={(event) => update("markerColor", event.target.value)}
-          />
+      {selectedLayer === "Route Map" && (
+        <section className="mt-4 space-y-2 rounded-md border border-border p-3">
+          <h2 className="font-medium">Route Map</h2>
+          <p className="text-xs text-muted-foreground">
+            Click the map twice: first point A, then point B. A driving route is
+            fetched via OSRM (public demo server). A third click starts over.
+          </p>
         </section>
       )}
 

@@ -5,13 +5,18 @@ export type Position = [number, number];
 export type LayerOption =
   | "Municipalities"
   | "Scatterplot"
-  | "Marker points"
+  | "Route Map"
   | "HexagonLayer"
   | "IconLayer";
 
 export type MarkerPoint = {
   name: string;
   position: Position;
+};
+
+export type RouteEndpoint = {
+  position: Position;
+  label: "A" | "B";
 };
 
 export type ScatterPoint = {
