@@ -140,7 +140,7 @@ export function LayerControls({
 
       {selectedLayer === "Scatterplot" && (
         <section className="mt-4 space-y-3 rounded-md border border-border p-3">
-          <h2 className="font-medium">Traffic accidents (Scatterplot)</h2>
+          <h2 className="font-medium">Scatterplot Controls</h2>
           {/* <label className="block text-sm">
             {state.scatterCount >= TRAFFIC_ACCIDENTS_SCATTER_MAX
               ? `Accident records: all (${TRAFFIC_ACCIDENTS_SCATTER_MAX})`
@@ -173,9 +173,9 @@ export function LayerControls({
             value={state.scatterOpacity}
             onChange={(event) => update("scatterOpacity", Number(event.target.value))}
           />
-          <div className="text-xs text-muted-foreground">
+          {/* <div className="text-xs text-muted-foreground">
             Color mapping: blue points = Homem, pink points = Mulher.
-          </div>
+          </div> */}
         </section>
       )}
 

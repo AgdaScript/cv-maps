@@ -23,5 +23,9 @@ export function createScatterLayer(state: MapState, scatterPoints: ScatterPoint[
       return [236, 72, 153, alpha];
     },
     getLineColor: [255, 255, 255, 160],
+    updateTriggers: {
+      getRadius: [state.scatterRadius],
+      getFillColor: [state.scatterOpacity],
+    },
   });
 }
