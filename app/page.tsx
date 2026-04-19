@@ -274,6 +274,20 @@ export default function HomePage() {
           >
             <Map reuseMaps mapStyle={MAP_STYLES[mapStyle]} />
           </DeckGL>
+          {selectedLayer === "Scatterplot" && (
+            <div
+              className={`pointer-events-auto absolute top-4 left-4 z-20 select-text ${municipiosHeaderTheme.shadow}`}
+            >
+              <h2
+                className={`text-lg font-semibold leading-tight ${municipiosHeaderTheme.title}`}
+              >
+                Cabo Verde Traffic Accidents
+              </h2>
+              <p className={`text-sm ${municipiosHeaderTheme.subtitle}`}>
+                Distribution of incidents by location
+              </p>
+            </div>
+          )}
           {selectedLayer === "Municipalities" && (
             <>
               <div

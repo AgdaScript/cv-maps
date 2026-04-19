@@ -141,19 +141,19 @@ export function LayerControls({
       {selectedLayer === "Scatterplot" && (
         <section className="mt-4 space-y-3 rounded-md border border-border p-3">
           <h2 className="font-medium">Traffic accidents (Scatterplot)</h2>
-          <label className="block text-sm">
+          {/* <label className="block text-sm">
             {state.scatterCount >= TRAFFIC_ACCIDENTS_SCATTER_MAX
               ? `Accident records: all (${TRAFFIC_ACCIDENTS_SCATTER_MAX})`
               : `Accident records: ${state.scatterCount}`}
-          </label>
-          <input
+          </label> */}
+          {/* <input
             className="w-full"
             type="range"
             min={1}
             max={TRAFFIC_ACCIDENTS_SCATTER_MAX}
             value={state.scatterCount}
             onChange={(event) => update("scatterCount", Number(event.target.value))}
-          />
+          /> */}
           <label className="block text-sm">Base radius: {state.scatterRadius}</label>
           <input
             className="w-full"
