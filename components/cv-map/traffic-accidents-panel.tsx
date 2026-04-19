@@ -118,7 +118,7 @@ export function TrafficAccidentsPanel({
             htmlFor="scatter-filter-men"
             className={`cursor-pointer text-sm font-normal ${t.label}`}
           >
-            Men (Homem)
+            Men Data
           </Label>
         </div>
         <div className="flex items-center gap-2">
@@ -131,7 +131,7 @@ export function TrafficAccidentsPanel({
             htmlFor="scatter-filter-women"
             className={`cursor-pointer text-sm font-normal ${t.label}`}
           >
-            Women (Mulher)
+            Women Data
           </Label>
         </div>
       </div>
