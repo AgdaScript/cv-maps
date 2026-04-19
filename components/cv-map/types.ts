@@ -60,7 +60,10 @@ export type MapState = {
   scatterShowWomen: boolean;
   scatterRadius: number;
   scatterOpacity: number;
-  scatterColor: string;
+  scatterColorMale: string;
+  scatterColorFemale: string;
+  scatterBorderColor: string;
+  scatterBorderInvisible: boolean;
   hexagonRadius: number;
   hexagonCoverage: number;
   hexagonUpperPercentile: number;

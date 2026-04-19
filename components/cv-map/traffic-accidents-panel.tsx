@@ -8,6 +8,8 @@ type Props = {
   mapStyle: MapStyleName;
   maleCount: number;
   femaleCount: number;
+  scatterColorMale: string;
+  scatterColorFemale: string;
   showMen: boolean;
   showWomen: boolean;
   onShowMenChange: (checked: boolean) => void;
@@ -21,8 +23,6 @@ const PANEL_THEME: Record<
     title: string;
     body: string;
     stat: string;
-    accentMale: string;
-    accentFemale: string;
     hint: string;
     label: string;
   }
@@ -32,8 +32,6 @@ const PANEL_THEME: Record<
     title: "text-slate-100",
     body: "text-slate-300",
     stat: "text-slate-50",
-    accentMale: "bg-blue-600",
-    accentFemale: "bg-pink-500",
     hint: "text-slate-400",
     label: "text-slate-200",
   },
@@ -42,8 +40,6 @@ const PANEL_THEME: Record<
     title: "text-slate-900",
     body: "text-slate-600",
     stat: "text-slate-900",
-    accentMale: "bg-blue-600",
-    accentFemale: "bg-pink-500",
     hint: "text-slate-500",
     label: "text-slate-800",
   },
@@ -52,8 +48,6 @@ const PANEL_THEME: Record<
     title: "text-amber-950",
     body: "text-amber-900/80",
     stat: "text-amber-950",
-    accentMale: "bg-blue-600",
-    accentFemale: "bg-pink-500",
     hint: "text-amber-900/65",
     label: "text-amber-950",
   },
@@ -63,6 +57,8 @@ export function TrafficAccidentsPanel({
   mapStyle,
   maleCount,
   femaleCount,
+  scatterColorMale,
+  scatterColorFemale,
   showMen,
   showWomen,
   onShowMenChange,
@@ -81,13 +77,16 @@ export function TrafficAccidentsPanel({
       </h3>
       <p className={`mb-3 leading-snug ${t.body}`}>
         Records of traffic accidents in Cabo Verde. Point color follows the sex
-        field in the dataset (blue: male, pink: female). Counts below match the
-        number of records loaded via the sidebar slider.
+        field in the dataset. Counts below match the number of records loaded via
+        the sidebar slider.
       </p>
 
       <div className="mb-3 space-y-2">
         <div className="flex items-center gap-2">
-          <span className={`h-2.5 w-2.5 shrink-0 rounded-full ${t.accentMale}`} />
+          <span
+            className="h-2.5 w-2.5 shrink-0 rounded-full ring-1 ring-black/10 dark:ring-white/15"
+            style={{ backgroundColor: scatterColorMale }}
+          />
           <span className={t.stat}>
             Male:{" "}
             <span className="tabular-nums font-medium">
@@ -96,7 +95,10 @@ export function TrafficAccidentsPanel({
           </span>
         </div>
         <div className="flex items-center gap-2">
-          <span className={`h-2.5 w-2.5 shrink-0 rounded-full ${t.accentFemale}`} />
+          <span
+            className="h-2.5 w-2.5 shrink-0 rounded-full ring-1 ring-black/10 dark:ring-white/15"
+            style={{ backgroundColor: scatterColorFemale }}
+          />
           <span className={t.stat}>
             Female:{" "}
             <span className="tabular-nums font-medium">

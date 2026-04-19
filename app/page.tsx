@@ -65,7 +65,10 @@ const INITIAL_MAP_STATE: MapState = {
   scatterShowWomen: true,
   scatterRadius: 1200,
   scatterOpacity: 65,
-  scatterColor: "#84cc16",
+  scatterColorMale: "#2563eb",
+  scatterColorFemale: "#ec4899",
+  scatterBorderColor: "#ffffff",
+  scatterBorderInvisible: false,
   hexagonRadius: 2500,
   hexagonCoverage: 0.75,
   hexagonUpperPercentile: 100,
@@ -293,7 +296,12 @@ export default function HomePage() {
             }}
             controller
             layers={layers}
-            getTooltip={(info) => getMapTooltip(info, mapStyle)}
+            getTooltip={(info) =>
+              getMapTooltip(info, mapStyle, {
+                male: state.scatterColorMale,
+                female: state.scatterColorFemale,
+              })
+            }
           >
             <Map reuseMaps mapStyle={MAP_STYLES[mapStyle]} />
           </DeckGL>
@@ -316,6 +324,8 @@ export default function HomePage() {
                   mapStyle={mapStyle}
                   maleCount={scatterSliceSexCounts.homem}
                   femaleCount={scatterSliceSexCounts.mulher}
+                  scatterColorMale={state.scatterColorMale}
+                  scatterColorFemale={state.scatterColorFemale}
                   showMen={state.scatterShowMen}
                   showWomen={state.scatterShowWomen}
                   onShowMenChange={(checked: boolean) =>

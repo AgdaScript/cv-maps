@@ -12,7 +12,16 @@ import {
   DropdownMenuSeparator,
   DropdownMenuTrigger,
 } from "@/components/ui/dropdown-menu";
-import { LAYER_OPTIONS, TRAFFIC_ACCIDENTS_SCATTER_MAX } from "@/components/cv-map/constants";
+import {
+  LAYER_OPTIONS,
+  TRAFFIC_ACCIDENTS_SCATTER_MAX,
+} from "@/components/cv-map/constants";
+
+const SCATTER_COLOR_DEFAULTS = {
+  male: "#2563eb",
+  female: "#ec4899",
+  border: "#ffffff",
+} as const;
 import type { LayerOption, MapState } from "@/components/cv-map/types";
 
 type Props = {
@@ -173,9 +182,53 @@ export function LayerControls({
             value={state.scatterOpacity}
             onChange={(event) => update("scatterOpacity", Number(event.target.value))}
           />
-          {/* <div className="text-xs text-muted-foreground">
-            Color mapping: blue points = Homem, pink points = Mulher.
-          </div> */}
+          <p className="text-xs text-muted-foreground">Point colors</p>
+          <div className="flex flex-wrap items-end gap-4">
+            <div className="flex flex-col gap-1">
+              <span className="text-xs text-muted-foreground">Male (Homem)</span>
+              <input
+                className="h-10 w-10 cursor-pointer overflow-hidden rounded-full border border-border bg-transparent p-0 [&::-webkit-color-swatch-wrapper]:p-0 [&::-webkit-color-swatch]:rounded-full [&::-webkit-color-swatch]:border-0 [&::-moz-color-swatch]:rounded-full [&::-moz-color-swatch]:border-0"
+                type="color"
+                value={state.scatterColorMale}
+                onChange={(event) => update("scatterColorMale", event.target.value)}
+                aria-label="Cor dos pontos masculinos"
+                title="Male point color"
+              />
+            </div>
+            <div className="flex flex-col gap-1">
+              <span className="text-xs text-muted-foreground">Female (Mulher)</span>
+              <input
+                className="h-10 w-10 cursor-pointer overflow-hidden rounded-full border border-border bg-transparent p-0 [&::-webkit-color-swatch-wrapper]:p-0 [&::-webkit-color-swatch]:rounded-full [&::-webkit-color-swatch]:border-0 [&::-moz-color-swatch]:rounded-full [&::-moz-color-swatch]:border-0"
+                type="color"
+                value={state.scatterColorFemale ?? SCATTER_COLOR_DEFAULTS.female}
+                onChange={(event) => update("scatterColorFemale", event.target.value)}
+                aria-label="Cor dos pontos femininos"
+                title="Female point color"
+              />
+            </div>
+            <div className="flex flex-col gap-1">
+              <span className="text-xs text-muted-foreground">Border</span>
+              <input
+                className="h-10 w-10 cursor-pointer overflow-hidden rounded-full border border-border bg-transparent p-0 disabled:cursor-not-allowed disabled:opacity-40 [&::-webkit-color-swatch-wrapper]:p-0 [&::-webkit-color-swatch]:rounded-full [&::-webkit-color-swatch]:border-0 [&::-moz-color-swatch]:rounded-full [&::-moz-color-swatch]:border-0"
+                type="color"
+                value={state.scatterBorderColor ?? SCATTER_COLOR_DEFAULTS.border}
+                disabled={state.scatterBorderInvisible ?? false}
+                onChange={(event) => update("scatterBorderColor", event.target.value)}
+                aria-label="Cor da borda dos pontos"
+                title="Point border color"
+              />
+            </div>
+          </div>
+          <label className="flex items-center gap-2 text-sm">
+            <input
+              type="checkbox"
+              checked={state.scatterBorderInvisible ?? false}
+              onChange={(event) =>
+                update("scatterBorderInvisible", event.target.checked)
+              }
+            />
+            Invisible box
+          </label>
         </section>
       )}
 

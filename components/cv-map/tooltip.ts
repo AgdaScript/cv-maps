@@ -39,7 +39,7 @@ function escapeHtml(value: string) {
     .replaceAll("'", "&#039;");
 }
 
-const ACCIDENT_SEX_COLOR: Record<string, string> = {
+const DEFAULT_ACCIDENT_SEX_COLOR: Record<string, string> = {
   Homem: "#2563eb",
   Mulher: "#ec4899",
 };
@@ -76,7 +76,16 @@ const TOOLTIP_THEME: Record<
   },
 };
 
-export function getMapTooltip(info: PickingInfo<any>, mapStyle: MapStyleName = "Dark") {
+export type ScatterTooltipColors = {
+  male: string;
+  female: string;
+};
+
+export function getMapTooltip(
+  info: PickingInfo<any>,
+  mapStyle: MapStyleName = "Dark",
+  scatterColors?: ScatterTooltipColors
+) {
   const object = info.object;
   if (!object) return null;
   const theme = TOOLTIP_THEME[mapStyle];
@@ -137,7 +146,10 @@ export function getMapTooltip(info: PickingInfo<any>, mapStyle: MapStyleName = "
     (object.sex === "Homem" || object.sex === "Mulher") &&
     typeof object?.value === "number"
   ) {
-    const barColor = ACCIDENT_SEX_COLOR[object.sex] ?? "#64748b";
+    const barColor =
+      object.sex === "Homem"
+        ? scatterColors?.male ?? DEFAULT_ACCIDENT_SEX_COLOR.Homem
+        : scatterColors?.female ?? DEFAULT_ACCIDENT_SEX_COLOR.Mulher;
     const sexLabel = ACCIDENT_SEX_LABEL[object.sex] ?? String(object.sex);
     const location = escapeHtml(object.location);
 
