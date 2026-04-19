@@ -2,7 +2,7 @@
 
 import { useMemo, useRef, useState } from "react";
 import DeckGL from "@deck.gl/react";
-import { Instagram, Linkedin, Music2 } from "lucide-react";
+import { Github, Instagram, Linkedin, Music2 } from "lucide-react";
 import Map from "react-map-gl/maplibre";
 import { LayerControls } from "@/components/cv-map/layer-controls";
 import { buildLayers } from "@/components/cv-map/layer-controller";
@@ -79,6 +79,11 @@ const SOCIAL_LINKS = [
     label: "LinkedIn",
     href: "https://www.linkedin.com/in/agda-lopes/",
     Icon: Linkedin,
+  },
+  {
+    label: "GitHub",
+    href: "https://github.com/AgdaScript",
+    Icon: Github,
   },
   {
     label: "TikTok",
