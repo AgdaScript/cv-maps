@@ -19,7 +19,7 @@ import {
   type MapStyleName,
 } from "@/components/cv-map/constants";
 import { getMapTooltip } from "@/components/cv-map/tooltip";
-import { TrafficAccidentsPanel } from "@/components/cv-map/traffic-accidents-panel";
+import { TrafficAccidentsPanel } from "../components/cv-map/traffic-accidents-panel";
 import {
   buildClusterIconPoints,
   buildExpandedIconPoints,
