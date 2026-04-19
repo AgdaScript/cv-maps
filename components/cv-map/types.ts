@@ -56,6 +56,8 @@ export type MapState = {
   municipioValueMinFilter: number;
   municipioValueMaxFilter: number;
   scatterCount: number;
+  scatterShowMen: boolean;
+  scatterShowWomen: boolean;
   scatterRadius: number;
   scatterOpacity: number;
   scatterColor: string;

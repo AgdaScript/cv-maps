@@ -19,11 +19,14 @@ import {
   type MapStyleName,
 } from "@/components/cv-map/constants";
 import { getMapTooltip } from "@/components/cv-map/tooltip";
+import { TrafficAccidentsPanel } from "@/components/cv-map/traffic-accidents-panel";
 import {
   buildClusterIconPoints,
   buildExpandedIconPoints,
   buildMarkerPoints,
   buildScatterPoints,
+  countScatterPointsBySexInSlice,
+  filterScatterPointsBySex,
 } from "@/components/cv-map/utils";
 import type { LayerOption, MapState } from "@/components/cv-map/types";
 
@@ -58,6 +61,8 @@ const INITIAL_MAP_STATE: MapState = {
   municipioValueMinFilter: MUNICIPIOS_FILTER_LIMITS.min,
   municipioValueMaxFilter: MUNICIPIOS_FILTER_LIMITS.max,
   scatterCount: TRAFFIC_ACCIDENTS_SCATTER_MAX,
+  scatterShowMen: true,
+  scatterShowWomen: true,
   scatterRadius: 1200,
   scatterOpacity: 65,
   scatterColor: "#84cc16",
@@ -109,10 +114,23 @@ export default function HomePage() {
 
   const markerPoints = useMemo(() => buildMarkerPoints(), []);
 
-  const scatterPoints = useMemo(
-    () => buildScatterPoints(state.scatterCount),
+  const scatterSliceSexCounts = useMemo(
+    () => countScatterPointsBySexInSlice(state.scatterCount),
     [state.scatterCount]
   );
+
+  const scatterPoints = useMemo(() => {
+    const built = buildScatterPoints(state.scatterCount);
+    return filterScatterPointsBySex(
+      built,
+      state.scatterShowMen,
+      state.scatterShowWomen
+    );
+  }, [
+    state.scatterCount,
+    state.scatterShowMen,
+    state.scatterShowWomen,
+  ]);
 
   const clusterIconPoints = useMemo(
     () =>
@@ -280,18 +298,35 @@ export default function HomePage() {
             <Map reuseMaps mapStyle={MAP_STYLES[mapStyle]} />
           </DeckGL>
           {selectedLayer === "Scatterplot" && (
-            <div
-              className={`pointer-events-auto absolute top-4 left-4 z-20 select-text ${municipiosHeaderTheme.shadow}`}
-            >
-              <h2
-                className={`text-lg font-semibold leading-tight ${municipiosHeaderTheme.title}`}
+            <>
+              <div
+                className={`pointer-events-auto absolute top-4 left-4 z-20 select-text ${municipiosHeaderTheme.shadow}`}
               >
-                Cabo Verde Traffic Accidents
-              </h2>
-              <p className={`text-sm ${municipiosHeaderTheme.subtitle}`}>
-                Distribution of incidents by location
-              </p>
-            </div>
+                <h2
+                  className={`text-lg font-semibold leading-tight ${municipiosHeaderTheme.title}`}
+                >
+                  Cabo Verde Traffic Accidents
+                </h2>
+                <p className={`text-sm ${municipiosHeaderTheme.subtitle}`}>
+                  Distribution of incidents by location
+                </p>
+              </div>
+              <div className="pointer-events-auto absolute top-4 right-4 z-20 max-w-[min(100%-2rem,22rem)]">
+                <TrafficAccidentsPanel
+                  mapStyle={mapStyle}
+                  maleCount={scatterSliceSexCounts.homem}
+                  femaleCount={scatterSliceSexCounts.mulher}
+                  showMen={state.scatterShowMen}
+                  showWomen={state.scatterShowWomen}
+                  onShowMenChange={(checked: boolean) =>
+                    setState((prev) => ({ ...prev, scatterShowMen: checked }))
+                  }
+                  onShowWomenChange={(checked: boolean) =>
+                    setState((prev) => ({ ...prev, scatterShowWomen: checked }))
+                  }
+                />
+              </div>
+            </>
           )}
           {selectedLayer === "Municipalities" && (
             <>

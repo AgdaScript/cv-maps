@@ -169,23 +169,53 @@ export function buildMarkerPoints(): MarkerPoint[] {
   }));
 }
 
-export function buildScatterPoints(accidentLimit: number): ScatterPoint[] {
-  const normalized = (accidentsScatterData as ScatterPoint[]).filter((item) => {
-    const validSex = item.sex === "Homem" || item.sex === "Mulher";
-    const [lng, lat] = item.position ?? [];
-    return (
-      typeof item.id === "string" &&
-      typeof item.municipality === "string" &&
-      typeof item.location === "string" &&
-      validSex &&
-      Number.isFinite(item.value) &&
-      Number.isFinite(lng) &&
-      Number.isFinite(lat)
-    );
-  });
+function isValidScatterItem(item: ScatterPoint): boolean {
+  const validSex = item.sex === "Homem" || item.sex === "Mulher";
+  const [lng, lat] = item.position ?? [];
+  return (
+    typeof item.id === "string" &&
+    typeof item.municipality === "string" &&
+    typeof item.location === "string" &&
+    validSex &&
+    Number.isFinite(item.value) &&
+    Number.isFinite(lng) &&
+    Number.isFinite(lat)
+  );
+}
 
+export function getNormalizedTrafficAccidents(): ScatterPoint[] {
+  return (accidentsScatterData as ScatterPoint[]).filter(isValidScatterItem);
+}
+
+export function countScatterPointsBySexInSlice(
+  accidentLimit: number
+): { homem: number; mulher: number } {
+  const slice = buildScatterPoints(accidentLimit);
+  let homem = 0;
+  let mulher = 0;
+  for (const p of slice) {
+    if (p.sex === "Homem") homem += 1;
+    else mulher += 1;
+  }
+  return { homem, mulher };
+}
+
+export function buildScatterPoints(accidentLimit: number): ScatterPoint[] {
+  const normalized = getNormalizedTrafficAccidents();
   const safeLimit = Math.max(1, Math.floor(accidentLimit));
   return normalized.slice(0, safeLimit);
+}
+
+export function filterScatterPointsBySex(
+  points: ScatterPoint[],
+  showMen: boolean,
+  showWomen: boolean
+): ScatterPoint[] {
+  return points.filter((p) => {
+    if (p.sex === "Homem") return showMen;
+    if (p.sex === "Mulher") return showWomen;
+    return false;
+  });
 }
 
 export function buildClusterIconPoints(
