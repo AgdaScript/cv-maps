@@ -15,6 +15,7 @@ import {
 import { MapActionsCard } from "@/components/cv-map/map-actions-card";
 import {
   INITIAL_VIEW_STATE,
+  LAYER_MAP_HEADERS,
   MAP_STYLES,
   TRAFFIC_ACCIDENTS_SCATTER_MAX,
   type MapStyleName,
@@ -368,91 +369,79 @@ export default function HomePage() {
           >
             <Map reuseMaps mapStyle={MAP_STYLES[mapStyle]} />
           </DeckGL>
-          {selectedLayer === "Route Map" && (
-            <div
-              className={`pointer-events-auto absolute top-4 left-4 z-20 max-w-[min(100%-2rem,22rem)] rounded-2xl border border-white/20 bg-slate-950/80 p-3 text-sm shadow-xl backdrop-blur-md dark:border-white/20 ${municipiosHeaderTheme.subtitle}`}
-            >
-              <h3 className={`mb-2 font-semibold ${municipiosHeaderTheme.title}`}>
-                Route Map
-              </h3>
-              {routeMarkers.length === 0 && (
-                <p>Click the map to set point A (green).</p>
-              )}
-              {routeMarkers.length === 1 && (
-                <p>Click again to set point B (red) and load the driving route.</p>
-              )}
-              {routeMarkers.length === 2 && routeLoading && (
-                <p>Loading route…</p>
-              )}
-              {routeMarkers.length === 2 && !routeLoading && routePath && routePath.length > 0 && (
-                <p className="text-emerald-400/90">
-                  Route drawn ({routePath.length} vertices).
-                </p>
-              )}
-              {routeMarkers.length === 2 && !routeLoading && (!routePath || routePath.length === 0) && (
-                <p className="text-amber-400/90">
-                  No road route found for this pair. Try other points or check OSRM coverage.
-                </p>
-              )}
-              {routeMarkers.length > 0 && (
-                <button
-                  type="button"
-                  className="mt-3 rounded-lg border border-border bg-background px-3 py-1.5 text-xs font-medium hover:bg-accent"
-                  onClick={() => {
-                    setRouteMarkers([]);
-                    setRoutePath(null);
-                  }}
-                >
-                  Clear
-                </button>
-              )}
-            </div>
-          )}
-          {selectedLayer === "Scatterplot" && (
-            <>
-              <div
-                className={`pointer-events-auto absolute top-4 left-4 z-20 select-text ${municipiosHeaderTheme.shadow}`}
+          <div className="pointer-events-auto absolute top-4 left-4 z-20 flex max-w-[min(100%-2rem,28rem)] flex-col gap-3">
+            <div className={`select-text ${municipiosHeaderTheme.shadow}`}>
+              <h2
+                className={`text-lg font-semibold leading-tight ${municipiosHeaderTheme.title}`}
               >
-                <h2
-                  className={`text-lg font-semibold leading-tight ${municipiosHeaderTheme.title}`}
-                >
-                  Cabo Verde Traffic Accidents
-                </h2>
-                <p className={`text-sm ${municipiosHeaderTheme.subtitle}`}>
-                  Distribution of incidents by location
-                </p>
+                {LAYER_MAP_HEADERS[selectedLayer].title}
+              </h2>
+              <p className={`text-sm ${municipiosHeaderTheme.subtitle}`}>
+                {LAYER_MAP_HEADERS[selectedLayer].subtitle}
+              </p>
+            </div>
+            {selectedLayer === "Route Map" && (
+              <div
+                className={`rounded-2xl border border-border bg-card/90 p-3 text-sm shadow-lg backdrop-blur-md ${municipiosHeaderTheme.subtitle}`}
+              >
+                {routeMarkers.length === 0 && (
+                  <p>Click the map to set point A (green pin).</p>
+                )}
+                {routeMarkers.length === 1 && (
+                  <p>Click again to set point B (red pin) and load the driving route.</p>
+                )}
+                {routeMarkers.length === 2 && routeLoading && <p>Loading route…</p>}
+                {routeMarkers.length === 2 &&
+                  !routeLoading &&
+                  routePath &&
+                  routePath.length > 0 && (
+                    <p className="text-emerald-600 dark:text-emerald-400">
+                      Route drawn ({routePath.length} vertices).
+                    </p>
+                  )}
+                {routeMarkers.length === 2 &&
+                  !routeLoading &&
+                  (!routePath || routePath.length === 0) && (
+                    <p className="text-amber-700 dark:text-amber-400">
+                      No road route for this pair. Try other points or check OSRM coverage.
+                    </p>
+                  )}
+                {routeMarkers.length > 0 && (
+                  <button
+                    type="button"
+                    className="mt-3 rounded-lg border border-border bg-background px-3 py-1.5 text-xs font-medium hover:bg-accent"
+                    onClick={() => {
+                      setRouteMarkers([]);
+                      setRoutePath(null);
+                    }}
+                  >
+                    Clear
+                  </button>
+                )}
               </div>
-              <div className="pointer-events-auto absolute top-4 right-4 z-20 max-w-[min(100%-2rem,22rem)]">
-                <TrafficAccidentsPanel
-                  mapStyle={mapStyle}
-                  maleCount={scatterSliceSexCounts.homem}
-                  femaleCount={scatterSliceSexCounts.mulher}
-                  scatterColorMale={state.scatterColorMale}
-                  scatterColorFemale={state.scatterColorFemale}
-                  showMen={state.scatterShowMen}
-                  showWomen={state.scatterShowWomen}
-                  onShowMenChange={(checked: boolean) =>
-                    setState((prev) => ({ ...prev, scatterShowMen: checked }))
-                  }
-                  onShowWomenChange={(checked: boolean) =>
-                    setState((prev) => ({ ...prev, scatterShowWomen: checked }))
-                  }
-                />
-              </div>
-            </>
+            )}
+          </div>
+          {selectedLayer === "Scatterplot" && (
+            <div className="pointer-events-auto absolute top-4 right-4 z-20 max-w-[min(100%-2rem,22rem)]">
+              <TrafficAccidentsPanel
+                mapStyle={mapStyle}
+                maleCount={scatterSliceSexCounts.homem}
+                femaleCount={scatterSliceSexCounts.mulher}
+                scatterColorMale={state.scatterColorMale}
+                scatterColorFemale={state.scatterColorFemale}
+                showMen={state.scatterShowMen}
+                showWomen={state.scatterShowWomen}
+                onShowMenChange={(checked: boolean) =>
+                  setState((prev) => ({ ...prev, scatterShowMen: checked }))
+                }
+                onShowWomenChange={(checked: boolean) =>
+                  setState((prev) => ({ ...prev, scatterShowWomen: checked }))
+                }
+              />
+            </div>
           )}
           {selectedLayer === "Municipalities" && (
             <>
-              <div
-                className={`pointer-events-auto absolute top-4 left-4 z-20 select-text ${municipiosHeaderTheme.shadow}`}
-              >
-                <h2 className={`text-lg font-semibold leading-tight ${municipiosHeaderTheme.title}`}>
-                  Cabo Verde Census Data
-                </h2>
-                <p className={`text-sm ${municipiosHeaderTheme.subtitle}`}>
-                Distribution of competitors by municipality
-                </p>
-              </div>
               <MapActionsCard
                 minFilter={state.municipioValueMinFilter}
                 maxFilter={state.municipioValueMaxFilter}

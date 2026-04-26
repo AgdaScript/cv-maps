@@ -43,3 +43,30 @@ export const LAYER_OPTIONS: LayerOption[] = [
   "HexagonLayer",
   "IconLayer",
 ];
+
+/** Título e subtítulo do mapa (canto superior esquerdo), alinhados ao modo Municipalities. */
+export const LAYER_MAP_HEADERS: Record<
+  LayerOption,
+  { title: string; subtitle: string }
+> = {
+  Municipalities: {
+    title: "Cabo Verde Census Data",
+    subtitle: "Distribution of competitors by municipality",
+  },
+  Scatterplot: {
+    title: "Cabo Verde Traffic Accidents",
+    subtitle: "Distribution of incidents by location",
+  },
+  "Route Map": {
+    title: "Route Map",
+    subtitle: "Driving directions on the road network between two map pins",
+  },
+  HexagonLayer: {
+    title: "Hexagon layer",
+    subtitle: "Accident points aggregated into colored hexagonal cells",
+  },
+  IconLayer: {
+    title: "Icon layer",
+    subtitle: "Custom markers per municipality — cluster or expanded by zoom",
+  },
+};
