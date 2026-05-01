@@ -131,9 +131,9 @@ export function MapActionsCard({
   return (
     <>
       <div
-        className={`pointer-events-auto absolute top-4 right-4 z-20 rounded-2xl border p-2 shadow-lg backdrop-blur ${theme.shell}`}
+        className={`pointer-events-auto absolute top-2 right-2 z-20 rounded-xl border p-1.5 shadow-lg backdrop-blur sm:top-4 sm:right-4 sm:rounded-2xl sm:p-2 ${theme.shell}`}
       >
-        <div className="flex items-center gap-2">
+        <div className="flex items-center gap-1.5 sm:gap-2">
           <button
             type="button"
             className={`inline-flex h-9 w-9 items-center justify-center rounded-xl border transition ${theme.button}`}
@@ -157,7 +157,7 @@ export function MapActionsCard({
 
       {showTable && (
         <div
-          className={`pointer-events-auto absolute top-20 right-4 z-20 w-[420px] max-w-[calc(100%-1rem)] rounded-2xl border p-3 shadow-xl backdrop-blur ${theme.tableShell}`}
+          className={`pointer-events-auto absolute top-14 right-2 left-2 z-20 max-h-[min(70svh,calc(100dvh-8rem))] w-auto overflow-hidden rounded-xl border p-2 shadow-xl backdrop-blur sm:top-20 sm:right-4 sm:left-auto sm:max-h-[min(24rem,70svh)] sm:w-[min(420px,calc(100vw-2rem))] sm:rounded-2xl sm:p-3 ${theme.tableShell}`}
         >
           <div className="mb-2 flex items-center justify-between">
             <h3 className={`text-sm font-semibold ${theme.title}`}>Municipalities table</h3>
@@ -196,7 +196,7 @@ export function MapActionsCard({
             </button>
           </div>
 
-          <div className={`max-h-64 overflow-auto rounded-lg border ${theme.tableBorder}`}>
+          <div className={`max-h-[min(16rem,35svh)] overflow-auto rounded-lg border sm:max-h-64 ${theme.tableBorder}`}>
             <table className="w-full text-sm">
               <thead className={`sticky top-0 text-left text-xs ${theme.head}`}>
                 <tr>

@@ -68,7 +68,7 @@ export function TrafficAccidentsPanel({
 
   return (
     <div
-      className={`select-text rounded-2xl border p-3 text-sm ${t.shell}`}
+      className={`select-text rounded-xl border p-2.5 text-xs sm:rounded-2xl sm:p-3 sm:text-sm ${t.shell}`}
       role="region"
       aria-label="Traffic accidents dataset and filters"
     >

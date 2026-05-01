@@ -67,31 +67,31 @@ function SidebarProvider({
   onOpenChange?: (open: boolean) => void
 }) {
   const isMobile = useIsMobile()
-  const [openMobile, setOpenMobile] = React.useState(false)
 
-  // This is the internal state of the sidebar.
-  // We use openProp and setOpenProp for control from outside the component.
+  // Este é o estado único da sidebar — o mesmo valor em todas as larguras
+  // (painel desktop e Sheet telemóvel).
   const [_open, _setOpen] = React.useState(defaultOpen)
-  const open = openProp ?? _open
+  const openDesktop = openProp ?? _open
   const setOpen = React.useCallback(
     (value: boolean | ((value: boolean) => boolean)) => {
-      const openState = typeof value === 'function' ? value(open) : value
+      const nextOpen =
+        typeof value === 'function' ? value(openDesktop) : value
       if (setOpenProp) {
-        setOpenProp(openState)
+        setOpenProp(nextOpen)
       } else {
-        _setOpen(openState)
+        _setOpen(nextOpen)
       }
 
       // This sets the cookie to keep the sidebar state.
-      document.cookie = `${SIDEBAR_COOKIE_NAME}=${openState}; path=/; max-age=${SIDEBAR_COOKIE_MAX_AGE}`
+      document.cookie = `${SIDEBAR_COOKIE_NAME}=${nextOpen}; path=/; max-age=${SIDEBAR_COOKIE_MAX_AGE}`
     },
-    [setOpenProp, open],
+    [setOpenProp, openDesktop],
   )
 
-  // Helper to toggle the sidebar.
+  // Igual ao desktop: um único `setOpen`; o Sheet apenas reflecte o mesmo estado.
   const toggleSidebar = React.useCallback(() => {
-    return isMobile ? setOpenMobile((open) => !open) : setOpen((open) => !open)
-  }, [isMobile, setOpen, setOpenMobile])
+    setOpen((o) => !o)
+  }, [setOpen])
 
   // Adds a keyboard shortcut to toggle the sidebar.
   React.useEffect(() => {
@@ -109,8 +109,7 @@ function SidebarProvider({
     return () => window.removeEventListener('keydown', handleKeyDown)
   }, [toggleSidebar])
 
-  // We add a state so that we can do data-state="expanded" or "collapsed".
-  // This makes it easier to style the sidebar with Tailwind classes.
+  const open = openDesktop
   const state = open ? 'expanded' : 'collapsed'
 
   const contextValue = React.useMemo<SidebarContextProps>(
@@ -119,11 +118,11 @@ function SidebarProvider({
       open,
       setOpen,
       isMobile,
-      openMobile,
-      setOpenMobile,
+      openMobile: open,
+      setOpenMobile: setOpen,
       toggleSidebar,
     }),
-    [state, open, setOpen, isMobile, openMobile, setOpenMobile, toggleSidebar],
+    [state, open, setOpen, isMobile, toggleSidebar],
   )
 
   return (
@@ -163,7 +162,7 @@ function Sidebar({
   variant?: 'sidebar' | 'floating' | 'inset'
   collapsible?: 'offcanvas' | 'icon' | 'none'
 }) {
-  const { isMobile, state, openMobile, setOpenMobile } = useSidebar()
+  const { isMobile, open, setOpen, state } = useSidebar()
 
   if (collapsible === 'none') {
     return (
@@ -182,7 +181,13 @@ function Sidebar({
 
   if (isMobile) {
     return (
-      <Sheet open={openMobile} onOpenChange={setOpenMobile} {...props}>
+      <Sheet
+        open={open}
+        onOpenChange={setOpen}
+        // Sem isto, o Radix marca o resto da página como inerte: o SidebarTrigger
+        // (fora do portal) deixa de receber cliques e o painel parece “preso aberto”.
+        modal={false}
+      >
         <SheetContent
           data-sidebar="sidebar"
           data-slot="sidebar"

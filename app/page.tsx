@@ -3,11 +3,9 @@
 import type { PickingInfo } from "@deck.gl/core";
 import { useCallback, useEffect, useMemo, useRef, useState } from "react";
 import DeckGL from "@deck.gl/react";
-import { Github, Instagram, Linkedin, Music2 } from "lucide-react";
 import Map from "react-map-gl/maplibre";
-import { LayerControls } from "@/components/cv-map/layer-controls";
+import { CvMapSidebar } from "@/components/cv-map/cv-map-sidebar";
 import { buildLayers } from "@/components/cv-map/layer-controller";
-import { MapStyleSelector } from "@/components/cv-map/map-style-selector";
 import {
   MUNICIPIOS_FILTER_LIMITS,
   MunicipiosToolbox,
@@ -37,6 +35,11 @@ import type {
   Position,
   RouteEndpoint,
 } from "@/components/cv-map/types";
+import {
+  SidebarInset,
+  SidebarProvider,
+  SidebarTrigger,
+} from "@/components/ui/sidebar";
 
 const MUNICIPIOS_HEADER_THEME: Record<
   MapStyleName,
@@ -89,29 +92,6 @@ const INITIAL_MAP_STATE: MapState = {
   iconPointsPerMunicipality: 12,
   iconClusterZoom: 8.3,
 };
-
-const SOCIAL_LINKS = [
-  {
-    label: "LinkedIn",
-    href: "https://www.linkedin.com/in/agda-lopes/",
-    Icon: Linkedin,
-  },
-  {
-    label: "GitHub",
-    href: "https://github.com/AgdaScript",
-    Icon: Github,
-  },
-  {
-    label: "TikTok",
-    href: "https://www.tiktok.com/@agdascript?_r=1&_t=ZS-95e1vU44Fya",
-    Icon: Music2,
-  },
-  {
-    label: "Instagram",
-    href: "https://www.instagram.com/agdascript?igsh=MTNxeXdpYTQ0cXZwZw==",
-    Icon: Instagram,
-  },
-] as const;
 
 export default function HomePage() {
   const mapSectionRef = useRef<HTMLElement | null>(null);
@@ -299,50 +279,28 @@ export default function HomePage() {
   };
 
   return (
-    <main className="h-screen w-screen overflow-hidden bg-background text-foreground">
-      <div className="grid h-full w-full grid-cols-1 md:grid-cols-[360px_1fr]">
-        <aside className="z-10 overflow-y-auto border-r border-border bg-card p-4">
-          <h1 className="text-xl font-semibold">CV Map Sandbox</h1>
-          <section className="mt-4 space-y-2">
-            <h2 className="font-medium">About Author</h2>
-            <p className="text-sm">
-              This project is a sandbox for testing the cv-map library. Made by{" "}
-              <span className="font-semibold text-amber-700 dark:text-amber-300">
-                Agda Lopes
-              </span>
-              .
-            </p>
-            <div className="flex items-center gap-2">
-              {SOCIAL_LINKS.map(({ label, href, Icon }) => (
-                <a
-                  key={label}
-                  href={href}
-                  target="_blank"
-                  rel="noreferrer"
-                  className="inline-flex h-9 w-9 items-center justify-center rounded-full border border-border bg-background text-foreground transition hover:bg-accent"
-                  aria-label={label}
-                  title={label}
-                >
-                  <Icon className="h-4 w-4" />
-                </a>
-              ))}
-            </div>
-            <div className="pt-2">
-              <div className="border-b border-border" />
-            </div>
-          </section>
-
-          <MapStyleSelector mapStyle={mapStyle} setMapStyle={setMapStyle} />
-          <div className="my-3 border-b border-border" />
-          <LayerControls
-            selectedLayer={selectedLayer}
-            setSelectedLayer={setSelectedLayer}
-            state={state}
-            setState={setState}
-          />
-        </aside>
-
-        <section ref={mapSectionRef} className="relative h-full w-full">
+    <SidebarProvider
+      defaultOpen
+      className="relative box-border max-w-[100vw] overflow-hidden bg-background text-foreground"
+      style={{
+        "--sidebar-width": "20rem",
+        "--sidebar-width-mobile": "min(100vw - 1rem, 22rem)",
+      } as React.CSSProperties}
+    >
+      <CvMapSidebar
+        mapStyle={mapStyle}
+        setMapStyle={setMapStyle}
+        selectedLayer={selectedLayer}
+        setSelectedLayer={setSelectedLayer}
+        state={state}
+        setState={setState}
+      />
+      <SidebarInset className="relative flex min-h-0 w-full min-w-0 flex-1 flex-col overflow-hidden bg-background p-0">
+        <SidebarTrigger className="pointer-events-auto fixed top-[max(0.5rem,calc(env(safe-area-inset-top)+6px))] left-[max(0.5rem,calc(env(safe-area-inset-left)+6px))] z-[100] size-11 rounded-xl border border-border bg-background/95 shadow-md backdrop-blur md:absolute md:z-[85] md:size-10" />
+        <section
+          ref={mapSectionRef}
+          className="relative flex flex-1 min-h-0 min-w-0 w-full"
+        >
           <DeckGL
             viewState={viewState}
             onViewStateChange={({ viewState: nextViewState }) => {
@@ -369,20 +327,22 @@ export default function HomePage() {
           >
             <Map reuseMaps mapStyle={MAP_STYLES[mapStyle]} />
           </DeckGL>
-          <div className="pointer-events-auto absolute top-4 left-4 z-20 flex max-w-[min(100%-2rem,28rem)] flex-col gap-3">
+          <div className="pointer-events-auto absolute top-2 left-14 z-20 flex max-w-[min(calc(100vw-9rem),28rem)] flex-col gap-2 sm:top-4 sm:left-14 sm:max-w-[min(calc(100%-2rem),28rem)] sm:gap-3">
             <div className={`select-text ${municipiosHeaderTheme.shadow}`}>
               <h2
-                className={`text-lg font-semibold leading-tight ${municipiosHeaderTheme.title}`}
+                className={`text-base font-semibold leading-snug tracking-tight sm:text-lg md:leading-tight ${municipiosHeaderTheme.title}`}
               >
                 {LAYER_MAP_HEADERS[selectedLayer].title}
               </h2>
-              <p className={`text-sm ${municipiosHeaderTheme.subtitle}`}>
+              <p
+                className={`mt-0.5 text-xs leading-snug sm:mt-0 sm:text-sm sm:leading-normal ${municipiosHeaderTheme.subtitle}`}
+              >
                 {LAYER_MAP_HEADERS[selectedLayer].subtitle}
               </p>
             </div>
             {selectedLayer === "Route Map" && (
               <div
-                className={`rounded-2xl border border-border bg-card/90 p-3 text-sm shadow-lg backdrop-blur-md ${municipiosHeaderTheme.subtitle}`}
+                className={`rounded-xl border border-border bg-card/90 p-2.5 text-xs shadow-lg backdrop-blur-md sm:rounded-2xl sm:p-3 sm:text-sm ${municipiosHeaderTheme.subtitle}`}
               >
                 {routeMarkers.length === 0 && (
                   <p>Click the map to set point A (green pin).</p>
@@ -422,7 +382,7 @@ export default function HomePage() {
             )}
           </div>
           {selectedLayer === "Scatterplot" && (
-            <div className="pointer-events-auto absolute top-4 right-4 z-20 max-w-[min(100%-2rem,22rem)]">
+            <div className="pointer-events-auto absolute bottom-3 left-2 right-2 z-20 max-h-[42svh] overflow-y-auto overscroll-contain rounded-2xl sm:bottom-auto sm:left-auto sm:right-4 sm:top-4 sm:max-h-none sm:max-w-[min(calc(100%-2rem),22rem)]">
               <TrafficAccidentsPanel
                 mapStyle={mapStyle}
                 maleCount={scatterSliceSexCounts.homem}
@@ -456,7 +416,7 @@ export default function HomePage() {
             </>
           )}
         </section>
-      </div>
-    </main>
+      </SidebarInset>
+    </SidebarProvider>
   );
 }

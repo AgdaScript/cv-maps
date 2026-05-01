@@ -91,7 +91,7 @@ export function MunicipiosToolbox({
   };
 
   return (
-    <div className="pointer-events-auto absolute right-4 bottom-4 z-20 flex w-24 flex-col items-center gap-3">
+    <div className="pointer-events-auto absolute bottom-[max(0.5rem,env(safe-area-inset-bottom))] right-[max(0.5rem,env(safe-area-inset-right))] z-20 flex w-20 flex-col items-center gap-2 sm:bottom-4 sm:right-4 md:w-24 md:gap-3">
       <div className={`text-center text-xs ${theme.label}`}>
         <div>High</div>
         <div className={`font-medium ${theme.value}`}>{maxFilter}</div>
